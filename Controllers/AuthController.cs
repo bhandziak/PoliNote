@@ -25,7 +25,7 @@ namespace PoliNote.Controllers
             _authService = authService;
         }
 
-        // GET api/auth/login
+        // POST api/auth/login
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginRequestDto request)
         {
@@ -62,6 +62,20 @@ namespace PoliNote.Controllers
                 message = "Logged in successfully",
                 user = userResponse
             });
+        }
+
+        // POST api/auth/logout
+        [HttpPost("logout")]
+        public async Task<IActionResult> Logout()
+        {
+            var userId = _authService.GetCurrentUserId();
+            if (userId == null)
+                return BadRequest("User is already logged out");
+
+            // delete cookie
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
+            return Ok(new { message = "Logged out successfully" });
         }
     }
 }
