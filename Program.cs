@@ -1,3 +1,4 @@
+using FluentValidation;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using PoliNote.Data;
@@ -5,6 +6,7 @@ using PoliNote.Middleware;
 using PoliNote.Repositories;
 using PoliNote.Services.auth;
 using PoliNote.Services.Auth;
+using PoliNote.Services.Calendar;
 using PoliNote.Services.PublicCalendar;
 
 namespace PoliNote
@@ -72,12 +74,16 @@ namespace PoliNote
             // repositories
             builder.Services.AddScoped<UserRepository>();
             builder.Services.AddScoped<PublicCalendarRepository>();
+            builder.Services.AddScoped<PrivateCalendarRepository>();
 
             // services
             builder.Services.AddHttpContextAccessor();
             builder.Services.AddScoped<AuthService>();
-            builder.Services.AddScoped<PublicEventValidator>();
             builder.Services.AddScoped<IsOwnerService>();
+
+            builder.Services.AddScoped<PublicEventValidator>();
+            builder.Services.AddScoped<PrivateEventValidator>();
+            builder.Services.AddScoped<DateValidator>();
 
             // api conf
             builder.Services.Configure<RouteOptions>(options =>

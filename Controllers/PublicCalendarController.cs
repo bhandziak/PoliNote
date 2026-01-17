@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using FluentValidation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PoliNote.DTOs.PublicCalendar;
@@ -6,6 +7,7 @@ using PoliNote.Models;
 using PoliNote.Repositories;
 using PoliNote.Services.auth;
 using PoliNote.Services.Auth;
+using PoliNote.Services.Calendar;
 using PoliNote.Services.PublicCalendar;
 
 namespace PoliNote.Controllers
@@ -16,19 +18,22 @@ namespace PoliNote.Controllers
     {
         private readonly PublicCalendarRepository _publicCalendarRepo;
         private readonly AuthService _authService;
-        private readonly PublicEventValidator _validator;
+        private readonly PublicEventValidator _eventValidator;
+        private readonly DateValidator _dateValidator;
         private readonly IsOwnerService _isOwnerService;
 
         public PublicCalendarController(
             PublicCalendarRepository publicCalendarRepo,
             AuthService authService,
-            PublicEventValidator publicEventValidator,
+            DateValidator dateValidator,
+            PublicEventValidator validator,
             IsOwnerService isOwnerService
             )
         {
             _publicCalendarRepo = publicCalendarRepo;
             _authService = authService;
-            _validator = publicEventValidator;
+            _eventValidator = validator;
+            _dateValidator = dateValidator;
             _isOwnerService = isOwnerService;
         }
 
@@ -37,17 +42,9 @@ namespace PoliNote.Controllers
         [HttpGet]
         public async Task<IActionResult> GetByDate([FromQuery] DateTime? date)
         {
-            if (date == null)
-            {
-                return BadRequest(new { message = "Date is required. Use YYYY-MM-DD format." });
-            }
+            _dateValidator.ValidateOrThrow(date);
 
-            if (date.Value == default)
-            {
-                return BadRequest(new { message = "Invalid date format provided." });
-            }
-
-            var events = await _publicCalendarRepo.GetByDataAsync(date.Value);
+            var events = await _publicCalendarRepo.GetByDateAsync(date.Value);
 
             var eventDtos = events.Select(e => new PublicEventDto
             {
@@ -96,7 +93,7 @@ namespace PoliNote.Controllers
         [Authorize(Roles = "Admin,Informant")]
         public async Task<IActionResult> Create([FromBody] PublicEventRequestDto request)
         {
-            _validator.ValidateEvent(request);
+            _eventValidator.ValidateOrThrow(request);
 
             var userId = _authService.GetCurrentUserId();
 
@@ -125,7 +122,7 @@ namespace PoliNote.Controllers
         [Authorize(Roles = "Admin,Informant")]
         public async Task<IActionResult> Update(Guid id, [FromBody] PublicEventRequestDto request)
         {
-            _validator.ValidateEvent(request);
+            _eventValidator.ValidateOrThrow(request);
 
             var existingEvent = await _publicCalendarRepo.GetByIdAsync(id);
             if (existingEvent == null) return NotFound();

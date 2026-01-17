@@ -7,7 +7,7 @@ namespace PoliNote.Repositories
 {
     public class PublicCalendarRepository(AppDbContext context) : Repository(context)
     {
-        public async Task<IEnumerable<PublicEvent>> GetByDataAsync(DateTime date)
+        public async Task<IEnumerable<PublicEvent>> GetByDateAsync(DateTime date)
         {
             return await _context.PublicEvents
                 .Where(e => e.Date.Date == date.Date)

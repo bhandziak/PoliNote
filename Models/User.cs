@@ -11,4 +11,5 @@ public class User
 
     // relations
     public ICollection<PublicEvent> PublicEvents { get; set; } = new List<PublicEvent>();
+    public ICollection<PrivateEvent> PrivateEvents { get; set; } = new List<PrivateEvent>();
 }

@@ -10,6 +10,7 @@ public class AppDbContext : DbContext
 
     public DbSet<User> Users => Set<User>();
     public DbSet<PublicEvent> PublicEvents => Set<PublicEvent>();
+    public DbSet<PrivateEvent> PrivateEvents => Set<PrivateEvent>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -21,10 +22,18 @@ public class AppDbContext : DbContext
             .HasConversion<string>();
 
         // --- RELATIONS ---
+
         // Users -> PublicEvents
         modelBuilder.Entity<PublicEvent>()
             .HasOne(e => e.CreatedByUser)
             .WithMany(u => u.PublicEvents)
+            .HasForeignKey(e => e.CreatedByUserId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        // Users -> PrivateEvents
+        modelBuilder.Entity<PrivateEvent>()
+            .HasOne(e => e.CreatedByUser)
+            .WithMany(u => u.PrivateEvents)
             .HasForeignKey(e => e.CreatedByUserId)
             .OnDelete(DeleteBehavior.Cascade);
 
