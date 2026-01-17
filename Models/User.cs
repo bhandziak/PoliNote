@@ -7,5 +7,5 @@ public class User
     public string? FirstName { get; set; }
     public string? LastName { get; set; }
     public string PasswordHash { get; set; } = null!;
-    public string Role { get; set; } = null!;
+    public UserRole Role { get; set; }
 }

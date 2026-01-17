@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PoliNote.Data;
 using PoliNote.Models;
@@ -19,6 +20,7 @@ public class UsersController : ControllerBase
 
     // GET api/users
     [HttpGet]
+    [Authorize(Roles = "Admin")]
     public async Task<ActionResult<IEnumerable<User>>> GetAllUsers()
     {
         var users = await _userRepository.GetAllAsync();
