@@ -6,8 +6,7 @@ Poniżej znajduje się instrukcja krok po kroku, jak przygotować środowisko ba
 Jeśli została zmieniona struktura db - usuń kontener.
 
 ```bash
-docker rm -f polinote-db
-docker volume rm polinote_postgres_data
+docker-compose down -v
 ```
 
 ### 1. Uruchomienie bazy danych
