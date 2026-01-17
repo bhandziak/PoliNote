@@ -30,7 +30,7 @@ namespace PoliNote.Repositories
 
         public async Task UpdateAsync(PublicEvent publicEvent)
         {
-            _context.PublicEvents.Update(publicEvent);
+            _context.Entry(publicEvent).State = EntityState.Modified;
             await _context.SaveChangesAsync();
         }
         public async Task DeleteAsync(Guid id)

@@ -8,7 +8,7 @@ using PoliNote.DTOs.Auth;
 using PoliNote.DTOs.Users;
 using PoliNote.Models;
 using PoliNote.Repositories;
-using PoliNote.Services;
+using PoliNote.Services.auth;
 
 namespace PoliNote.Controllers
 {

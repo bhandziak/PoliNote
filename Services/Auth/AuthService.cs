@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Http;
 using PoliNote.Models;
 using System.Security.Claims;
 
-namespace PoliNote.Services;
+namespace PoliNote.Services.auth;
 
 public class AuthService(IHttpContextAccessor httpContextAccessor)
 {

@@ -1,8 +1,11 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using PoliNote.Data;
+using PoliNote.Middleware;
 using PoliNote.Repositories;
-using PoliNote.Services;
+using PoliNote.Services.auth;
+using PoliNote.Services.Auth;
+using PoliNote.Services.PublicCalendar;
 
 namespace PoliNote
 {
@@ -13,6 +16,10 @@ namespace PoliNote
             AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
             var builder = WebApplication.CreateBuilder(args);
+
+            // Exception handler
+            builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+            builder.Services.AddProblemDetails();
 
             // CORS
             builder.Services.AddCors(options => {
@@ -69,6 +76,8 @@ namespace PoliNote
             // services
             builder.Services.AddHttpContextAccessor();
             builder.Services.AddScoped<AuthService>();
+            builder.Services.AddScoped<PublicEventValidator>();
+            builder.Services.AddScoped<IsOwnerService>();
 
             // api conf
             builder.Services.Configure<RouteOptions>(options =>
@@ -77,6 +86,9 @@ namespace PoliNote
             });
 
             var app = builder.Build();
+
+            // activate Exception handler
+            app.UseExceptionHandler();
 
             // auth
             app.UseCors("MauiPolicy");

@@ -4,7 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 using PoliNote.DTOs.PublicCalendar;
 using PoliNote.Models;
 using PoliNote.Repositories;
-using PoliNote.Services;
+using PoliNote.Services.auth;
+using PoliNote.Services.Auth;
+using PoliNote.Services.PublicCalendar;
 
 namespace PoliNote.Controllers
 {
@@ -14,11 +16,20 @@ namespace PoliNote.Controllers
     {
         private readonly PublicCalendarRepository _publicCalendarRepo;
         private readonly AuthService _authService;
-        
-        public PublicCalendarController(PublicCalendarRepository publicCalendarRepo, AuthService authService)
+        private readonly PublicEventValidator _validator;
+        private readonly IsOwnerService _isOwnerService;
+
+        public PublicCalendarController(
+            PublicCalendarRepository publicCalendarRepo,
+            AuthService authService,
+            PublicEventValidator publicEventValidator,
+            IsOwnerService isOwnerService
+            )
         {
             _publicCalendarRepo = publicCalendarRepo;
             _authService = authService;
+            _validator = publicEventValidator;
+            _isOwnerService = isOwnerService;
         }
 
 
@@ -85,10 +96,12 @@ namespace PoliNote.Controllers
         [Authorize(Roles = "Admin,Informant")]
         public async Task<IActionResult> Create([FromBody] PublicEventRequestDto request)
         {
+            _validator.ValidateEvent(request);
+
             var userId = _authService.GetCurrentUserId();
 
             if (userId == null)
-                return Unauthorized("User is not logged in");
+                return Unauthorized("User is not logged in"); 
 
             var newEvent = new PublicEvent
             {
@@ -104,6 +117,33 @@ namespace PoliNote.Controllers
 
             await _publicCalendarRepo.PutAsync(newEvent);
             return CreatedAtAction(nameof(GetById), new { id = newEvent.Id }, newEvent);
+        }
+
+        // PATCH api/calendar/public/{id}
+        [HttpPatch("{id:guid}")]
+        [Authorize(Roles = "Admin,Informant")]
+        public async Task<IActionResult> Update(Guid id, [FromBody] PublicEventRequestDto request)
+        {
+            _validator.ValidateEvent(request);
+
+            var existingEvent = await _publicCalendarRepo.GetByIdAsync(id);
+            if (existingEvent == null) return NotFound();
+
+            if (!_isOwnerService.CanUserEditOrDelete(existingEvent.CreatedByUserId))
+                return Forbid();
+
+            // update fields
+            existingEvent.Title = request.Title;
+            existingEvent.Description = request.Description;
+            existingEvent.Date = request.Date;
+            existingEvent.StartTime = request.StartTime;
+            existingEvent.EndTime = request.EndTime;
+            existingEvent.Location = request.Location;
+
+            // save
+            await _publicCalendarRepo.UpdateAsync(existingEvent);
+
+            return NoContent();
         }
     }
 }
