@@ -11,22 +11,30 @@ namespace PoliNote.Middleware
             Exception exception,
             CancellationToken cancellationToken)
         {
-            // only ValidationException is extra handled
-            if (exception is not ValidationException validationException)
+            // 500 error code
+            int statusCode = StatusCodes.Status500InternalServerError;
+            string title = "Internal Server Error";
+            string detail = "An unexpected error occurred on the server.";
+
+            // 400 validation error
+            if (exception is ValidationException validationException)
             {
-                return false;
+                statusCode = StatusCodes.Status400BadRequest;
+                title = "Validation Error";
+                detail = validationException.Message;
             }
 
-            httpContext.Response.StatusCode = StatusCodes.Status400BadRequest;
+            httpContext.Response.StatusCode = statusCode;
 
             var problemDetails = new ProblemDetails
             {
-                Status = StatusCodes.Status400BadRequest,
-                Title = "Validation Error",
-                Detail = validationException.Message
+                Status = statusCode,
+                Title = title,
+                Detail = detail,
             };
 
             await httpContext.Response.WriteAsJsonAsync(problemDetails, cancellationToken);
+
             return true;
         }
     }
