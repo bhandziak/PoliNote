@@ -23,7 +23,7 @@ docker-compose up -d
 dotnet ef database update
 ```
 
-### 3. Uruchomienie aplikacji .NET
+### 3. Uruchomienie aplikacji .NET na HTTP
 
 
 ### ⚠️ UWAGI
