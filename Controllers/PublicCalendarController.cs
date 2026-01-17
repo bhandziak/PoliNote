@@ -116,7 +116,8 @@ namespace PoliNote.Controllers
             };
 
             await _publicCalendarRepo.PutAsync(newEvent);
-            return CreatedAtAction(nameof(GetById), new { id = newEvent.Id }, newEvent);
+
+            return Ok(new { id = newEvent.Id });
         }
 
         // PATCH api/calendar/public/{id}

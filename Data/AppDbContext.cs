@@ -45,6 +45,24 @@ public class AppDbContext : DbContext
                 Username = "testuser",
                 PasswordHash = "$2a$12$tDPBut7pAwtiZMA.Wq1IqOhpq0jGxGcTrbdIlXIrjhv7uJX4bcHka",
                 Role = UserRole.Student
+            },
+            new User
+            {
+                Id = 3,
+                Username = "informator1",
+                FirstName = "Marek",
+                LastName = "Nowak",
+                PasswordHash = "$2a$12$tDPBut7pAwtiZMA.Wq1IqOhpq0jGxGcTrbdIlXIrjhv7uJX4bcHka",
+                Role = UserRole.Informant
+            },
+            new User
+            {
+                Id = 4,
+                Username = "informator2",
+                FirstName = "Anna",
+                LastName = "Wiśniewska",
+                PasswordHash = "$2a$12$tDPBut7pAwtiZMA.Wq1IqOhpq0jGxGcTrbdIlXIrjhv7uJX4bcHka",
+                Role = UserRole.Informant
             }
         );
     }
