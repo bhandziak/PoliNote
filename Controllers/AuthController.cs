@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Authentication;
+﻿using BCrypt.Net;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
-using BCrypt.Net;
 using PoliNote.DTOs.Auth;
+using PoliNote.DTOs.Users;
 using PoliNote.Models;
 using PoliNote.Repositories;
 using PoliNote.Services;
@@ -49,7 +50,18 @@ namespace PoliNote.Controllers
                 new AuthenticationProperties { IsPersistent = true }
             );
 
-            return Ok(new { message = "Logged in successfully" });
-            }
+            var userResponse = new UserDto
+            {
+                Username = user.Username,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Role = user.Role
+            };
+
+            return Ok(new { 
+                message = "Logged in successfully",
+                user = userResponse
+            });
+        }
     }
 }
