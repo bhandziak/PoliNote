@@ -1,0 +1,109 @@
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using PoliNote.DTOs.PublicCalendar;
+using PoliNote.Models;
+using PoliNote.Repositories;
+using PoliNote.Services;
+
+namespace PoliNote.Controllers
+{
+    [Route("api/calendar/public")]
+    [ApiController]
+    public class PublicCalendarController : ControllerBase
+    {
+        private readonly PublicCalendarRepository _publicCalendarRepo;
+        private readonly AuthService _authService;
+        
+        public PublicCalendarController(PublicCalendarRepository publicCalendarRepo, AuthService authService)
+        {
+            _publicCalendarRepo = publicCalendarRepo;
+            _authService = authService;
+        }
+
+
+        // GET api/calendar/public?date=YYYY-MM-DD
+        [HttpGet]
+        public async Task<IActionResult> GetByDate([FromQuery] DateTime? date)
+        {
+            if (date == null)
+            {
+                return BadRequest(new { message = "Date is required. Use YYYY-MM-DD format." });
+            }
+
+            if (date.Value == default)
+            {
+                return BadRequest(new { message = "Invalid date format provided." });
+            }
+
+            var events = await _publicCalendarRepo.GetByDataAsync(date.Value);
+
+            var eventDtos = events.Select(e => new PublicEventDto
+            {
+                Id = e.Id,
+                Title = e.Title,
+                Date = e.Date,
+                StartTime = e.StartTime,
+                EndTime = e.EndTime,
+                Location = e.Location
+            }).ToList();
+
+            return Ok(eventDtos);
+        }
+
+        // GET api/calendar/public/{id}
+        [HttpGet("{id:guid}")]
+        public async Task<IActionResult> GetById(Guid id)
+        {
+            var publicEvent = await _publicCalendarRepo.GetByIdAsync(id);
+
+            if(publicEvent == null) return NotFound();
+
+            string creatorUsername = publicEvent.CreatedByUser?.Username ?? "Unknown";
+            string creatorNameAndSurname = $"{publicEvent.CreatedByUser?.FirstName} {publicEvent.CreatedByUser?.LastName}".Trim()
+                ?? "Unknown";
+
+            var dto = new PublicEventDetailsDto
+            {
+                Id = publicEvent.Id,
+
+                CreatedByUsername = creatorUsername,
+                CreatedByNameAndSurname = creatorNameAndSurname,
+                
+                Title = publicEvent.Title,
+                Date = publicEvent.Date,
+                StartTime = publicEvent.StartTime,
+                EndTime = publicEvent.EndTime,
+                Location = publicEvent.Location
+            };
+
+            return Ok(dto);
+        }
+
+        // POST api/calendar/public
+        [HttpPost]
+        [Authorize(Roles = "Admin,Informant")]
+        public async Task<IActionResult> Create([FromBody] PublicEventRequestDto request)
+        {
+            var userId = _authService.GetCurrentUserId();
+
+            if (userId == null)
+                return Unauthorized("User is not logged in");
+
+            var newEvent = new PublicEvent
+            {
+                Id = Guid.NewGuid(),
+                CreatedByUserId = userId.Value,
+                Title = request.Title,
+                Description = request.Description,
+                Date = request.Date,
+                StartTime = request.StartTime,
+                EndTime = request.EndTime,
+                Location = request.Location
+            };
+
+            await _publicCalendarRepo.PutAsync(newEvent);
+            return CreatedAtAction(nameof(GetById), new { id = newEvent.Id }, newEvent);
+        }
+    }
+}

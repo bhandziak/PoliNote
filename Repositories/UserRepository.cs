@@ -4,15 +4,8 @@ using PoliNote.Models;
 
 namespace PoliNote.Repositories;
 
-public class UserRepository
+public class UserRepository(AppDbContext context) : Repository(context)
 {
-    private readonly AppDbContext _context;
-
-    public UserRepository(AppDbContext context)
-    {
-        _context = context;
-    }
-
     public async Task<IEnumerable<User>> GetAllAsync()
     {
         return await _context.Users.ToListAsync();

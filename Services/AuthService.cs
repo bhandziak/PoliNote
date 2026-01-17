@@ -1,10 +1,11 @@
-﻿using System.Security.Claims;
-using Microsoft.AspNetCore.Authentication.Cookies;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Http;
 using PoliNote.Models;
+using System.Security.Claims;
 
 namespace PoliNote.Services;
 
-public class AuthService
+public class AuthService(IHttpContextAccessor httpContextAccessor)
 {
     // returns encrypted user info (UserId, Username, Role) as indentity session cookie
     public ClaimsPrincipal CreatePrincipal(User user)
@@ -19,5 +20,19 @@ public class AuthService
         var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
         return new ClaimsPrincipal(identity);
+    }
+
+    // get UserId from cookie
+    public int? GetCurrentUserId()
+    {
+        var userIdClaim = httpContextAccessor.HttpContext?.User?
+            .FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+        if (int.TryParse(userIdClaim, out int userId))
+        {
+            return userId;
+        }
+
+        return null;
     }
 }

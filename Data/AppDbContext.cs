@@ -9,15 +9,24 @@ public class AppDbContext : DbContext
         : base(options) { }
 
     public DbSet<User> Users => Set<User>();
+    public DbSet<PublicEvent> PublicEvents => Set<PublicEvent>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
 
-        // role
+        // roles
         modelBuilder.Entity<User>()
             .Property(u => u.Role)
             .HasConversion<string>();
+
+        // --- RELATIONS ---
+        // Users -> PublicEvents
+        modelBuilder.Entity<PublicEvent>()
+            .HasOne(e => e.CreatedByUser)
+            .WithMany(u => u.PublicEvents)
+            .HasForeignKey(e => e.CreatedByUserId)
+            .OnDelete(DeleteBehavior.Cascade);
 
         // Dummy data
         modelBuilder.Entity<User>().HasData(

@@ -8,4 +8,7 @@ public class User
     public string? LastName { get; set; }
     public string PasswordHash { get; set; } = null!;
     public UserRole Role { get; set; }
+
+    // relations
+    public ICollection<PublicEvent> PublicEvents { get; set; } = new List<PublicEvent>();
 }

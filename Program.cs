@@ -10,6 +10,8 @@ namespace PoliNote
     {
         public static void Main(string[] args)
         {
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+
             var builder = WebApplication.CreateBuilder(args);
 
             // CORS
@@ -62,8 +64,10 @@ namespace PoliNote
 
             // repositories
             builder.Services.AddScoped<UserRepository>();
+            builder.Services.AddScoped<PublicCalendarRepository>();
 
             // services
+            builder.Services.AddHttpContextAccessor();
             builder.Services.AddScoped<AuthService>();
 
             // api conf
