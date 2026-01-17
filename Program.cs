@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using PoliNote.Data;
+using PoliNote.Repositories;
 
 namespace PoliNote
 {
@@ -22,6 +23,9 @@ namespace PoliNote
                     builder.Configuration.GetConnectionString("DefaultConnection")
                 )
             );
+
+            // repositories
+            builder.Services.AddScoped<UserRepository>();
 
             var app = builder.Build();
 

@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using PoliNote.Data;
 using PoliNote.Models;
+using PoliNote.Repositories;
 
 namespace PoliNote.Controllers;
 
@@ -9,17 +10,18 @@ namespace PoliNote.Controllers;
 [Route("api/[controller]")]
 public class UsersController : ControllerBase
 {
-    private readonly AppDbContext _context;
+    private readonly UserRepository _userRepository;
 
-    public UsersController(AppDbContext context)
+    public UsersController(UserRepository userRepository)
     {
-        _context = context;
+        _userRepository = userRepository;
     }
 
     // GET api/users
     [HttpGet]
     public async Task<ActionResult<IEnumerable<User>>> GetAllUsers()
     {
-        return await _context.Users.ToListAsync();
+        var users = await _userRepository.GetAllAsync();
+        return Ok(users);
     }
 }
