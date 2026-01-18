@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="PoliNote.Views.WelcomePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundColor="White">
+
+    <VerticalStackLayout
+        Spacing="24"
+        Padding="32"
+        VerticalOptions="Center">
+
+        <!-- Logo -->
+        <Image
+            Source="dotnet_bot.png"
+            HeightRequest="80"
+            HorizontalOptions="Center" />
+
+        <!-- Tytuł -->
+        <Label
+            Text="PoliNote"
+            FontSize="28"
+            FontAttributes="Bold"
+            HorizontalOptions="Center" />
+
+        <!-- Podtytuł -->
+        <Label
+            Text="Twój asystent na Politechnice"
+            FontSize="14"
+            TextColor="Gray"
+            HorizontalOptions="Center" />
+
+        <!-- Logowanie -->
+        <Button
+            Text="Logowanie"
+            BackgroundColor="#2F6FED"
+            TextColor="White"
+            CornerRadius="12"
+            HeightRequest="48"
+            Clicked="OnLoginClicked" />
+
+        <!-- Bez logowania -->
+        <Button
+            Text="Kontynuuj bez logowania"
+            BackgroundColor="#F1F3F6"
+            TextColor="Black"
+            CornerRadius="12"
+            HeightRequest="48" />
+
+    </VerticalStackLayout>
+
+</ContentPage>

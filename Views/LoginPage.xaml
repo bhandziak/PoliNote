@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="PoliNote.Views.LoginPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundColor="White"
+    Title="Logowanie">
+
+    <VerticalStackLayout
+        Padding="32"
+        Spacing="20"
+        VerticalOptions="Center">
+
+        <Label
+            Text="PoliNote"
+            FontSize="24"
+            FontAttributes="Bold"
+            HorizontalOptions="Center" />
+
+        <Label
+            Text="Zaloguj się do swojego konta"
+            FontSize="14"
+            TextColor="Gray"
+            HorizontalOptions="Center" />
+
+        <Entry
+            Placeholder="Numer albumu"
+            Text="{Binding Username}" />
+
+        <Entry
+            Placeholder="Hasło"
+            IsPassword="True"
+            Text="{Binding Password}" />
+
+        <Button
+            Text="Zaloguj"
+            BackgroundColor="#2F6FED"
+            TextColor="White"
+            HeightRequest="48"
+            Command="{Binding LoginCommand}" />
+
+    </VerticalStackLayout>
+</ContentPage>
