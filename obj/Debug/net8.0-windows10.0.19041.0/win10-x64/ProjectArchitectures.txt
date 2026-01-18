@@ -1,1 +1,1 @@
-C:\Users\konra\Documents\~Studia\V Semestr\Inżynieria Oprogramowania\PoliNote\PoliNote.csproj;x64
+C:\Users\konra\source\repos\PoliNote\PoliNote.csproj;x64
