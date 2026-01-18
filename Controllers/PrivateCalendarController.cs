@@ -156,5 +156,22 @@ namespace PoliNote.Controllers
 
             return NoContent();
         }
+
+        // DELETE api/calendar/private/{id}
+        [HttpDelete("{id:guid}")]
+        [Authorize(Roles = "Student,Admin,Informant")]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            var existingEvent = await _privateCalendarRepo.GetByIdAsync(id);
+            if (existingEvent == null) return NotFound();
+
+            if (!_isOwnerService.IsOwner(existingEvent.CreatedByUserId))
+                return Forbid();
+
+            // delete
+            await _privateCalendarRepo.DeleteAsync(id);
+
+            return Ok();
+        }
     }
 }
