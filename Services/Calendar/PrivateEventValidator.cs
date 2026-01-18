@@ -3,7 +3,7 @@ using PoliNote.DTOs.PrivateCalendar;
 
 namespace PoliNote.Services.Calendar
 {
-    public class PrivateEventValidator : AbstractValidator<PrivateEventRequestDto>
+    public class PrivateEventValidator
     {
         public void ValidateOrThrow(PrivateEventRequestDto request)
         {

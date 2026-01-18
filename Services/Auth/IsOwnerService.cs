@@ -4,7 +4,7 @@ namespace PoliNote.Services.Auth
 {
     public class IsOwnerService(AuthService authService, IHttpContextAccessor httpContextAccessor)
     {
-        public bool CanUserEditOrDelete(int resourceOwnerId)
+        public bool IsOwnerOrAdmin(int resourceOwnerId)
         {
             var currentUserId = authService.GetCurrentUserId();
 
@@ -18,6 +18,18 @@ namespace PoliNote.Services.Auth
             {
                 return true;
             }
+
+            // owner check
+            return resourceOwnerId == currentUserId;
+        }
+
+        public bool IsOwner(int resourceOwnerId)
+        {
+            var currentUserId = authService.GetCurrentUserId();
+
+            // not logged in
+            if (currentUserId == null)
+                return false;
 
             // owner check
             return resourceOwnerId == currentUserId;

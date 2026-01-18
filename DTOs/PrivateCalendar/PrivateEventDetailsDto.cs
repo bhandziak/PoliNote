@@ -1,10 +1,10 @@
-﻿namespace PoliNote.Models
+﻿using PoliNote.Models;
+
+namespace PoliNote.DTOs.PrivateCalendar
 {
-    public class PrivateEvent
+    public class PrivateEventDetailsDto
     {
-        public Guid Id { get; set; } = Guid.NewGuid();
-        public int CreatedByUserId { get; set; } // FK
-        public User? CreatedByUser { get; set; }
+        public Guid Id { get; set; }
         public string Title { get; set; } = null!;
         public string? Description { get; set; }
         public DateTime Date { get; set; }

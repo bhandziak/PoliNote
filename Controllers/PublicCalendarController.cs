@@ -80,6 +80,7 @@ namespace PoliNote.Controllers
                 
                 Title = publicEvent.Title,
                 Date = publicEvent.Date,
+                Description = publicEvent.Description,
                 StartTime = publicEvent.StartTime,
                 EndTime = publicEvent.EndTime,
                 Location = publicEvent.Location
@@ -127,7 +128,7 @@ namespace PoliNote.Controllers
             var existingEvent = await _publicCalendarRepo.GetByIdAsync(id);
             if (existingEvent == null) return NotFound();
 
-            if (!_isOwnerService.CanUserEditOrDelete(existingEvent.CreatedByUserId))
+            if (!_isOwnerService.IsOwnerOrAdmin(existingEvent.CreatedByUserId))
                 return Forbid();
 
             // update fields
@@ -152,7 +153,7 @@ namespace PoliNote.Controllers
             var existingEvent = await _publicCalendarRepo.GetByIdAsync(id);
             if (existingEvent == null) return NotFound();
 
-            if (!_isOwnerService.CanUserEditOrDelete(existingEvent.CreatedByUserId))
+            if (!_isOwnerService.IsOwnerOrAdmin(existingEvent.CreatedByUserId))
                 return Forbid();
 
             // delete
