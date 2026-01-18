@@ -49,17 +49,27 @@ public class LoginViewModel : BaseViewModel
 
             if (success)
             {
-                await Shell.Current.DisplayAlert("OK", "Zalogowano", "OK");
-                // TODO: nawigacja do głównej części aplikacji
+                await Shell.Current.DisplayAlert(
+                    "OK",
+                    "Zalogowano poprawnie (cookie zapisane)",
+                    "OK");
+
+                // TU PÓŹNIEJ: nawigacja do głównej aplikacji
             }
             else
             {
-                await Shell.Current.DisplayAlert("Błąd", "Niepoprawne dane", "OK");
+                await Shell.Current.DisplayAlert(
+                    "Błąd",
+                    "Niepoprawne dane logowania",
+                    "OK");
             }
         }
         catch (Exception ex)
         {
-            await Shell.Current.DisplayAlert("Błąd", ex.Message, "OK");
+            await Shell.Current.DisplayAlert(
+                "Wyjątek",
+                ex.Message,
+                "OK");
         }
         finally
         {

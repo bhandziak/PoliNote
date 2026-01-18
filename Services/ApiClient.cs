@@ -3,30 +3,34 @@ using System.Net.Http.Json;
 
 namespace PoliNote.Services;
 
-public class ApiClient
+public static class ApiClient
 {
-    private static readonly CookieContainer _cookieContainer = new();
-    private static HttpClient _httpClient;
+    private static readonly CookieContainer CookieContainer = new();
+    private static HttpClient _client;
 
     public static HttpClient Client
     {
         get
         {
-            if (_httpClient != null)
-                return _httpClient;
+            if (_client != null)
+                return _client;
 
             var handler = new HttpClientHandler
             {
-                CookieContainer = _cookieContainer,
-                UseCookies = true
+                CookieContainer = CookieContainer,
+                UseCookies = true,
+
+                // DEV ONLY – pozwala na localhost HTTPS
+                ServerCertificateCustomValidationCallback =
+                    HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
             };
 
-            _httpClient = new HttpClient(handler)
+            _client = new HttpClient(handler)
             {
-                BaseAddress = new Uri("https://localhost:7040/") //adres backendu ma byc
+                BaseAddress = new Uri("https://localhost:7040/")
             };
 
-            return _httpClient;
+            return _client;
         }
     }
 }
