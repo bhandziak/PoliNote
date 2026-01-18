@@ -41,14 +41,13 @@ namespace PoliNote.Controllers
         [Authorize(Roles = "Student,Admin,Informant")]
         public async Task<IActionResult> GetByDate([FromQuery] DateTime? date)
         {
-            _dateValidator.ValidateOrThrow(date);
-
             int? userId = _authService.GetCurrentUserId();
             if( userId == null )
                 return Unauthorized("User is not logged in");
 
             var events = await _privateCalendarRepo.GetByDateAsync(date.Value, (int)userId);
 
+            _dateValidator.ValidateOrThrow(date);
             // TODO
             // generate subject dtos
 
@@ -93,23 +92,22 @@ namespace PoliNote.Controllers
             return Ok(dto);
         }
 
-        // POST api/calendar/public
+        // POST api/calendar/private
         [HttpPost]
         [Authorize(Roles = "Student,Admin,Informant")]
         public async Task<IActionResult> Create([FromBody] PrivateEventRequestDto request)
         {
+            var userId = _authService.GetCurrentUserId();
+
+            if (userId == null)
+                return Unauthorized("User is not logged in");
+
             _eventValidator.ValidateOrThrow(request);
 
             if (!Enum.TryParse<PrivateEventType>(request.EventType, true, out var eventTypeEnum))
             {
                 return BadRequest($"Invalid event type: {request.EventType}");
             }
-
-            var userId = _authService.GetCurrentUserId();
-
-            if (userId == null)
-                return Unauthorized("User is not logged in");
-
 
             var newEvent = new PrivateEvent
             {
@@ -126,6 +124,37 @@ namespace PoliNote.Controllers
             await _privateCalendarRepo.PutAsync(newEvent);
 
             return Ok(new { id = newEvent.Id });
+        }
+
+        // PATCH api/calendar/private/{id}
+        [HttpPatch("{id:guid}")]
+        [Authorize(Roles = "Student,Admin,Informant")]
+        public async Task<IActionResult> Update(Guid id, [FromBody] PrivateEventRequestDto request)
+        {
+            var existingEvent = await _privateCalendarRepo.GetByIdAsync(id);
+            if (existingEvent == null) return NotFound();
+
+            if (!_isOwnerService.IsOwner(existingEvent.CreatedByUserId))
+                return Forbid();
+
+            _eventValidator.ValidateOrThrow(request);
+            if (!Enum.TryParse<PrivateEventType>(request.EventType, true, out var eventTypeEnum))
+            {
+                return BadRequest($"Invalid event type: {request.EventType}");
+            }
+
+            // update fields
+            existingEvent.Title = request.Title;
+            existingEvent.Description = request.Description;
+            existingEvent.Date = request.Date;
+            existingEvent.Time = request.Time;
+            existingEvent.Location = request.Location;
+            existingEvent.EventType = eventTypeEnum;
+
+            // save
+            await _privateCalendarRepo.UpdateAsync(existingEvent);
+
+            return NoContent();
         }
     }
 }

@@ -94,12 +94,12 @@ namespace PoliNote.Controllers
         [Authorize(Roles = "Admin,Informant")]
         public async Task<IActionResult> Create([FromBody] PublicEventRequestDto request)
         {
-            _eventValidator.ValidateOrThrow(request);
-
             var userId = _authService.GetCurrentUserId();
 
             if (userId == null)
-                return Unauthorized("User is not logged in"); 
+                return Unauthorized("User is not logged in");
+
+            _eventValidator.ValidateOrThrow(request);
 
             var newEvent = new PublicEvent
             {
@@ -123,13 +123,13 @@ namespace PoliNote.Controllers
         [Authorize(Roles = "Admin,Informant")]
         public async Task<IActionResult> Update(Guid id, [FromBody] PublicEventRequestDto request)
         {
-            _eventValidator.ValidateOrThrow(request);
-
             var existingEvent = await _publicCalendarRepo.GetByIdAsync(id);
             if (existingEvent == null) return NotFound();
 
             if (!_isOwnerService.IsOwnerOrAdmin(existingEvent.CreatedByUserId))
                 return Forbid();
+
+            _eventValidator.ValidateOrThrow(request);
 
             // update fields
             existingEvent.Title = request.Title;
