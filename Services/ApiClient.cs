@@ -23,7 +23,7 @@ public class ApiClient
 
             _httpClient = new HttpClient(handler)
             {
-                BaseAddress = new Uri("https://localhost:5001/") //adres backendu ma byc
+                BaseAddress = new Uri("https://localhost:7040/") //adres backendu ma byc
             };
 
             return _httpClient;
