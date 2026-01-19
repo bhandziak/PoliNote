@@ -27,7 +27,7 @@ public static class ApiClient
 
             _client = new HttpClient(handler)
             {
-                BaseAddress = new Uri("https://127.0.0.1:7040/")
+                BaseAddress = new Uri("http://192.168.0.175:5275/")
             };
 
             return _client;
