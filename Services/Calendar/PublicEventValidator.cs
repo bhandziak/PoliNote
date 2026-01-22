@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace PoliNote.Services.PublicCalendar
 {
-    public class PublicEventValidator
+    public class PublicEventValidator : IDataValidator<PublicEventRequestDto>
     {
         public void ValidateOrThrow(PublicEventRequestDto request)
         {

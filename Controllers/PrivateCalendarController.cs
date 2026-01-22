@@ -4,7 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 using PoliNote.DTOs.PrivateCalendar;
 using PoliNote.DTOs.PublicCalendar;
 using PoliNote.Models;
+using PoliNote.Models.Subjects;
 using PoliNote.Repositories;
+using PoliNote.Services;
 using PoliNote.Services.auth;
 using PoliNote.Services.Auth;
 using PoliNote.Services.Calendar;
@@ -18,15 +20,15 @@ namespace PoliNote.Controllers
         private readonly PrivateCalendarRepository _privateCalendarRepo;
         private readonly AuthService _authService;
         private readonly IsOwnerService _isOwnerService;
-        private readonly PrivateEventValidator _eventValidator;
-        private readonly DateValidator _dateValidator;
+        private readonly IDataValidator<PrivateEventRequestDto> _eventValidator;
+        private readonly IDataValidator<DateTime?> _dateValidator;
 
         public PrivateCalendarController(
             PrivateCalendarRepository privateCalendarRepo,
             AuthService authService,
             IsOwnerService isOwnerService,
-            PrivateEventValidator eventValidator,
-            DateValidator dateValidator
+            IDataValidator<PrivateEventRequestDto> eventValidator,
+            IDataValidator<DateTime?> dateValidator
             )
         {
             _privateCalendarRepo = privateCalendarRepo;
@@ -41,11 +43,11 @@ namespace PoliNote.Controllers
         [Authorize(Roles = "Student,Admin,Informant")]
         public async Task<IActionResult> GetByDate([FromQuery] DateTime? date)
         {
-            int? userId = _authService.GetCurrentUserId();
+            Guid? userId = _authService.GetCurrentUserId();
             if( userId == null )
                 return Unauthorized("User is not logged in");
 
-            var events = await _privateCalendarRepo.GetByDateAsync(date.Value, (int)userId);
+            var events = await _privateCalendarRepo.GetByDateAsync(date.Value, (Guid)userId);
 
             _dateValidator.ValidateOrThrow(date);
             // TODO

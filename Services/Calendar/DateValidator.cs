@@ -2,7 +2,7 @@
 
 namespace PoliNote.Services.Calendar
 {
-    public class DateValidator
+    public class DateValidator : IDataValidator<DateTime?>
     {
         public void ValidateOrThrow(DateTime? date)
         {

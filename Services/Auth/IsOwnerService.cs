@@ -4,7 +4,7 @@ namespace PoliNote.Services.Auth
 {
     public class IsOwnerService(AuthService authService, IHttpContextAccessor httpContextAccessor)
     {
-        public bool IsOwnerOrAdmin(int resourceOwnerId)
+        public bool IsOwnerOrAdmin(Guid resourceOwnerId)
         {
             var currentUserId = authService.GetCurrentUserId();
 
@@ -23,7 +23,7 @@ namespace PoliNote.Services.Auth
             return resourceOwnerId == currentUserId;
         }
 
-        public bool IsOwner(int resourceOwnerId)
+        public bool IsOwner(Guid resourceOwnerId)
         {
             var currentUserId = authService.GetCurrentUserId();
 

@@ -23,12 +23,12 @@ public class AuthService(IHttpContextAccessor httpContextAccessor)
     }
 
     // get UserId from cookie
-    public int? GetCurrentUserId()
+    public Guid? GetCurrentUserId()
     {
         var userIdClaim = httpContextAccessor.HttpContext?.User?
             .FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
-        if (int.TryParse(userIdClaim, out int userId))
+        if (Guid.TryParse(userIdClaim, out Guid userId))
         {
             return userId;
         }

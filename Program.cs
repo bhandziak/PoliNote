@@ -2,12 +2,18 @@ using FluentValidation;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using PoliNote.Data;
+using PoliNote.DTOs.PrivateCalendar;
+using PoliNote.DTOs.PublicCalendar;
 using PoliNote.Middleware;
+using PoliNote.Models.Subjects;
 using PoliNote.Repositories;
+using PoliNote.Repositories.Subjects;
+using PoliNote.Services;
 using PoliNote.Services.auth;
 using PoliNote.Services.Auth;
 using PoliNote.Services.Calendar;
 using PoliNote.Services.PublicCalendar;
+using System.Reflection;
 
 namespace PoliNote
 {
@@ -75,15 +81,22 @@ namespace PoliNote
             builder.Services.AddScoped<UserRepository>();
             builder.Services.AddScoped<PublicCalendarRepository>();
             builder.Services.AddScoped<PrivateCalendarRepository>();
+            builder.Services.AddScoped<SubjectRepository>();
 
             // services
             builder.Services.AddHttpContextAccessor();
             builder.Services.AddScoped<AuthService>();
             builder.Services.AddScoped<IsOwnerService>();
 
-            builder.Services.AddScoped<PublicEventValidator>();
-            builder.Services.AddScoped<PrivateEventValidator>();
-            builder.Services.AddScoped<DateValidator>();
+            // validators
+            var validatorTypes = Assembly.GetExecutingAssembly().GetTypes()
+                .Where(t => t.GetInterfaces().Any(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IDataValidator<>)));
+
+            foreach (var type in validatorTypes)
+            {
+                var interfaceType = type.GetInterfaces().First(i => i.GetGenericTypeDefinition() == typeof(IDataValidator<>));
+                builder.Services.AddScoped(interfaceType, type);
+            }
 
             // api conf
             builder.Services.Configure<RouteOptions>(options =>

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PoliNote.Models;
+using PoliNote.Models.Subjects;
 
 namespace PoliNote.Data;
 
@@ -11,6 +12,10 @@ public class AppDbContext : DbContext
     public DbSet<User> Users => Set<User>();
     public DbSet<PublicEvent> PublicEvents => Set<PublicEvent>();
     public DbSet<PrivateEvent> PrivateEvents => Set<PrivateEvent>();
+    // subjects
+    public DbSet<Subject> Subjects => Set<Subject>();
+    public DbSet<SubjectGroup> SubjectGroups => Set<SubjectGroup>();
+    public DbSet<Enrollment> Enrollments => Set<Enrollment>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -37,11 +42,38 @@ public class AppDbContext : DbContext
             .HasForeignKey(e => e.CreatedByUserId)
             .OnDelete(DeleteBehavior.Cascade);
 
+        // --- RELATIONS FOR SUBJECTS ---
+
+        // Subject -> SubjectGroups (One-to-Many)
+        modelBuilder.Entity<SubjectGroup>()
+            .HasOne(sg => sg.Subject)
+            .WithMany(s => s.Groups)
+            .HasForeignKey(sg => sg.SubjectId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        // SubjectGroup -> Enrollments (One-to-Many)
+        modelBuilder.Entity<Enrollment>()
+            .HasOne(e => e.SubjectGroup)
+            .WithMany(sg => sg.Enrollments)
+            .HasForeignKey(e => e.SubjectGroupId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        // User -> Enrollments (One-to-Many)
+        modelBuilder.Entity<Enrollment>()
+            .HasOne(e => e.User)
+            .WithMany(u => u.Enrollments)
+            .HasForeignKey(e => e.UserId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        // Enroll only once
+        modelBuilder.Entity<Enrollment>()
+            .HasIndex(e => new { e.UserId, e.SubjectGroupId })
+            .IsUnique();
+
         // Dummy data
         modelBuilder.Entity<User>().HasData(
             new User
             {
-                Id = 1,
                 Username = "admin",
                 FirstName = "Jan",
                 LastName = "Kowalski",
@@ -50,14 +82,12 @@ public class AppDbContext : DbContext
             },
             new User
             {
-                Id = 2,
                 Username = "testuser",
                 PasswordHash = "$2a$12$tDPBut7pAwtiZMA.Wq1IqOhpq0jGxGcTrbdIlXIrjhv7uJX4bcHka",
                 Role = UserRole.Student
             },
             new User
             {
-                Id = 3,
                 Username = "informator1",
                 FirstName = "Marek",
                 LastName = "Nowak",
@@ -66,7 +96,6 @@ public class AppDbContext : DbContext
             },
             new User
             {
-                Id = 4,
                 Username = "informator2",
                 FirstName = "Anna",
                 LastName = "Wiśniewska",

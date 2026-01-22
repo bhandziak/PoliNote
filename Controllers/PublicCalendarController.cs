@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using PoliNote.DTOs.PublicCalendar;
 using PoliNote.Models;
 using PoliNote.Repositories;
+using PoliNote.Services;
 using PoliNote.Services.auth;
 using PoliNote.Services.Auth;
 using PoliNote.Services.Calendar;
@@ -18,15 +19,15 @@ namespace PoliNote.Controllers
     {
         private readonly PublicCalendarRepository _publicCalendarRepo;
         private readonly AuthService _authService;
-        private readonly PublicEventValidator _eventValidator;
-        private readonly DateValidator _dateValidator;
+        private readonly IDataValidator<PublicEventRequestDto> _eventValidator;
+        private readonly IDataValidator<DateTime?> _dateValidator;
         private readonly IsOwnerService _isOwnerService;
 
         public PublicCalendarController(
             PublicCalendarRepository publicCalendarRepo,
             AuthService authService,
-            DateValidator dateValidator,
-            PublicEventValidator validator,
+            IDataValidator<DateTime?> dateValidator,
+            IDataValidator<PublicEventRequestDto> validator,
             IsOwnerService isOwnerService
             )
         {

@@ -6,7 +6,7 @@ namespace PoliNote.Repositories
 {
     public class PrivateCalendarRepository(AppDbContext context) : Repository(context)
     {
-        public async Task<IEnumerable<PrivateEvent>> GetByDateAsync(DateTime date, int userId)
+        public async Task<IEnumerable<PrivateEvent>> GetByDateAsync(DateTime date, Guid userId)
         {
             return await _context.PrivateEvents
                 .Where(e => e.Date.Date == date.Date && e.CreatedByUserId == userId)

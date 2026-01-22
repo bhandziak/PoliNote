@@ -1,8 +1,10 @@
-﻿namespace PoliNote.Models;
+﻿using PoliNote.Models.Subjects;
+
+namespace PoliNote.Models;
 
 public class User
 {
-    public int Id { get; set; }
+    public Guid Id { get; set; } = Guid.NewGuid();
     public string Username { get; set; } = null!;
     public string? FirstName { get; set; }
     public string? LastName { get; set; }
@@ -12,4 +14,5 @@ public class User
     // relations
     public ICollection<PublicEvent> PublicEvents { get; set; } = new List<PublicEvent>();
     public ICollection<PrivateEvent> PrivateEvents { get; set; } = new List<PrivateEvent>();
+    public ICollection<Enrollment> Enrollments { get; set; } = new List<Enrollment>();
 }

@@ -1,9 +1,9 @@
-﻿using FluentValidation;
-using PoliNote.DTOs.PrivateCalendar;
+﻿using PoliNote.DTOs.PrivateCalendar;
+using System.ComponentModel.DataAnnotations;
 
 namespace PoliNote.Services.Calendar
 {
-    public class PrivateEventValidator
+    public class PrivateEventValidator : IDataValidator<PrivateEventRequestDto>
     {
         public void ValidateOrThrow(PrivateEventRequestDto request)
         {
