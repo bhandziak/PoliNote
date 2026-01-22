@@ -3,7 +3,7 @@
     public class PrivateEvent
     {
         public Guid Id { get; set; } = Guid.NewGuid();
-        public int CreatedByUserId { get; set; } // FK
+        public Guid CreatedByUserId { get; set; } // FK
         public User? CreatedByUser { get; set; }
         public string Title { get; set; } = null!;
         public string? Description { get; set; }
