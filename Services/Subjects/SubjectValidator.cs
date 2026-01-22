@@ -1,11 +1,12 @@
-﻿using PoliNote.Models.Subjects;
+﻿using PoliNote.DTOs.Subjects;
+using PoliNote.Models.Subjects;
 using System.ComponentModel.DataAnnotations;
 
 namespace PoliNote.Services.Subjects
 {
-    public class SubjectValidator : IDataValidator<Subject>
+    public class SubjectValidator : IDataValidator<SubjectRequestDto>
     {
-        public void ValidateOrThrow(Subject subject)
+        public void ValidateOrThrow(SubjectRequestDto subject)
         {
             if (string.IsNullOrWhiteSpace(subject.Name))
                 throw new ValidationException("Subject name is required.");
