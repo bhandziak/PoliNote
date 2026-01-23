@@ -63,5 +63,20 @@ namespace PoliNote.Repositories.Subjects
                             date <= g.LastOccurrence)
                 .ToListAsync();
         }
+
+        // update student absences to groupSubject
+        public async Task UpdateAbsencesAsync(Guid userId, Guid groupId, int count)
+        {
+            var enrollment = await _context.Enrollments
+                .FirstOrDefaultAsync(e => e.UserId == userId && e.SubjectGroupId == groupId);
+
+            if (enrollment == null)
+            {
+                throw new KeyNotFoundException("You are not enrolled in this group.");
+            }
+
+            enrollment.Absences = count;
+            await _context.SaveChangesAsync();
+        }
     }
 }

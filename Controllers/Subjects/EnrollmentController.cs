@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PoliNote.DTOs.Enrollment;
 using PoliNote.DTOs.Subjects.Requests;
 using PoliNote.Repositories.Subjects;
 using PoliNote.Services;
@@ -58,6 +59,28 @@ namespace PoliNote.Controllers.Subjects
             {
                 await _enrollRepo.UnenrollStudentAsync(userId.Value, subjectGroupId);
                 return Ok(new { message = "Successfully unenrolled from the group." });
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(new { message = ex.Message });
+            }
+        }
+
+        // PATCH api/subjects/groups/{subjectGroupId}/absences
+        [HttpPatch("{subjectGroupId:guid}/absences")]
+        [Authorize(Roles = "Student")]
+        public async Task<IActionResult> SetAbsences(Guid subjectGroupId, [FromBody] AbsenceSetRequestDto dto)
+        {
+            var userId = _authService.GetCurrentUserId();
+            if (userId == null) return Unauthorized();
+
+            if (dto.NumberOfAbsences < 0)
+                return BadRequest("Number of absences cannot be negative.");
+
+            try
+            {
+                await _enrollRepo.UpdateAbsencesAsync(userId.Value, subjectGroupId, dto.NumberOfAbsences);
+                return Ok(new { message = $"Successfully set absences to {dto.NumberOfAbsences}." });
             }
             catch (KeyNotFoundException ex)
             {

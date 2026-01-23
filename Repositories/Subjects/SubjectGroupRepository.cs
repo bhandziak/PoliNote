@@ -57,7 +57,7 @@ namespace PoliNote.Repositories.Subjects
                     LastOccurrence = g.LastOccurrence,
                     DayOfWeek = g.DayOfWeek.ToString(),
 
-                    // presence (abcesces)
+                    // presence (absence)
                     Absences = g.Enrollments
                         .Where(e => e.UserId == userId)
                         .Select(e => (int?)e.Absences)
