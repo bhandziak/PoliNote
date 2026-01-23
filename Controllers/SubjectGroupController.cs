@@ -60,7 +60,7 @@ namespace PoliNote.Controllers
             return Ok(groupDetails);
         }
 
-        // POST: api/subjects/{subjectId}/groups
+        // POST api/subjects/{subjectId}/groups
         [HttpPost("/api/subjects/{id:guid}/groups")]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create(Guid id, [FromBody] SubjectGroupRequestDto request)
@@ -71,12 +71,32 @@ namespace PoliNote.Controllers
             {
                 var createdGroup = await _groupRepo.CreateGroupAsync(id, request);
 
-                return Created();
+                return Ok(new { id = createdGroup.Id });
             }
             catch (KeyNotFoundException ex)
             {
                 return NotFound(new { message = ex.Message });
             }
         }
+
+        // PATCH api/subjects/groups/{subjectGroupId}
+        [HttpPatch("{id:guid}")]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Update(Guid id, [FromBody] SubjectGroupRequestDto request)
+        {
+            _validator.ValidateOrThrow(request);
+
+            try
+            {
+                var updatedGroup = await _groupRepo.UpdateGroupAsync(id, request);
+
+                return NoContent();
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(new { message = ex.Message });
+            }
+        }
+
     }
 }

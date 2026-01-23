@@ -46,10 +46,17 @@ namespace PoliNote.Repositories.Subjects
                     GroupName = g.GroupName,
                     Location = g.Location,
                     TeacherName = g.TeacherName,
-                    Frequency = g.Frequency.ToString(),
 
+                    // time
                     StartTime = g.StartTime.ToString("HH:mm"),
-                    EndTime = g.StartTime.Add(g.Duration).ToString("HH:mm")
+                    EndTime = g.StartTime.Add(g.Duration).ToString("HH:mm"),
+
+                    // date
+                    Frequency = g.Frequency.ToString(),
+                    FirstOccurrence = g.FirstOccurrence,
+                    LastOccurrence = g.LastOccurrence,
+                    DayOfWeek = g.DayOfWeek.ToString(),
+
                 })
                 .FirstOrDefaultAsync();
         }
@@ -80,6 +87,29 @@ namespace PoliNote.Repositories.Subjects
 
             return newGroup;
         }
-        
+
+        public async Task<SubjectGroup> UpdateGroupAsync(Guid groupId, SubjectGroupRequestDto dto)
+        {
+            var existingGroup = await _context.SubjectGroups
+                .FirstOrDefaultAsync(g => g.Id == groupId);
+
+            if (existingGroup == null)
+                throw new KeyNotFoundException("Subject group not found.");
+
+            existingGroup.GroupName = dto.GroupName;
+            existingGroup.Location = dto.Location;
+            existingGroup.TeacherName = dto.TeacherName;
+            existingGroup.Frequency = dto.Frequency;
+            existingGroup.FirstOccurrence = dto.FirstOccurrence;
+            existingGroup.LastOccurrence = dto.LastOccurrence;
+            existingGroup.DayOfWeek = dto.DayOfWeek;
+            existingGroup.StartTime = dto.StartTime;
+
+            existingGroup.Duration = TimeSpan.FromMinutes(dto.DurationMinutes);
+
+            await _context.SaveChangesAsync();
+
+            return existingGroup;
+        }
     }
 }

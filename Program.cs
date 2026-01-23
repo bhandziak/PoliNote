@@ -29,16 +29,6 @@ namespace PoliNote
             builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
             builder.Services.AddProblemDetails();
 
-            // CORS
-            builder.Services.AddCors(options => {
-                options.AddPolicy("MauiPolicy", policy => {
-                    policy.WithOrigins("http://localhost:5000") // CLIENT ADDRESS
-                          .AllowAnyMethod()
-                          .AllowAnyHeader()
-                          .AllowCredentials();
-                });
-            });
-
             // cookie
             builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
             .AddCookie(options =>
@@ -63,6 +53,7 @@ namespace PoliNote
             builder.Services.AddControllers()
                 .AddJsonOptions(options =>
             {
+                // enum convertion
                 options.JsonSerializerOptions.Converters.Add(new System.Text.Json.Serialization.JsonStringEnumConverter());
             });
 

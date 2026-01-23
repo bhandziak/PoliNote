@@ -11,8 +11,8 @@
         public string TeacherName { get; set; } = null!;
         // date
         public Frequency Frequency { get; set; } //  np. raz na 1/2 tyg.
-        public DateTime FirstOccurrence { get; set; } // pierwsze zajęcie
-        public DateTime LastOccurrence { get; set; } // ostatnie zajęcie
+        public DateOnly FirstOccurrence { get; set; } // pierwsze zajęcie
+        public DateOnly LastOccurrence { get; set; } // ostatnie zajęcie
         public DayOfWeek DayOfWeek { get; set; }
         // lesson
         public TimeOnly StartTime { get; set; } // godzina rozpoczęcia
