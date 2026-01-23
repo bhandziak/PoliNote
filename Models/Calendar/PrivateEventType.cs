@@ -5,6 +5,7 @@
         Exam,
         Project,
         Meeting,
+        Subject,
         Other
     }
 }

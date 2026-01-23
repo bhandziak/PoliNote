@@ -82,6 +82,7 @@ namespace PoliNote
             builder.Services.AddHttpContextAccessor();
             builder.Services.AddScoped<AuthService>();
             builder.Services.AddScoped<IsOwnerService>();
+            builder.Services.AddScoped<PrivateCalendarService>();
 
             // validators
             var validatorTypes = Assembly.GetExecutingAssembly().GetTypes()
@@ -105,7 +106,6 @@ namespace PoliNote
             app.UseExceptionHandler();
 
             // auth
-            app.UseCors("MauiPolicy");
             app.UseAuthentication();
             app.UseAuthorization();
 

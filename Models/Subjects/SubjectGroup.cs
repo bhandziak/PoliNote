@@ -26,6 +26,6 @@
     {
         Weekly = 1,
         EveryTwoWeeks = 2,
-        OnceAMonth = 4
+        EveryFourWeeks = 4
     }
 }

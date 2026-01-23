@@ -19,8 +19,11 @@ namespace PoliNote.Controllers.Calendar
     public class PrivateCalendarController : ControllerBase
     {
         private readonly PrivateCalendarRepository _privateCalendarRepo;
+
         private readonly AuthService _authService;
         private readonly IsOwnerService _isOwnerService;
+        private readonly PrivateCalendarService _privateCalendarService;
+
         private readonly IDataValidator<PrivateEventRequestDto> _eventValidator;
         private readonly IDataValidator<DateTime?> _dateValidator;
 
@@ -28,6 +31,7 @@ namespace PoliNote.Controllers.Calendar
             PrivateCalendarRepository privateCalendarRepo,
             AuthService authService,
             IsOwnerService isOwnerService,
+            PrivateCalendarService privateCalendarService,
             IDataValidator<PrivateEventRequestDto> eventValidator,
             IDataValidator<DateTime?> dateValidator
             )
@@ -35,6 +39,7 @@ namespace PoliNote.Controllers.Calendar
             _privateCalendarRepo = privateCalendarRepo;
             _authService = authService;
             _isOwnerService = isOwnerService;
+            _privateCalendarService = privateCalendarService;
             _eventValidator = eventValidator;
             _dateValidator = dateValidator;
         }
@@ -48,25 +53,11 @@ namespace PoliNote.Controllers.Calendar
             if( userId == null )
                 return Unauthorized("User is not logged in");
 
-            var events = await _privateCalendarRepo.GetByDateAsync(date.Value, (Guid)userId);
-
             _dateValidator.ValidateOrThrow(date);
-            // TODO
-            // generate subject dtos
 
+            var result = await _privateCalendarService.GetFullCalendarForDateAsync(date.Value, userId.Value);
 
-            var eventDtos = events.Select(e => new PrivateEventDto
-            {
-                Id = e.Id,
-                Title = e.Title,
-                Date = e.Date,
-                TimeString = e.Time.ToString(), // for subject start:end
-                Location = e.Location,
-                EventType = e.EventType,
-                IsSubject = false
-            }).ToList();
-
-            return Ok(eventDtos);
+            return Ok(result);
         }
 
         // GET api/calendar/private/{id}

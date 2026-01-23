@@ -46,5 +46,22 @@ namespace PoliNote.Repositories.Subjects
             _context.Enrollments.Remove(enrollment);
             await _context.SaveChangesAsync();
         }
+
+        // get subjectGroups by date, by user enrollmets
+        // needs later filtering (frequency)
+        public async Task<List<SubjectGroup>> GetUserEnrolledGroupsForDayAsync(Guid userId, DateOnly date)
+        {
+            DayOfWeek dayOfWeek = date.DayOfWeek;
+
+            return await _context.Enrollments
+                .Where(e => e.UserId == userId) // by userId
+                .Include(e => e.SubjectGroup) // join SubjectGroup
+                    .ThenInclude(g => g.Subject) // join Subject
+                .Select(e => e.SubjectGroup) 
+                .Where(g => g.DayOfWeek == dayOfWeek && // by date
+                            date >= g.FirstOccurrence &&
+                            date <= g.LastOccurrence)
+                .ToListAsync();
+        }
     }
 }
