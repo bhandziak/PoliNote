@@ -122,5 +122,23 @@ namespace PoliNote.Controllers.Notes
             await _noteRepo.UpdateAsync(note);
             return NoContent();
         }
+
+        // DELETE /api/note/{noteId}
+        [HttpDelete("{noteId:guid}")]
+        [Authorize(Roles = "Student")]
+        public async Task<IActionResult> DeleteNote(Guid noteId)
+        {
+            var note = await _noteRepo.GetByIdAsync(noteId);
+            if (note == null) return NotFound("Note not found.");
+
+            if (!_isOwnerService.IsOwner(note.UserId))
+            {
+                return StatusCode(StatusCodes.Status403Forbidden, "Only the owner can delete this note.");
+            }
+
+            await _noteRepo.DeleteAsync(note);
+
+            return NoContent();
+        }
     }
 }
