@@ -111,5 +111,16 @@ namespace PoliNote.Repositories.Subjects
 
             return existingGroup;
         }
+
+        public async Task DeleteAsync(Guid groupId)
+        {
+            var group = await _context.SubjectGroups.FindAsync(groupId);
+
+            if (group == null)
+                throw new KeyNotFoundException($"Subject group with ID {groupId} not found.");
+
+            _context.SubjectGroups.Remove(group);
+            await _context.SaveChangesAsync();
+        }
     }
 }

@@ -98,5 +98,20 @@ namespace PoliNote.Controllers
             }
         }
 
+        // DELETE api/subjects/groups/{subjectGroupId}
+        [HttpDelete("{id:guid}")]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            try
+            {
+                await _groupRepo.DeleteAsync(id);
+                return NoContent();
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(new { message = ex.Message });
+            }
+        }
     }
 }
