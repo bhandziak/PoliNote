@@ -4,9 +4,10 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:views="clr-namespace:PoliNote.Views"
-    Shell.NavBarIsVisible="False">
+    Shell.NavBarIsVisible="False"
+    Shell.TabBarBackgroundColor="White">
 
-    
+
     <!-- STRONY POZA TABBAREM -->
     <ShellContent
         Route="welcome"
@@ -26,33 +27,28 @@
     <TabBar>
 
         <ShellContent
-            Title="Kalendarz Publ."
-            Icon="public_calendar.svg"
+            Icon="public_calendar.png"
             Route="public-calendar"
             ContentTemplate="{DataTemplate views:PublicCalendarPage}" />
 
 
         <ShellContent
-            Title="Kalendarz Pryw."
-            Icon="private_calendar.svg"
+            Icon="private_calendar.png"
             Route="private-calendar"
             ContentTemplate="{DataTemplate views:PrivateCalendarPage}"/>
 
         <ShellContent
-            Title="Przedmioty"
-            Icon="subjects.svg"
+            Icon="subjects.png"
             Route="subjects"
             ContentTemplate="{DataTemplate views:SubjectsPage}"/>
 
         <ShellContent
-            Title="Admin"
-            Icon="admin.svg"
+            Icon="admin.png"
             Route="admin"
             ContentTemplate="{DataTemplate views:AdminPage}"/>
 
         <ShellContent
-            Title="Ustawienia"
-            Icon="settings.svg"
+            Icon="settings.png"
             Route="settings"
             ContentTemplate="{DataTemplate views:SettingsPage}"/>
 
