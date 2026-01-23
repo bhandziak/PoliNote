@@ -30,5 +30,21 @@ namespace PoliNote.Repositories.Subjects
             await _context.Enrollments.AddAsync(enrollment);
             await _context.SaveChangesAsync();
         }
+
+        // unenroll student from group in subject
+        public async Task UnenrollStudentAsync(Guid userId, Guid groupId)
+        {
+            var enrollment = await _context.Enrollments
+                .FirstOrDefaultAsync(e => e.UserId == userId && e.SubjectGroupId == groupId);
+
+            // not enrolled check
+            if (enrollment == null)
+            {
+                throw new KeyNotFoundException("You are not enrolled in this group.");
+            }
+
+            _context.Enrollments.Remove(enrollment);
+            await _context.SaveChangesAsync();
+        }
     }
 }

@@ -45,5 +45,24 @@ namespace PoliNote.Controllers
                 return BadRequest(new { message = ex.Message });
             }
         }
+
+        // DELETE api/subjects/groups/{subjectGroupId}/unenroll
+        [HttpDelete("{subjectGroupId:guid}/unenroll")]
+        [Authorize(Roles = "Student")]
+        public async Task<IActionResult> Unenroll(Guid subjectGroupId)
+        {
+            var userId = _authService.GetCurrentUserId();
+            if (userId == null) return Unauthorized();
+
+            try
+            {
+                await _enrollRepo.UnenrollStudentAsync(userId.Value, subjectGroupId);
+                return Ok(new { message = "Successfully unenrolled from the group." });
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(new { message = ex.Message });
+            }
+        }
     }
 }
