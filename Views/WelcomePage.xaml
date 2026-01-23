@@ -3,7 +3,8 @@
     x:Class="PoliNote.Views.WelcomePage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    BackgroundColor="White">
+    BackgroundColor="WhiteSmoke"
+    Shell.NavBarIsVisible="False">
 
     <VerticalStackLayout
         Spacing="24"
@@ -12,28 +13,34 @@
 
         <!-- Logo -->
         <Image
-            Source="dotnet_bot.png"
-            HeightRequest="80"
+            Source="polinote_image.png"
+            HeightRequest="100"
             HorizontalOptions="Center" />
 
         <!-- Tytuł -->
         <Label
             Text="PoliNote"
-            FontSize="28"
+            FontFamily="Utendo"
+            FontSize="32"
             FontAttributes="Bold"
+            TextColor="Black"
             HorizontalOptions="Center" />
 
         <!-- Podtytuł -->
         <Label
-            Text="Twój asystent na Politechnice"
+            Text="Twój asystent na PK"
+            FontFamily="Utendo"
             FontSize="14"
             TextColor="Gray"
-            HorizontalOptions="Center" />
+            HorizontalOptions="Center"
+            Margin="0,0,0,100"/>
 
         <!-- Logowanie -->
         <Button
+            FontFamily="Utendo"
             Text="Logowanie"
-            BackgroundColor="#2F6FED"
+            FontAttributes="Bold"
+            BackgroundColor="#1B80F7"
             TextColor="White"
             CornerRadius="12"
             HeightRequest="48"
@@ -41,11 +48,20 @@
 
         <!-- Bez logowania -->
         <Button
+            FontFamily="Utendo"
             Text="Kontynuuj bez logowania"
-            BackgroundColor="#F1F3F6"
+            FontAttributes="Bold"
+            BackgroundColor="LightGray"
             TextColor="Black"
             CornerRadius="12"
             HeightRequest="48" />
+
+        <Label
+            Text="Politechnika Krakowska"
+            FontFamily="Utendo"
+            FontSize="14"
+            TextColor="DarkGray"
+            HorizontalOptions="Center" />
 
     </VerticalStackLayout>
 

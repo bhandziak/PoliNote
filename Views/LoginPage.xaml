@@ -3,41 +3,65 @@
     x:Class="PoliNote.Views.LoginPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    BackgroundColor="White"
-    Title="Logowanie">
+    BackgroundColor="WhiteSmoke"
+    Shell.NavBarIsVisible="False">
 
     <VerticalStackLayout
         Padding="32"
         Spacing="20"
         VerticalOptions="Center">
 
+        <!-- Logo -->
+        <Image
+            Source="polinote_image.png"
+            HeightRequest="100"
+            HorizontalOptions="Center" />
+
+        <!-- Tytuł -->
         <Label
             Text="PoliNote"
-            FontSize="24"
+            FontFamily="Utendo"
+            FontSize="32"
             FontAttributes="Bold"
-            HorizontalOptions="Center" />
+            TextColor="Black"
+            HorizontalOptions="Center"
+            Margin="0,0,0,100"/>
 
         <Label
             Text="Zaloguj się do swojego konta"
+            FontFamily="Utendo"
             FontSize="14"
             TextColor="Gray"
             HorizontalOptions="Center" />
 
         <Entry
+            BackgroundColor="LightGray"
+            FontFamily="Utendo"
             Placeholder="Numer albumu"
             Text="{Binding Username}" />
 
         <Entry
+            BackgroundColor="LightGray"
+            FontFamily="Utendo"
             Placeholder="Hasło"
             IsPassword="True"
             Text="{Binding Password}" />
 
         <Button
+            FontFamily="Utendo"
             Text="Zaloguj"
-            BackgroundColor="#2F6FED"
+            FontAttributes="Bold"
+            BackgroundColor="#1B80F7"
             TextColor="White"
             HeightRequest="48"
             Command="{Binding LoginCommand}" />
+
+        <Label
+            Text="Politechnika Krakowska"
+            FontFamily="Utendo"
+            FontSize="14"
+            TextColor="DarkGray"
+            HorizontalOptions="Center" />
 
     </VerticalStackLayout>
 </ContentPage>

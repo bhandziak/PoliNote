@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="PoliNote.Views.PublicCalendarPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewModels="clr-namespace:PoliNote.ViewModels"
+    Title="Kalendarz Publiczny"
+    BackgroundColor="WhiteSmoke">
+
+    <ContentPage.BindingContext>
+        <viewModels:PublicCalendarViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="16" Spacing="20">
+
+            <!-- KALENDARZ -->
+            <Frame
+                CornerRadius="16"
+                Padding="12"
+                BackgroundColor="White"
+                HasShadow="False">
+
+                <VerticalStackLayout Spacing="12">
+
+                    <!-- Date picker jako kalendarz -->
+                    <DatePicker
+                        Date="{Binding SelectedDate}"
+                        FontSize="16"
+                        HorizontalOptions="Center" />
+
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- WYDARZENIA -->
+            <Label
+                Text="Wydarzenia na dziś"
+                FontSize="18"
+                FontAttributes="Bold"
+                TextColor="#1F2937" />
+
+            <!-- BRAK WYDARZEŃ -->
+            <Label
+                Text="Brak wydarzeń"
+                IsVisible="{Binding Events.Count, Converter={StaticResource ZeroToBoolConverter}}"
+                TextColor="Gray"
+                HorizontalOptions="Center" />
+
+            <!-- LISTA WYDARZEŃ -->
+            <CollectionView
+                ItemsSource="{Binding Events}"
+                SelectionMode="Single">
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame
+                            Padding="12"
+                            Margin="0,4"
+                            CornerRadius="12"
+                            BackgroundColor="White"
+                            HasShadow="False">
+
+                            <HorizontalStackLayout Spacing="12">
+
+                                <!-- IKONA -->
+                                <Frame
+                                    WidthRequest="40"
+                                    HeightRequest="40"
+                                    CornerRadius="20"
+                                    BackgroundColor="#E0EDFF"
+                                    VerticalOptions="Center">
+
+                                    <Label
+                                        Text="🎓"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center" />
+                                </Frame>
+
+                                <!-- TEKST -->
+                                <VerticalStackLayout Spacing="4">
+
+                                    <Label
+                                        Text="{Binding Title}"
+                                        FontAttributes="Bold"
+                                        FontSize="14" />
+
+                                    <Label
+                                        Text="{Binding StartDate, StringFormat='{0:HH:mm}'}"
+                                        FontSize="12"
+                                        TextColor="Gray" />
+
+                                    <Label
+                                        Text="{Binding Location}"
+                                        FontSize="12"
+                                        TextColor="Gray" />
+
+                                </VerticalStackLayout>
+
+                            </HorizontalStackLayout>
+
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+
+            <!-- CTA: NIEZALOGOWANY -->
+            <Frame
+                Padding="16"
+                CornerRadius="16"
+                BackgroundColor="#EEF2FF">
+
+                <VerticalStackLayout Spacing="12" HorizontalOptions="Center">
+
+                    <Label
+                        Text="🔒"
+                        FontSize="32"
+                        HorizontalOptions="Center" />
+
+                    <Label
+                        Text="Spersonalizuj swój kalendarz"
+                        FontAttributes="Bold"
+                        HorizontalOptions="Center" />
+
+                    <Label
+                        Text="Zaloguj się, aby zobaczyć swoje zajęcia i egzaminy"
+                        FontSize="12"
+                        HorizontalTextAlignment="Center"
+                        TextColor="Gray" />
+
+                    <Button
+                        Text="Zaloguj się do PoliNote"
+                        BackgroundColor="#2563EB"
+                        TextColor="White"
+                        CornerRadius="12" />
+
+                </VerticalStackLayout>
+            </Frame>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

@@ -10,14 +10,14 @@
     <PackageArchitecture>x64</PackageArchitecture>
     <PackageIdentityName>com.companyname.polinote</PackageIdentityName>
     <PackageIdentityPublisher>CN=User Name</PackageIdentityPublisher>
-    <IntermediateOutputPath>C:\Users\konra\source\repos\PoliNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\</IntermediateOutputPath>
     <RemoteDeploymentType>CopyToDevice</RemoteDeploymentType>
     <PackageRegistrationPath>
     </PackageRegistrationPath>
     <RemoveNonLayoutFiles>false</RemoveNonLayoutFiles>
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
-    <LayoutDir>C:\Users\konra\source\repos\PoliNote\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\AppX</LayoutDir>
+    <LayoutDir>C:\Users\konra\source\repos\PoliNote_client%28frontend%29\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\AppX</LayoutDir>
     <RegisteredManifestChecksum>84A55076D6B790E3C8DD6533B202F5F57BAE47A47C00FDEA163FE37C34792F6E</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>com.companyname.polinote_1.0.0.1_x64__9zz4h110yvjzm</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>com.companyname.polinote_9zz4h110yvjzm!App</RegisteredUserModeAppID>
@@ -26,268 +26,280 @@
     <RegisteredVersion>1.0.0.1</RegisteredVersion>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="C:\Users\konra\source\repos\PoliNote\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\AppxManifest.xml">
+    <AppXManifest Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2026-01-18T16:25:02.085</Modified>
+      <Modified>2026-01-23T15:32:23.178</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\resources.pri">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2026-01-18T16:25:01.797</Modified>
+      <Modified>2026-01-23T15:26:21.901</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\PoliNote.runtimeconfig.json">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\PoliNote.runtimeconfig.json">
       <PackagePath>PoliNote.runtimeconfig.json</PackagePath>
-      <Modified>2026-01-18T16:25:01.313</Modified>
+      <Modified>2026-01-22T18:00:54.420</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\PoliNote.dll">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\PoliNote.dll">
       <PackagePath>PoliNote.dll</PackagePath>
-      <Modified>2026-01-18T16:25:00.138</Modified>
+      <Modified>2026-01-23T15:32:22.789</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\apphost.exe">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\apphost.exe">
       <PackagePath>PoliNote.exe</PackagePath>
-      <Modified>2026-01-18T16:25:00.149</Modified>
+      <Modified>2026-01-23T15:32:22.794</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\Resources\Raw\AboutAssets.txt">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\Resources\Raw\AboutAssets.txt">
       <PackagePath>AboutAssets.txt</PackagePath>
-      <Modified>2026-01-18T16:24:16.849</Modified>
+      <Modified>2026-01-22T17:45:51.422</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-100.png">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-100.png">
       <PackagePath>splashSplashScreen.scale-100.png</PackagePath>
-      <Modified>2026-01-18T16:24:21.231</Modified>
+      <Modified>2026-01-22T17:45:56.594</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-125.png">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-125.png">
       <PackagePath>splashSplashScreen.scale-125.png</PackagePath>
-      <Modified>2026-01-18T16:24:21.233</Modified>
+      <Modified>2026-01-22T17:45:56.595</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-150.png">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-150.png">
       <PackagePath>splashSplashScreen.scale-150.png</PackagePath>
-      <Modified>2026-01-18T16:24:21.234</Modified>
+      <Modified>2026-01-22T17:45:56.596</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-200.png">
       <PackagePath>splashSplashScreen.scale-200.png</PackagePath>
-      <Modified>2026-01-18T16:24:21.234</Modified>
+      <Modified>2026-01-22T17:45:56.597</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-400.png">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-400.png">
       <PackagePath>splashSplashScreen.scale-400.png</PackagePath>
-      <Modified>2026-01-18T16:24:21.236</Modified>
+      <Modified>2026-01-22T17:45:56.598</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\f\OpenSans-Regular.ttf">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\f\Coolvetica Rg.otf">
+      <PackagePath>Coolvetica Rg.otf</PackagePath>
+      <Modified>2024-10-25T04:56:39.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\f\OpenSans-Regular.ttf">
       <PackagePath>OpenSans-Regular.ttf</PackagePath>
-      <Modified>2026-01-18T16:24:21.170</Modified>
+      <Modified>2026-01-22T17:45:51.412</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\f\OpenSans-Semibold.ttf">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\f\OpenSans-Semibold.ttf">
       <PackagePath>OpenSans-Semibold.ttf</PackagePath>
-      <Modified>2026-01-18T16:24:21.172</Modified>
+      <Modified>2026-01-22T17:45:51.416</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appicon.ico">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\f\Utendo-Regular.ttf">
+      <PackagePath>Utendo-Regular.ttf</PackagePath>
+      <Modified>2025-10-04T10:17:04.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appicon.ico">
       <PackagePath>appicon.ico</PackagePath>
-      <Modified>2026-01-18T16:24:21.174</Modified>
+      <Modified>2026-01-23T13:19:40.738</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-100.png">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-100.png">
       <PackagePath>appiconLargeTile.scale-100.png</PackagePath>
-      <Modified>2026-01-18T16:24:21.176</Modified>
+      <Modified>2026-01-23T13:19:40.724</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-125.png">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-125.png">
       <PackagePath>appiconLargeTile.scale-125.png</PackagePath>
-      <Modified>2026-01-18T16:24:21.177</Modified>
+      <Modified>2026-01-23T13:19:40.724</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-150.png">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-150.png">
       <PackagePath>appiconLargeTile.scale-150.png</PackagePath>
-      <Modified>2026-01-18T16:24:21.178</Modified>
+      <Modified>2026-01-23T13:19:40.724</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-200.png">
       <PackagePath>appiconLargeTile.scale-200.png</PackagePath>
-      <Modified>2026-01-18T16:24:21.180</Modified>
+      <Modified>2026-01-23T13:19:40.723</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-400.png">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-400.png">
       <PackagePath>appiconLargeTile.scale-400.png</PackagePath>
-      <Modified>2026-01-18T16:24:21.181</Modified>
+      <Modified>2026-01-23T13:19:40.723</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-lightunplated_targetsize-16.png">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-lightunplated_targetsize-16.png">
       <PackagePath>appiconLogo.altform-lightunplated_targetsize-16.png</PackagePath>
-      <Modified>2026-01-18T16:24:21.182</Modified>
+      <Modified>2026-01-23T13:19:40.733</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-lightunplated_targetsize-24.png">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-lightunplated_targetsize-24.png">
       <PackagePath>appiconLogo.altform-lightunplated_targetsize-24.png</PackagePath>
-      <Modified>2026-01-18T16:24:21.183</Modified>
+      <Modified>2026-01-23T13:19:40.732</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-lightunplated_targetsize-256.png">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-lightunplated_targetsize-256.png">
       <PackagePath>appiconLogo.altform-lightunplated_targetsize-256.png</PackagePath>
-      <Modified>2026-01-18T16:24:21.184</Modified>
+      <Modified>2026-01-23T13:19:40.731</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-lightunplated_targetsize-32.png">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-lightunplated_targetsize-32.png">
       <PackagePath>appiconLogo.altform-lightunplated_targetsize-32.png</PackagePath>
-      <Modified>2026-01-18T16:24:21.185</Modified>
+      <Modified>2026-01-23T13:19:40.732</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-lightunplated_targetsize-48.png">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-lightunplated_targetsize-48.png">
       <PackagePath>appiconLogo.altform-lightunplated_targetsize-48.png</PackagePath>
-      <Modified>2026-01-18T16:24:21.186</Modified>
+      <Modified>2026-01-23T13:19:40.732</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-unplated_targetsize-16.png">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-unplated_targetsize-16.png">
       <PackagePath>appiconLogo.altform-unplated_targetsize-16.png</PackagePath>
-      <Modified>2026-01-18T16:24:21.187</Modified>
+      <Modified>2026-01-23T13:19:40.734</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-unplated_targetsize-24.png">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-unplated_targetsize-24.png">
       <PackagePath>appiconLogo.altform-unplated_targetsize-24.png</PackagePath>
-      <Modified>2026-01-18T16:24:21.188</Modified>
+      <Modified>2026-01-23T13:19:40.734</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-unplated_targetsize-256.png">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-unplated_targetsize-256.png">
       <PackagePath>appiconLogo.altform-unplated_targetsize-256.png</PackagePath>
-      <Modified>2026-01-18T16:24:21.189</Modified>
+      <Modified>2026-01-23T13:19:40.733</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-unplated_targetsize-32.png">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-unplated_targetsize-32.png">
       <PackagePath>appiconLogo.altform-unplated_targetsize-32.png</PackagePath>
-      <Modified>2026-01-18T16:24:21.190</Modified>
+      <Modified>2026-01-23T13:19:40.734</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-unplated_targetsize-48.png">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-unplated_targetsize-48.png">
       <PackagePath>appiconLogo.altform-unplated_targetsize-48.png</PackagePath>
-      <Modified>2026-01-18T16:24:21.191</Modified>
+      <Modified>2026-01-23T13:19:40.733</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-100.png">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-100.png">
       <PackagePath>appiconLogo.scale-100.png</PackagePath>
-      <Modified>2026-01-18T16:24:21.192</Modified>
+      <Modified>2026-01-23T13:19:40.738</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-125.png">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-125.png">
       <PackagePath>appiconLogo.scale-125.png</PackagePath>
-      <Modified>2026-01-18T16:24:21.194</Modified>
+      <Modified>2026-01-23T13:19:40.737</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-150.png">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-150.png">
       <PackagePath>appiconLogo.scale-150.png</PackagePath>
-      <Modified>2026-01-18T16:24:21.195</Modified>
+      <Modified>2026-01-23T13:19:40.737</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-200.png">
       <PackagePath>appiconLogo.scale-200.png</PackagePath>
-      <Modified>2026-01-18T16:24:21.196</Modified>
+      <Modified>2026-01-23T13:19:40.737</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-400.png">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-400.png">
       <PackagePath>appiconLogo.scale-400.png</PackagePath>
-      <Modified>2026-01-18T16:24:21.197</Modified>
+      <Modified>2026-01-23T13:19:40.736</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.targetsize-16.png">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.targetsize-16.png">
       <PackagePath>appiconLogo.targetsize-16.png</PackagePath>
-      <Modified>2026-01-18T16:24:21.198</Modified>
+      <Modified>2026-01-23T13:19:40.736</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.targetsize-24.png">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.targetsize-24.png">
       <PackagePath>appiconLogo.targetsize-24.png</PackagePath>
-      <Modified>2026-01-18T16:24:21.199</Modified>
+      <Modified>2026-01-23T13:19:40.736</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.targetsize-256.png">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.targetsize-256.png">
       <PackagePath>appiconLogo.targetsize-256.png</PackagePath>
-      <Modified>2026-01-18T16:24:21.200</Modified>
+      <Modified>2026-01-23T13:19:40.735</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.targetsize-32.png">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.targetsize-32.png">
       <PackagePath>appiconLogo.targetsize-32.png</PackagePath>
-      <Modified>2026-01-18T16:24:21.201</Modified>
+      <Modified>2026-01-23T13:19:40.735</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.targetsize-48.png">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.targetsize-48.png">
       <PackagePath>appiconLogo.targetsize-48.png</PackagePath>
-      <Modified>2026-01-18T16:24:21.202</Modified>
+      <Modified>2026-01-23T13:19:40.735</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-100.png">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-100.png">
       <PackagePath>appiconMediumTile.scale-100.png</PackagePath>
-      <Modified>2026-01-18T16:24:21.203</Modified>
+      <Modified>2026-01-23T13:19:40.728</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-125.png">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-125.png">
       <PackagePath>appiconMediumTile.scale-125.png</PackagePath>
-      <Modified>2026-01-18T16:24:21.203</Modified>
+      <Modified>2026-01-23T13:19:40.728</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-150.png">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-150.png">
       <PackagePath>appiconMediumTile.scale-150.png</PackagePath>
-      <Modified>2026-01-18T16:24:21.204</Modified>
+      <Modified>2026-01-23T13:19:40.728</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-200.png">
       <PackagePath>appiconMediumTile.scale-200.png</PackagePath>
-      <Modified>2026-01-18T16:24:21.205</Modified>
+      <Modified>2026-01-23T13:19:40.727</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-400.png">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-400.png">
       <PackagePath>appiconMediumTile.scale-400.png</PackagePath>
-      <Modified>2026-01-18T16:24:21.207</Modified>
+      <Modified>2026-01-23T13:19:40.727</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-100.png">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-100.png">
       <PackagePath>appiconSmallTile.scale-100.png</PackagePath>
-      <Modified>2026-01-18T16:24:21.208</Modified>
+      <Modified>2026-01-23T13:19:40.730</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-125.png">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-125.png">
       <PackagePath>appiconSmallTile.scale-125.png</PackagePath>
-      <Modified>2026-01-18T16:24:21.209</Modified>
+      <Modified>2026-01-23T13:19:40.730</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-150.png">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-150.png">
       <PackagePath>appiconSmallTile.scale-150.png</PackagePath>
-      <Modified>2026-01-18T16:24:21.210</Modified>
+      <Modified>2026-01-23T13:19:40.729</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-200.png">
       <PackagePath>appiconSmallTile.scale-200.png</PackagePath>
-      <Modified>2026-01-18T16:24:21.211</Modified>
+      <Modified>2026-01-23T13:19:40.729</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-400.png">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-400.png">
       <PackagePath>appiconSmallTile.scale-400.png</PackagePath>
-      <Modified>2026-01-18T16:24:21.212</Modified>
+      <Modified>2026-01-23T13:19:40.729</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-100.png">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-100.png">
       <PackagePath>appiconStoreLogo.scale-100.png</PackagePath>
-      <Modified>2026-01-18T16:24:21.213</Modified>
+      <Modified>2026-01-23T13:19:40.731</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-125.png">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-125.png">
       <PackagePath>appiconStoreLogo.scale-125.png</PackagePath>
-      <Modified>2026-01-18T16:24:21.215</Modified>
+      <Modified>2026-01-23T13:19:40.731</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-150.png">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-150.png">
       <PackagePath>appiconStoreLogo.scale-150.png</PackagePath>
-      <Modified>2026-01-18T16:24:21.215</Modified>
+      <Modified>2026-01-23T13:19:40.730</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-200.png">
       <PackagePath>appiconStoreLogo.scale-200.png</PackagePath>
-      <Modified>2026-01-18T16:24:21.216</Modified>
+      <Modified>2026-01-23T13:19:40.730</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-400.png">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-400.png">
       <PackagePath>appiconStoreLogo.scale-400.png</PackagePath>
-      <Modified>2026-01-18T16:24:21.217</Modified>
+      <Modified>2026-01-23T13:19:40.730</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-100.png">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-100.png">
       <PackagePath>appiconWideTile.scale-100.png</PackagePath>
-      <Modified>2026-01-18T16:24:21.218</Modified>
+      <Modified>2026-01-23T13:19:40.727</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-125.png">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-125.png">
       <PackagePath>appiconWideTile.scale-125.png</PackagePath>
-      <Modified>2026-01-18T16:24:21.219</Modified>
+      <Modified>2026-01-23T13:19:40.726</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-150.png">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-150.png">
       <PackagePath>appiconWideTile.scale-150.png</PackagePath>
-      <Modified>2026-01-18T16:24:21.220</Modified>
+      <Modified>2026-01-23T13:19:40.725</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-200.png">
       <PackagePath>appiconWideTile.scale-200.png</PackagePath>
-      <Modified>2026-01-18T16:24:21.221</Modified>
+      <Modified>2026-01-23T13:19:40.725</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-400.png">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-400.png">
       <PackagePath>appiconWideTile.scale-400.png</PackagePath>
-      <Modified>2026-01-18T16:24:21.222</Modified>
+      <Modified>2026-01-23T13:19:40.725</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-100.png">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-100.png">
       <PackagePath>dotnet_bot.scale-100.png</PackagePath>
-      <Modified>2026-01-18T16:24:21.224</Modified>
+      <Modified>2026-01-23T13:19:40.740</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-125.png">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-125.png">
       <PackagePath>dotnet_bot.scale-125.png</PackagePath>
-      <Modified>2026-01-18T16:24:21.225</Modified>
+      <Modified>2026-01-23T13:19:40.739</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-150.png">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-150.png">
       <PackagePath>dotnet_bot.scale-150.png</PackagePath>
-      <Modified>2026-01-18T16:24:21.226</Modified>
+      <Modified>2026-01-23T13:19:40.739</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-200.png">
       <PackagePath>dotnet_bot.scale-200.png</PackagePath>
-      <Modified>2026-01-18T16:24:21.227</Modified>
+      <Modified>2026-01-23T13:19:40.739</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-400.png">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-400.png">
       <PackagePath>dotnet_bot.scale-400.png</PackagePath>
-      <Modified>2026-01-18T16:24:21.229</Modified>
+      <Modified>2026-01-23T13:19:40.738</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\PoliNote.deps.json">
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\polinote_image.scale-100.png">
+      <PackagePath>polinote_image.scale-100.png</PackagePath>
+      <Modified>2026-01-23T13:19:40.722</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\PoliNote.deps.json">
       <PackagePath>PoliNote.deps.json</PackagePath>
-      <Modified>2026-01-18T16:25:01.310</Modified>
+      <Modified>2026-01-23T15:26:21.566</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\konra\.nuget\packages\microsoft.windows.sdk.net.ref\10.0.19041.57\lib\net8.0\Microsoft.Windows.SDK.NET.dll">
       <PackagePath>Microsoft.Windows.SDK.NET.dll</PackagePath>

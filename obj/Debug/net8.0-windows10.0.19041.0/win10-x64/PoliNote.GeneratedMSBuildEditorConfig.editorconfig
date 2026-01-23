@@ -8,7 +8,7 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = PoliNote
-build_property.ProjectDir = C:\Users\konra\source\repos\PoliNote\
+build_property.ProjectDir = C:\Users\konra\source\repos\PoliNote_client(frontend)\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.CsWinRTAotOptimizerEnabled = true
@@ -22,43 +22,79 @@ build_property.CsWinRTUseWindowsUIXamlProjections = false
 build_property.EffectiveAnalysisLevelStyle = 8.0
 build_property.EnableCodeStyleSeverity = 
 
-[C:/Users/konra/source/repos/PoliNote/App.xaml]
+[C:/Users/konra/source/repos/PoliNote_client(frontend)/App.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = PoliNote.App.xaml
 build_metadata.AdditionalFiles.TargetPath = App.xaml
 build_metadata.AdditionalFiles.RelativePath = App.xaml
 
-[C:/Users/konra/source/repos/PoliNote/AppShell.xaml]
+[C:/Users/konra/source/repos/PoliNote_client(frontend)/AppShell.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = PoliNote.AppShell.xaml
 build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
 build_metadata.AdditionalFiles.RelativePath = AppShell.xaml
 
-[C:/Users/konra/source/repos/PoliNote/MainPage.xaml]
+[C:/Users/konra/source/repos/PoliNote_client(frontend)/MainPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = PoliNote.MainPage.xaml
 build_metadata.AdditionalFiles.TargetPath = MainPage.xaml
 build_metadata.AdditionalFiles.RelativePath = MainPage.xaml
 
-[C:/Users/konra/source/repos/PoliNote/Resources/Styles/Colors.xaml]
+[C:/Users/konra/source/repos/PoliNote_client(frontend)/Resources/Styles/Colors.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = PoliNote.Resources.Styles.Colors.xaml
 build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Colors.xaml
 build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Colors.xaml
 
-[C:/Users/konra/source/repos/PoliNote/Resources/Styles/Styles.xaml]
+[C:/Users/konra/source/repos/PoliNote_client(frontend)/Resources/Styles/Styles.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = PoliNote.Resources.Styles.Styles.xaml
 build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
 build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Styles.xaml
 
-[C:/Users/konra/source/repos/PoliNote/Views/LoginPage.xaml]
+[C:/Users/konra/source/repos/PoliNote_client(frontend)/Views/AddPublicEventPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PoliNote.Views.AddPublicEventPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\AddPublicEventPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\AddPublicEventPage.xaml
+
+[C:/Users/konra/source/repos/PoliNote_client(frontend)/Views/AdminPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PoliNote.Views.AdminPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\AdminPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\AdminPage.xaml
+
+[C:/Users/konra/source/repos/PoliNote_client(frontend)/Views/LoginPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = PoliNote.Views.LoginPage.xaml
 build_metadata.AdditionalFiles.TargetPath = Views\LoginPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\LoginPage.xaml
 
-[C:/Users/konra/source/repos/PoliNote/Views/WelcomePage.xaml]
+[C:/Users/konra/source/repos/PoliNote_client(frontend)/Views/PrivateCalendarPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PoliNote.Views.PrivateCalendarPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\PrivateCalendarPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\PrivateCalendarPage.xaml
+
+[C:/Users/konra/source/repos/PoliNote_client(frontend)/Views/PublicCalendarPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PoliNote.Views.PublicCalendarPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\PublicCalendarPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\PublicCalendarPage.xaml
+
+[C:/Users/konra/source/repos/PoliNote_client(frontend)/Views/SettingsPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PoliNote.Views.SettingsPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\SettingsPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\SettingsPage.xaml
+
+[C:/Users/konra/source/repos/PoliNote_client(frontend)/Views/SubjectsPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PoliNote.Views.SubjectsPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\SubjectsPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\SubjectsPage.xaml
+
+[C:/Users/konra/source/repos/PoliNote_client(frontend)/Views/WelcomePage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = PoliNote.Views.WelcomePage.xaml
 build_metadata.AdditionalFiles.TargetPath = Views\WelcomePage.xaml

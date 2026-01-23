@@ -54,7 +54,7 @@ public class LoginViewModel : BaseViewModel
                     "Zalogowano poprawnie (cookie zapisane)",
                     "OK");
 
-                // TU PÓŹNIEJ: nawigacja do głównej aplikacji
+                await Shell.Current.GoToAsync("//public-calendar");
             }
             else
             {

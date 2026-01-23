@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\konra\\source\\repos\\PoliNote\\PoliNote.csproj": {}
+    "C:\\Users\\konra\\source\\repos\\PoliNote_client(frontend)\\PoliNote.csproj": {}
   },
   "projects": {
-    "C:\\Users\\konra\\source\\repos\\PoliNote\\PoliNote.csproj": {
+    "C:\\Users\\konra\\source\\repos\\PoliNote_client(frontend)\\PoliNote.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\konra\\source\\repos\\PoliNote\\PoliNote.csproj",
+        "projectUniqueName": "C:\\Users\\konra\\source\\repos\\PoliNote_client(frontend)\\PoliNote.csproj",
         "projectName": "PoliNote",
-        "projectPath": "C:\\Users\\konra\\source\\repos\\PoliNote\\PoliNote.csproj",
+        "projectPath": "C:\\Users\\konra\\source\\repos\\PoliNote_client(frontend)\\PoliNote.csproj",
         "packagesPath": "C:\\Users\\konra\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\konra\\source\\repos\\PoliNote\\obj\\",
+        "outputPath": "C:\\Users\\konra\\source\\repos\\PoliNote_client(frontend)\\obj\\",
         "projectStyle": "PackageReference",
         "crossTargeting": true,
         "fallbackFolders": [

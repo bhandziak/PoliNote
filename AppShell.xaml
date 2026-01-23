@@ -3,17 +3,51 @@
     x:Class="PoliNote.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:views="clr-namespace:PoliNote.Views">
+    xmlns:views="clr-namespace:PoliNote.Views"
+    Shell.NavBarIsVisible="False">
 
-    <!-- Rejestracja tras -->
+    <!-- DOLNY PASEK -->
+    <TabBar>
+
+        <ShellContent
+            Title="Kalendarz Publ."
+            Icon="public-calendar.svg"
+            Route="public-calendar"
+            ContentTemplate="{DataTemplate views:PublicCalendarPage}" />
+
+        <ShellContent
+            Title="Kalendarz Pryw."
+            Icon="private-calendar.svg"
+            Route="private-calendar"
+            ContentTemplate="{DataTemplate views:PrivateCalendarPage}" />
+
+        <ShellContent
+            Title="Przedmioty"
+            Icon="subjects.svg"
+            Route="subjects"
+            ContentTemplate="{DataTemplate views:SubjectsPage}" />
+
+        <ShellContent
+            Title="Admin"
+            Icon="admin.svg"
+            Route="admin"
+            ContentTemplate="{DataTemplate views:AdminPage}" />
+
+        <ShellContent
+            Title="Ustawienia"
+            Icon="settings.png"
+            Route="settings"
+            ContentTemplate="{DataTemplate views:SettingsPage}" />
+
+    </TabBar>
+
+    <!-- STRONY POZA TABBAREM -->
+    <ShellContent
+        Route="login"
+        ContentTemplate="{DataTemplate views:LoginPage}" />
+
     <ShellContent
         Route="welcome"
         ContentTemplate="{DataTemplate views:WelcomePage}" />
 
-
-    <ShellContent
-        Route="login"
-        ContentTemplate="{DataTemplate views:LoginPage}" />
-    
 </Shell>
-
