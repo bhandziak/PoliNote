@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PoliNote")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+bcd5d07870e738189d1cb4f9663119619a3c4dc7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+d88e341c69fa0ea4c0e6e97a2d36d34f32115eec")]
 [assembly: System.Reflection.AssemblyProductAttribute("PoliNote")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PoliNote")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

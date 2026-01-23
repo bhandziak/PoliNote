@@ -27,14 +27,14 @@
 
         <ShellContent
             Title="Kalendarz Publ."
-            Icon="public-calendar.svg"
+            Icon="public_calendar.svg"
             Route="public-calendar"
             ContentTemplate="{DataTemplate views:PublicCalendarPage}" />
 
 
         <ShellContent
             Title="Kalendarz Pryw."
-            Icon="private-calendar.svg"
+            Icon="private_calendar.svg"
             Route="private-calendar"
             ContentTemplate="{DataTemplate views:PrivateCalendarPage}"/>
 
