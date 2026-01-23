@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using PoliNote.DTOs.Subjects;
+using PoliNote.DTOs.Subjects.Requests;
 using PoliNote.Models.Subjects;
 using PoliNote.Repositories.Subjects;
 using PoliNote.Services;
@@ -10,6 +10,7 @@ namespace PoliNote.Controllers
 {
     [Route("api/subjects")]
     [ApiController]
+    [Authorize]
     public class SubjectController : ControllerBase
     {
         private readonly SubjectRepository _subjectRepo;

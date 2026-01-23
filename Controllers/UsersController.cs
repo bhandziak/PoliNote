@@ -9,6 +9,7 @@ namespace PoliNote.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize(Roles = "Admin")]
 public class UsersController : ControllerBase
 {
     private readonly UserRepository _userRepository;

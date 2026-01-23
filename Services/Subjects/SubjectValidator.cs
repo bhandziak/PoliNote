@@ -1,4 +1,4 @@
-﻿using PoliNote.DTOs.Subjects;
+﻿using PoliNote.DTOs.Subjects.Requests;
 using PoliNote.Models.Subjects;
 using System.ComponentModel.DataAnnotations;
 

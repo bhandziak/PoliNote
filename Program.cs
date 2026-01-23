@@ -81,7 +81,9 @@ namespace PoliNote
             builder.Services.AddScoped<UserRepository>();
             builder.Services.AddScoped<PublicCalendarRepository>();
             builder.Services.AddScoped<PrivateCalendarRepository>();
+
             builder.Services.AddScoped<SubjectRepository>();
+            builder.Services.AddScoped<SubjectGroupRepository>();
 
             // services
             builder.Services.AddHttpContextAccessor();

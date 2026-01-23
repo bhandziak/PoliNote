@@ -1,4 +1,4 @@
-﻿namespace PoliNote.DTOs.Subjects
+﻿namespace PoliNote.DTOs.Subjects.Requests
 {
     public class SubjectRequestDto
     {

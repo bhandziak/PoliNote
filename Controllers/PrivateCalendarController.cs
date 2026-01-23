@@ -15,6 +15,7 @@ namespace PoliNote.Controllers
 {
     [Route("api/calendar/private")]
     [ApiController]
+    [Authorize]
     public class PrivateCalendarController : ControllerBase
     {
         private readonly PrivateCalendarRepository _privateCalendarRepo;
