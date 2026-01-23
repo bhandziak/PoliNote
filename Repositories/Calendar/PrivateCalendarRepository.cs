@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PoliNote.Data;
-using PoliNote.Models;
+using PoliNote.Models.Calendar;
 
-namespace PoliNote.Repositories
+namespace PoliNote.Repositories.Calendar
 {
     public class PrivateCalendarRepository(AppDbContext context) : Repository(context)
     {

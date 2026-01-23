@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PoliNote.Models;
+using PoliNote.Models.Calendar;
 using PoliNote.Models.Subjects;
+using PoliNote.Models.Users;
 
 namespace PoliNote.Data;
 

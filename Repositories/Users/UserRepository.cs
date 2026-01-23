@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PoliNote.Data;
-using PoliNote.Models;
+using PoliNote.Models.Users;
 
-namespace PoliNote.Repositories;
+namespace PoliNote.Repositories.Users;
 
 public class UserRepository(AppDbContext context) : Repository(context)
 {

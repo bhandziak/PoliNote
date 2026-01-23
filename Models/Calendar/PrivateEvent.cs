@@ -1,4 +1,6 @@
-﻿namespace PoliNote.Models
+﻿using PoliNote.Models.Users;
+
+namespace PoliNote.Models.Calendar
 {
     public class PrivateEvent
     {

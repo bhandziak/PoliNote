@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using PoliNote.DTOs.Auth;
 using PoliNote.DTOs.Users;
 using PoliNote.Models;
-using PoliNote.Repositories;
+using PoliNote.Repositories.Users;
 using PoliNote.Services.auth;
 
 namespace PoliNote.Controllers

@@ -1,6 +1,7 @@
-﻿using PoliNote.Models.Subjects;
+﻿using PoliNote.Models.Calendar;
+using PoliNote.Models.Subjects;
 
-namespace PoliNote.Models;
+namespace PoliNote.Models.Users;
 
 public class User
 {

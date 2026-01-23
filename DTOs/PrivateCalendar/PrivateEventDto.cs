@@ -1,4 +1,4 @@
-﻿using PoliNote.Models;
+﻿using PoliNote.Models.Calendar;
 
 namespace PoliNote.DTOs.PrivateCalendar
 {

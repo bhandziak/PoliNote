@@ -7,7 +7,7 @@ using PoliNote.Repositories.Subjects;
 using PoliNote.Services;
 using PoliNote.Services.auth;
 
-namespace PoliNote.Controllers
+namespace PoliNote.Controllers.Subjects
 {
     [Route("api/subjects")]
     [ApiController]

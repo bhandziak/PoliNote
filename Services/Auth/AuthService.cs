@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
-using PoliNote.Models;
+using PoliNote.Models.Users;
 using System.Security.Claims;
 
 namespace PoliNote.Services.auth;

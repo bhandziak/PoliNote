@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PoliNote.Data;
-using PoliNote.Models;
+using PoliNote.Models.Calendar;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
-namespace PoliNote.Repositories
+namespace PoliNote.Repositories.Calendar
 {
     public class PublicCalendarRepository(AppDbContext context) : Repository(context)
     {

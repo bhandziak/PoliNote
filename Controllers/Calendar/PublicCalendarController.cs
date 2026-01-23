@@ -3,15 +3,15 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PoliNote.DTOs.PublicCalendar;
-using PoliNote.Models;
-using PoliNote.Repositories;
+using PoliNote.Models.Calendar;
+using PoliNote.Repositories.Calendar;
 using PoliNote.Services;
 using PoliNote.Services.auth;
 using PoliNote.Services.Auth;
 using PoliNote.Services.Calendar;
 using PoliNote.Services.PublicCalendar;
 
-namespace PoliNote.Controllers
+namespace PoliNote.Controllers.Calendar
 {
     [Route("api/calendar/public")]
     [ApiController]

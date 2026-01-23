@@ -8,7 +8,7 @@ using PoliNote.Services;
 using PoliNote.Services.auth;
 using System.ComponentModel.DataAnnotations;
 
-namespace PoliNote.Controllers
+namespace PoliNote.Controllers.Subjects
 {
     [ApiController]
     [Route("api/subjects/groups")]

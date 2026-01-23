@@ -1,4 +1,4 @@
-﻿using PoliNote.Models;
+﻿using PoliNote.Models.Users;
 
 namespace PoliNote.DTOs.Users
 {

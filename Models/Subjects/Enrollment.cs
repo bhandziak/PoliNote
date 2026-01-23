@@ -1,4 +1,6 @@
-﻿namespace PoliNote.Models.Subjects
+﻿using PoliNote.Models.Users;
+
+namespace PoliNote.Models.Subjects
 {
     public class Enrollment
     {

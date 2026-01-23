@@ -2,8 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PoliNote.Data;
-using PoliNote.Models;
-using PoliNote.Repositories;
+using PoliNote.Models.Users;
+using PoliNote.Repositories.Users;
 
 namespace PoliNote.Controllers;
 

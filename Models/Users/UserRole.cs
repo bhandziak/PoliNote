@@ -1,4 +1,4 @@
-﻿namespace PoliNote.Models
+﻿namespace PoliNote.Models.Users
 {
     public enum UserRole
     {

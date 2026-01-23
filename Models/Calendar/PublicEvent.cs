@@ -1,6 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using PoliNote.Models.Users;
+using System.ComponentModel.DataAnnotations;
 
-namespace PoliNote.Models
+namespace PoliNote.Models.Calendar
 {
     public class PublicEvent
     {
