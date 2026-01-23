@@ -75,6 +75,7 @@ namespace PoliNote
 
             builder.Services.AddScoped<SubjectRepository>();
             builder.Services.AddScoped<SubjectGroupRepository>();
+            builder.Services.AddScoped<EnrollmentRepository>();
 
             // services
             builder.Services.AddHttpContextAccessor();
