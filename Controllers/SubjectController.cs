@@ -5,6 +5,7 @@ using PoliNote.DTOs.Subjects.Requests;
 using PoliNote.Models.Subjects;
 using PoliNote.Repositories.Subjects;
 using PoliNote.Services;
+using PoliNote.Services.auth;
 
 namespace PoliNote.Controllers
 {
@@ -14,13 +15,16 @@ namespace PoliNote.Controllers
     public class SubjectController : ControllerBase
     {
         private readonly SubjectRepository _subjectRepo;
+        private readonly AuthService _authService;
         private readonly IDataValidator<SubjectRequestDto> _validator;
 
         public SubjectController(
             SubjectRepository subjectRepo,
+            AuthService authService,
             IDataValidator<SubjectRequestDto> validator)
         {
             _subjectRepo = subjectRepo;
+            _authService = authService;
             _validator = validator;
         }
 
@@ -38,7 +42,10 @@ namespace PoliNote.Controllers
         [Authorize(Roles = "Student,Admin,Informant")]
         public async Task<IActionResult> GetById(Guid id)
         {
-            var subject = await _subjectRepo.GetByIdAsync(id);
+            var userId = _authService.GetCurrentUserId();
+                if (userId == null) return Unauthorized();
+
+            var subject = await _subjectRepo.GetByIdWithGroupsAsync(id, userId.Value);
             if (subject == null) return NotFound();
             return Ok(subject);
         }

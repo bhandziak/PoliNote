@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PoliNote.Data;
+using PoliNote.DTOs.Subjects.Responses;
 using PoliNote.Models.Subjects;
 
 namespace PoliNote.Repositories.Subjects
@@ -7,19 +8,57 @@ namespace PoliNote.Repositories.Subjects
     public class SubjectRepository(AppDbContext context) : Repository(context)
     {
         // subject details
-        public async Task<IEnumerable<Subject>> GetAllAsync()
+        public async Task<IEnumerable<SubjectDto>> GetAllAsync()
         {
             return await _context.Subjects
                 .OrderBy(s => s.Name)
+                .Select(s => new SubjectDto
+                {
+                    Id = s.Id,
+                    Name = s.Name,
+                    Etcs = s.Etcs,
+                    SyllabusUrl = s.SyllabusUrl,
+                    LecturerName = s.LecturerName
+                })
                 .ToListAsync();
         }
 
-        // fetches subject with their groups
-        public async Task<Subject?> GetByIdAsync(Guid id)
+        // subject details by id
+        public async Task<Subject?> GetByIdAsync(Guid id) 
         {
             return await _context.Subjects
-                .Include(s => s.Groups)
-                .FirstOrDefaultAsync(s => s.Id == id);
+                .Where(s => s.Id == id)
+                .FirstOrDefaultAsync();
+        }
+
+        // fetches subject with their groups
+        public async Task<SubjectWithGroupsDto?> GetByIdWithGroupsAsync(Guid subjectId, Guid userId)
+        {
+            return await _context.Subjects
+                .Where(s => s.Id == subjectId)
+                .Select(s => new SubjectWithGroupsDto
+                {
+                    Id = s.Id,
+                    Name = s.Name,
+                    Etcs = s.Etcs,
+                    SyllabusUrl = s.SyllabusUrl,
+                    LecturerName = s.LecturerName,
+                    Groups = s.Groups.Select(g => new SubjectGroupDto
+                    {
+                        Id = g.Id,
+                        GroupName = g.GroupName,
+                        TeacherName = g.TeacherName,
+                        // subject copy
+                        Name = s.Name,
+                        Etcs = s.Etcs,
+                        // time
+                        StartTime = g.StartTime.ToString("HH:mm"),
+                        EndTime = g.StartTime.Add(g.Duration).ToString("HH:mm"),
+                        // enrollment
+                        IsEnrolled = g.Enrollments.Any(e => e.UserId == userId)
+                    }).ToList()
+                })
+                .FirstOrDefaultAsync();
         }
 
         // add
