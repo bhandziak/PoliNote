@@ -3,6 +3,7 @@ using PoliNote.Data;
 using PoliNote.DTOs.Subjects.Requests;
 using PoliNote.DTOs.Subjects.Responses;
 using PoliNote.Models.Subjects;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace PoliNote.Repositories.Subjects
 {
@@ -126,6 +127,14 @@ namespace PoliNote.Repositories.Subjects
 
             _context.SubjectGroups.Remove(group);
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<bool> ExistsAsync(Guid id, DateOnly date)
+        {
+            var dayOfWeek = date.DayOfWeek;
+
+            return await _context.SubjectGroups
+                .AnyAsync(sg => sg.Id == id && sg.DayOfWeek == dayOfWeek);
         }
     }
 }

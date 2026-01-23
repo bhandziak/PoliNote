@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PoliNote.Models.Calendar;
+using PoliNote.Models.Notes;
 using PoliNote.Models.Subjects;
 using PoliNote.Models.Users;
 
@@ -17,6 +18,8 @@ public class AppDbContext : DbContext
     public DbSet<Subject> Subjects => Set<Subject>();
     public DbSet<SubjectGroup> SubjectGroups => Set<SubjectGroup>();
     public DbSet<Enrollment> Enrollments => Set<Enrollment>();
+    // notes
+    public DbSet<Note> Notes => Set<Note>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -70,6 +73,34 @@ public class AppDbContext : DbContext
         modelBuilder.Entity<Enrollment>()
             .HasIndex(e => new { e.UserId, e.SubjectGroupId })
             .IsUnique();
+
+        // ---  NOTES ---
+        modelBuilder.Entity<Note>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+
+            entity.Property(n => n.TargetDate)
+                .HasColumnType("date")
+                .IsRequired();
+
+            // User -> Note
+            entity.HasOne(n => n.User)
+                .WithMany(u => u.Notes)
+                .HasForeignKey(n => n.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // SubjectGroup -> Note
+            entity.HasOne(n => n.SubjectGroup)
+                .WithMany(sg => sg.Notes)
+                .HasForeignKey(n => n.SubjectGroupId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            entity.HasIndex(n => new { n.UserId, n.SubjectGroupId, n.TargetDate })
+                .IsUnique();
+
+            entity.Property(n => n.CreatedAt)
+                .HasDefaultValueSql("CURRENT_TIMESTAMP");
+        });
 
         // Dummy data
         modelBuilder.Entity<User>().HasData(

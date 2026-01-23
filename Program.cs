@@ -7,12 +7,14 @@ using PoliNote.DTOs.PublicCalendar;
 using PoliNote.Middleware;
 using PoliNote.Models.Subjects;
 using PoliNote.Repositories.Calendar;
+using PoliNote.Repositories.Notes;
 using PoliNote.Repositories.Subjects;
 using PoliNote.Repositories.Users;
 using PoliNote.Services;
 using PoliNote.Services.auth;
 using PoliNote.Services.Auth;
 using PoliNote.Services.Calendar;
+using PoliNote.Services.Notes;
 using PoliNote.Services.PublicCalendar;
 using System.Reflection;
 
@@ -77,6 +79,7 @@ namespace PoliNote
             builder.Services.AddScoped<SubjectRepository>();
             builder.Services.AddScoped<SubjectGroupRepository>();
             builder.Services.AddScoped<EnrollmentRepository>();
+            builder.Services.AddScoped<NoteRepository>();
 
             // services
             builder.Services.AddHttpContextAccessor();
@@ -93,6 +96,7 @@ namespace PoliNote
                 var interfaceType = type.GetInterfaces().First(i => i.GetGenericTypeDefinition() == typeof(IDataValidator<>));
                 builder.Services.AddScoped(interfaceType, type);
             }
+            builder.Services.AddScoped<NoteValidator>();
 
             // api conf
             builder.Services.Configure<RouteOptions>(options =>

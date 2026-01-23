@@ -1,4 +1,5 @@
 ﻿using PoliNote.Models.Calendar;
+using PoliNote.Models.Notes;
 using PoliNote.Models.Subjects;
 
 namespace PoliNote.Models.Users;
@@ -16,4 +17,5 @@ public class User
     public ICollection<PublicEvent> PublicEvents { get; set; } = new List<PublicEvent>();
     public ICollection<PrivateEvent> PrivateEvents { get; set; } = new List<PrivateEvent>();
     public ICollection<Enrollment> Enrollments { get; set; } = new List<Enrollment>();
+    public ICollection<Note> Notes { get; set; } = new List<Note>();
 }

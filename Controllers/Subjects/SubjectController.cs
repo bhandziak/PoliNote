@@ -68,7 +68,7 @@ namespace PoliNote.Controllers.Subjects
 
             await _subjectRepo.AddAsync(subject);
 
-            return CreatedAtAction(nameof(GetById), new { id = subject.Id }, subject);
+            return Ok( new { id = subject.Id });
         }
 
         // PATCH: api/subjects/{subjectId}

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using PoliNote.Data;
@@ -11,9 +12,11 @@ using PoliNote.Data;
 namespace PoliNote.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260123181132_AddNote")]
+    partial class AddNote
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -111,8 +114,8 @@ namespace PoliNote.Migrations
                     b.Property<Guid>("SubjectGroupId")
                         .HasColumnType("uuid");
 
-                    b.Property<DateOnly>("TargetDate")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("TargetDate")
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -259,7 +262,7 @@ namespace PoliNote.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("e913526f-8cc7-40a7-a375-1fa40bb1b6fa"),
+                            Id = new Guid("c115f312-42e1-4a94-8b52-a19fcf303f5d"),
                             FirstName = "Jan",
                             LastName = "Kowalski",
                             PasswordHash = "$2a$12$tDPBut7pAwtiZMA.Wq1IqOhpq0jGxGcTrbdIlXIrjhv7uJX4bcHka",
@@ -268,14 +271,14 @@ namespace PoliNote.Migrations
                         },
                         new
                         {
-                            Id = new Guid("9409fec5-a73d-4368-845f-413a7e619fe0"),
+                            Id = new Guid("95d4ef47-24af-4029-ae58-811814f22cbb"),
                             PasswordHash = "$2a$12$tDPBut7pAwtiZMA.Wq1IqOhpq0jGxGcTrbdIlXIrjhv7uJX4bcHka",
                             Role = "Student",
                             Username = "testuser"
                         },
                         new
                         {
-                            Id = new Guid("9c52922d-b2f4-46b8-81a6-3d22ea382fc3"),
+                            Id = new Guid("e3be21fc-1d8e-468b-896e-391e3123343f"),
                             FirstName = "Marek",
                             LastName = "Nowak",
                             PasswordHash = "$2a$12$tDPBut7pAwtiZMA.Wq1IqOhpq0jGxGcTrbdIlXIrjhv7uJX4bcHka",
@@ -284,7 +287,7 @@ namespace PoliNote.Migrations
                         },
                         new
                         {
-                            Id = new Guid("e5a414af-256f-4fae-bc3a-8be6bc47fc9b"),
+                            Id = new Guid("8a1bbc49-a3ab-487e-ad6a-d1bbad837781"),
                             FirstName = "Anna",
                             LastName = "Wiśniewska",
                             PasswordHash = "$2a$12$tDPBut7pAwtiZMA.Wq1IqOhpq0jGxGcTrbdIlXIrjhv7uJX4bcHka",

@@ -78,5 +78,12 @@ namespace PoliNote.Repositories.Subjects
             enrollment.Absences = count;
             await _context.SaveChangesAsync();
         }
+
+        // check if user is enrolled to subjectGroup
+        public async Task<bool> IsUserEnrolledAsync(Guid userId, Guid subjectGroupId)
+        {
+            return await _context.Enrollments
+                .AnyAsync(e => e.UserId == userId && e.SubjectGroupId == subjectGroupId);
+        }
     }
 }

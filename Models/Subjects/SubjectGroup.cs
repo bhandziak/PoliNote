@@ -1,4 +1,6 @@
-﻿namespace PoliNote.Models.Subjects
+﻿using PoliNote.Models.Notes;
+
+namespace PoliNote.Models.Subjects
 {
     public class SubjectGroup
     {
@@ -18,8 +20,9 @@
         public TimeOnly StartTime { get; set; } // godzina rozpoczęcia
         public TimeSpan Duration { get; set; } // czas trwania zajęć
 
-        // Enrollments
+        // relations
         public ICollection<Enrollment> Enrollments { get; set; } = new List<Enrollment>();
+        public ICollection<Note> Notes { get; set; } = new List<Note>();
     }
 
     public enum Frequency
