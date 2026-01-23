@@ -14,6 +14,8 @@ public class PublicCalendarViewModel : BaseViewModel
 {
     private readonly PublicCalendarService _service = new();
 
+    public Command AddPublicEventCommand { get; }
+
     public ObservableCollection<PublicEvent> Events { get; } = new();
 
     private DateTime _selectedDate = DateTime.Today;
@@ -39,6 +41,11 @@ public class PublicCalendarViewModel : BaseViewModel
     public PublicCalendarViewModel()
     {
         LoadEvents();
+
+        AddPublicEventCommand = new Command(async () =>
+        {
+            await Shell.Current.GoToAsync("//add-public-event");
+        });
     }
 
     private async void LoadEvents()

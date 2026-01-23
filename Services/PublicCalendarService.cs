@@ -5,7 +5,9 @@ using System.Globalization;
 using System.Linq;
 using System.Net.Http.Json;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
+using PoliNote.ViewModels;
 
 namespace PoliNote.Services;
 
@@ -32,5 +34,20 @@ public class PublicCalendarService
             request);
 
         response.EnsureSuccessStatusCode();
+    }
+
+    public async Task<PublicEvent> GetPublicEventByIdAsync(int id)
+    {
+        var response = await _client.GetAsync($"/api/calendar/public/{id}");
+
+        if (!response.IsSuccessStatusCode)
+            throw new Exception("Nie udało się pobrać szczegółów wydarzenia");
+
+        var json = await response.Content.ReadAsStringAsync();
+        return JsonSerializer.Deserialize<PublicEvent>(json,
+            new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            });
     }
 }

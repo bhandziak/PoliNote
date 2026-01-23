@@ -1,30 +1,47 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="PoliNote.Views.AddPublicEventPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:viewModels="clr-namespace:PoliNote.ViewModels"
+    x:Class="PoliNote.Views.AddPublicEventPage"
     Title="Dodaj wydarzenie">
 
-    <ContentPage.BindingContext>
-        <viewModels:AddPublicEventViewModel />
-    </ContentPage.BindingContext>
-
     <ScrollView>
-        <VerticalStackLayout Padding="16" Spacing="12">
+        <VerticalStackLayout Padding="20" Spacing="16">
 
-            <Entry Placeholder="Tytuł" Text="{Binding Title}" />
-            <Editor Placeholder="Opis" Text="{Binding Description}" />
-            <Entry Placeholder="Lokalizacja" Text="{Binding Location}" />
+            <Label
+                Text="Nowe wydarzenie publiczne"
+                FontSize="22"
+                FontAttributes="Bold" />
 
-            <DatePicker Date="{Binding Date}" />
+            <Entry
+                Placeholder="Tytuł wydarzenia"
+                Text="{Binding Title}" />
 
-            <TimePicker Time="{Binding StartTime}" />
-            <TimePicker Time="{Binding EndTime}" />
+            <Editor
+                Placeholder="Opis wydarzenia"
+                HeightRequest="120"
+                Text="{Binding Description}" />
+
+            <Label Text="Data" />
+            <DatePicker
+                Date="{Binding Date}" />
+
+            <Label Text="Godzina" />
+            <HorizontalStackLayout Spacing="10">
+                <TimePicker Time="{Binding StartTime}" />
+                <Label Text="—" VerticalOptions="Center" />
+                <TimePicker Time="{Binding EndTime}" />
+            </HorizontalStackLayout>
 
             <Button
                 Text="Zatwierdź"
-                Command="{Binding SaveCommand}" />
+                Command="{Binding SaveCommand}"
+                BackgroundColor="#2563EB"
+                TextColor="White"
+                CornerRadius="12" />
+
+            <Button
+                Text="Anuluj"
+                Clicked="OnCancelClicked" />
 
         </VerticalStackLayout>
     </ScrollView>

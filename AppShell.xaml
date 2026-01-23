@@ -22,7 +22,11 @@
         Route="add-public-event"
         ContentTemplate="{DataTemplate views:AddPublicEventPage}" />
 
-    
+    <ShellContent
+        Route="public-event-details"
+        ContentTemplate="{DataTemplate views:PublicEventDetailsPage}" />
+
+
     <!-- DOLNY PASEK -->
     <TabBar>
 
