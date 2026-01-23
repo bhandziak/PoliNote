@@ -7,6 +7,7 @@ using PoliNote.Repositories.Notes;
 using PoliNote.Repositories.Subjects;
 using PoliNote.Services;
 using PoliNote.Services.auth;
+using PoliNote.Services.Auth;
 using PoliNote.Services.Notes;
 
 namespace PoliNote.Controllers.Notes
@@ -17,17 +18,20 @@ namespace PoliNote.Controllers.Notes
     {
         private readonly NoteRepository _noteRepo;
         private readonly AuthService _authService;
+        private readonly IsOwnerService _isOwnerService;
         private readonly IDataValidator<DateTime?> _dateValidator;
         private readonly NoteValidator _noteValidator;
 
         public NoteController(
             NoteRepository noteRepo,
             AuthService authService,
+            IsOwnerService isOwnerService,
             IDataValidator<DateTime?> dateValidator,
             NoteValidator noteValidator)
         {
             _noteRepo = noteRepo;
             _authService = authService;
+            _isOwnerService = isOwnerService;
             _dateValidator = dateValidator;
             _noteValidator = noteValidator;
         }
@@ -97,6 +101,26 @@ namespace PoliNote.Controllers.Notes
             await _noteRepo.CreateNoteAsync(note);
 
             return Ok(new { id = note.Id });
+        }
+
+        // PATCH: /api/note/{noteId}
+        [HttpPatch("{noteId:guid}")]
+        [Authorize(Roles = "Student")]
+        public async Task<IActionResult> UpdateNote(Guid noteId, [FromBody] NoteRequestDto dto)
+        {
+            var note = await _noteRepo.GetByIdAsync(noteId);
+            if (note == null) return NotFound("Note not found.");
+
+            if (!_isOwnerService.IsOwner(note.UserId))
+            {
+                return StatusCode(StatusCodes.Status403Forbidden, "Only the owner can modify this note.");
+            }
+
+            note.Title = dto.Title;
+            note.Content = dto.Content;
+
+            await _noteRepo.UpdateAsync(note);
+            return NoContent();
         }
     }
 }

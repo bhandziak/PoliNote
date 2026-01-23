@@ -30,11 +30,9 @@ namespace PoliNote.Repositories.Notes
         }
 
         // update
-        public async Task UpdateNoteAsync(Note note, NoteRequestDto dto)
+        public async Task UpdateAsync(Note note)
         {
-            note.Title = dto.Title;
-            note.Content = dto.Content;
-
+            _context.Entry(note).State = EntityState.Modified;
             await _context.SaveChangesAsync();
         }
 
