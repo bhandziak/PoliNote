@@ -37,15 +37,15 @@ namespace PoliNote.Controllers.Subjects
             return Ok(subjects);
         }
 
-        // GET: api/subjects/{id}
-        [HttpGet("{id:guid}")]
+        // GET: api/subjects/{subjectId}
+        [HttpGet("{subjectId:guid}")]
         [Authorize(Roles = "Student,Admin,Informant")]
-        public async Task<IActionResult> GetById(Guid id)
+        public async Task<IActionResult> GetById(Guid subjectId)
         {
             var userId = _authService.GetCurrentUserId();
                 if (userId == null) return Unauthorized();
 
-            var subject = await _subjectRepo.GetByIdWithGroupsAsync(id, userId.Value);
+            var subject = await _subjectRepo.GetByIdWithGroupsAsync(subjectId, userId.Value);
             if (subject == null) return NotFound();
             return Ok(subject);
         }
@@ -71,15 +71,15 @@ namespace PoliNote.Controllers.Subjects
             return CreatedAtAction(nameof(GetById), new { id = subject.Id }, subject);
         }
 
-        // PATCH: api/subjects/{id}
-        [HttpPatch("{id:guid}")]
+        // PATCH: api/subjects/{subjectId}
+        [HttpPatch("{subjectId:guid}")]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Update(Guid id, [FromBody] SubjectRequestDto request)
+        public async Task<IActionResult> Update(Guid subjectId, [FromBody] SubjectRequestDto request)
         {
-            var subject = await _subjectRepo.GetByIdAsync(id);
+            var subject = await _subjectRepo.GetByIdAsync(subjectId);
             if (subject == null)
             {
-                return NotFound(new { message = $"Subject with ID {id} not found." });
+                return NotFound(new { message = $"Subject with ID {subjectId} not found." });
             }
 
             _validator.ValidateOrThrow(request);
@@ -94,14 +94,14 @@ namespace PoliNote.Controllers.Subjects
             return NoContent();
         }
 
-        // DELETE: api/subjects/{id}
-        [HttpDelete("{id:guid}")]
+        // DELETE: api/subjects/{subjectId}
+        [HttpDelete("{subjectId:guid}")]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Delete(Guid id)
+        public async Task<IActionResult> Delete(Guid subjectId)
         {
             try
             {
-                await _subjectRepo.DeleteAsync(id);
+                await _subjectRepo.DeleteAsync(subjectId);
 
                 return NoContent();
             }

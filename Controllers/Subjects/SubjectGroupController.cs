@@ -42,15 +42,15 @@ namespace PoliNote.Controllers.Subjects
             return Ok(groups);
         }
 
-        // GET api/subjects/groups/{subjectId}
-        [HttpGet("{subjectId:guid}")]
+        // GET api/subjects/groups/{subjectGroupId}
+        [HttpGet("{subjectGroupId:guid}")]
         [Authorize(Roles = "Student,Admin,Informant")]
-        public async Task<ActionResult<SubjectGroupDetailsDto>> GetById(Guid subjectId)
+        public async Task<ActionResult<SubjectGroupDetailsDto>> GetById(Guid subjectGroupId)
         {
             var userId = _authService.GetCurrentUserId();
             if (userId == null) return Unauthorized();
 
-            var groupDetails = await _groupRepo.GetGroupDetailsAsync(subjectId, userId.Value);
+            var groupDetails = await _groupRepo.GetGroupDetailsAsync(subjectGroupId, userId.Value);
 
             if (groupDetails == null)
             {
@@ -61,15 +61,15 @@ namespace PoliNote.Controllers.Subjects
         }
 
         // POST api/subjects/{subjectId}/groups
-        [HttpPost("/api/subjects/{id:guid}/groups")]
+        [HttpPost("/api/subjects/{subjectId:guid}/groups")]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Create(Guid id, [FromBody] SubjectGroupRequestDto request)
+        public async Task<IActionResult> Create(Guid subjectId, [FromBody] SubjectGroupRequestDto request)
         {
             _validator.ValidateOrThrow(request);
 
             try
             {
-                var createdGroup = await _groupRepo.CreateGroupAsync(id, request);
+                var createdGroup = await _groupRepo.CreateGroupAsync(subjectId, request);
 
                 return Ok(new { id = createdGroup.Id });
             }
@@ -80,15 +80,15 @@ namespace PoliNote.Controllers.Subjects
         }
 
         // PATCH api/subjects/groups/{subjectGroupId}
-        [HttpPatch("{id:guid}")]
+        [HttpPatch("{subjectGroupId:guid}")]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Update(Guid id, [FromBody] SubjectGroupRequestDto request)
+        public async Task<IActionResult> Update(Guid subjectGroupId, [FromBody] SubjectGroupRequestDto request)
         {
             _validator.ValidateOrThrow(request);
 
             try
             {
-                var updatedGroup = await _groupRepo.UpdateGroupAsync(id, request);
+                var updatedGroup = await _groupRepo.UpdateGroupAsync(subjectGroupId, request);
 
                 return NoContent();
             }
@@ -99,13 +99,13 @@ namespace PoliNote.Controllers.Subjects
         }
 
         // DELETE api/subjects/groups/{subjectGroupId}
-        [HttpDelete("{id:guid}")]
+        [HttpDelete("{subjectGroupId:guid}")]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Delete(Guid id)
+        public async Task<IActionResult> Delete(Guid subjectGroupId)
         {
             try
             {
-                await _groupRepo.DeleteAsync(id);
+                await _groupRepo.DeleteAsync(subjectGroupId);
                 return NoContent();
             }
             catch (KeyNotFoundException ex)

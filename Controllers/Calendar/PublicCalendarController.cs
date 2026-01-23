@@ -60,11 +60,11 @@ namespace PoliNote.Controllers.Calendar
             return Ok(eventDtos);
         }
 
-        // GET api/calendar/public/{id}
-        [HttpGet("{id:guid}")]
-        public async Task<IActionResult> GetById(Guid id)
+        // GET api/calendar/public/{publicEventId}
+        [HttpGet("{publicEventId:guid}")]
+        public async Task<IActionResult> GetById(Guid publicEventId)
         {
-            var publicEvent = await _publicCalendarRepo.GetByIdAsync(id);
+            var publicEvent = await _publicCalendarRepo.GetByIdAsync(publicEventId);
 
             if(publicEvent == null) return NotFound();
 
@@ -119,12 +119,12 @@ namespace PoliNote.Controllers.Calendar
             return Ok(new { id = newEvent.Id });
         }
 
-        // PATCH api/calendar/public/{id}
-        [HttpPatch("{id:guid}")]
+        // PATCH api/calendar/public/{publicEventId}
+        [HttpPatch("{publicEventId:guid}")]
         [Authorize(Roles = "Admin,Informant")]
-        public async Task<IActionResult> Update(Guid id, [FromBody] PublicEventRequestDto request)
+        public async Task<IActionResult> Update(Guid publicEventId, [FromBody] PublicEventRequestDto request)
         {
-            var existingEvent = await _publicCalendarRepo.GetByIdAsync(id);
+            var existingEvent = await _publicCalendarRepo.GetByIdAsync(publicEventId);
             if (existingEvent == null) return NotFound();
 
             if (!_isOwnerService.IsOwnerOrAdmin(existingEvent.CreatedByUserId))
@@ -146,19 +146,19 @@ namespace PoliNote.Controllers.Calendar
             return NoContent();
         }
 
-        // DELETE api/calendar/public/{id}
-        [HttpDelete("{id:guid}")]
+        // DELETE api/calendar/public/{publicEventId}
+        [HttpDelete("{publicEventId:guid}")]
         [Authorize(Roles = "Admin,Informant")]
-        public async Task<IActionResult> Delete(Guid id)
+        public async Task<IActionResult> Delete(Guid publicEventId)
         {
-            var existingEvent = await _publicCalendarRepo.GetByIdAsync(id);
+            var existingEvent = await _publicCalendarRepo.GetByIdAsync(publicEventId);
             if (existingEvent == null) return NotFound();
 
             if (!_isOwnerService.IsOwnerOrAdmin(existingEvent.CreatedByUserId))
                 return Forbid();
 
             // delete
-            await _publicCalendarRepo.DeleteAsync(id);
+            await _publicCalendarRepo.DeleteAsync(publicEventId);
 
             return Ok();
         }
