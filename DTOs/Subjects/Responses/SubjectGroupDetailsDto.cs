@@ -25,5 +25,7 @@ namespace PoliNote.DTOs.Subjects.Responses
         public DateOnly FirstOccurrence { get; set; }
         public DateOnly LastOccurrence { get; set; }
         public string DayOfWeek { get; set; } = null!;
+        // presence
+        public int? Absences { get; set; }
     }
 }

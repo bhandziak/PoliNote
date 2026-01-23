@@ -57,6 +57,11 @@ namespace PoliNote.Repositories.Subjects
                     LastOccurrence = g.LastOccurrence,
                     DayOfWeek = g.DayOfWeek.ToString(),
 
+                    // presence (abcesces)
+                    Absences = g.Enrollments
+                        .Where(e => e.UserId == userId)
+                        .Select(e => (int?)e.Absences)
+                        .FirstOrDefault()
                 })
                 .FirstOrDefaultAsync();
         }
