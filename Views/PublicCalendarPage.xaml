@@ -40,12 +40,14 @@
                 TextColor="#1F2937" />
 
             <!-- BRAK WYDARZEŃ -->
+            <!--
             <Label
                 Text="Brak wydarzeń"
                 IsVisible="{Binding Events.Count, Converter={StaticResource ZeroToBoolConverter}}"
                 TextColor="Gray"
                 HorizontalOptions="Center" />
-
+            -->
+            
             <!-- LISTA WYDARZEŃ -->
             <CollectionView
                 ItemsSource="{Binding Events}"

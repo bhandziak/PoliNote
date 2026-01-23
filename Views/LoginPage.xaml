@@ -35,12 +35,14 @@
             HorizontalOptions="Center" />
 
         <Entry
+            TextColor="Black"
             BackgroundColor="LightGray"
             FontFamily="Utendo"
             Placeholder="Numer albumu"
             Text="{Binding Username}" />
 
         <Entry
+            TextColor="Black"
             BackgroundColor="LightGray"
             FontFamily="Utendo"
             Placeholder="Hasło"

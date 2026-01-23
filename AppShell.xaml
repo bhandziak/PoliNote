@@ -6,6 +6,22 @@
     xmlns:views="clr-namespace:PoliNote.Views"
     Shell.NavBarIsVisible="False">
 
+    
+    <!-- STRONY POZA TABBAREM -->
+    <ShellContent
+        Route="welcome"
+        ContentTemplate="{DataTemplate views:WelcomePage}" />
+
+    <ShellContent
+        Route="login"
+        ContentTemplate="{DataTemplate views:LoginPage}" />
+
+
+    <ShellContent
+        Route="add-public-event"
+        ContentTemplate="{DataTemplate views:AddPublicEventPage}" />
+
+    
     <!-- DOLNY PASEK -->
     <TabBar>
 
@@ -15,39 +31,32 @@
             Route="public-calendar"
             ContentTemplate="{DataTemplate views:PublicCalendarPage}" />
 
+
         <ShellContent
             Title="Kalendarz Pryw."
             Icon="private-calendar.svg"
             Route="private-calendar"
-            ContentTemplate="{DataTemplate views:PrivateCalendarPage}" />
+            ContentTemplate="{DataTemplate views:PrivateCalendarPage}"/>
 
         <ShellContent
             Title="Przedmioty"
             Icon="subjects.svg"
             Route="subjects"
-            ContentTemplate="{DataTemplate views:SubjectsPage}" />
+            ContentTemplate="{DataTemplate views:SubjectsPage}"/>
 
         <ShellContent
             Title="Admin"
             Icon="admin.svg"
             Route="admin"
-            ContentTemplate="{DataTemplate views:AdminPage}" />
+            ContentTemplate="{DataTemplate views:AdminPage}"/>
 
         <ShellContent
             Title="Ustawienia"
-            Icon="settings.png"
+            Icon="settings.svg"
             Route="settings"
-            ContentTemplate="{DataTemplate views:SettingsPage}" />
+            ContentTemplate="{DataTemplate views:SettingsPage}"/>
+
 
     </TabBar>
-
-    <!-- STRONY POZA TABBAREM -->
-    <ShellContent
-        Route="login"
-        ContentTemplate="{DataTemplate views:LoginPage}" />
-
-    <ShellContent
-        Route="welcome"
-        ContentTemplate="{DataTemplate views:WelcomePage}" />
 
 </Shell>
