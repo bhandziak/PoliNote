@@ -69,7 +69,7 @@ public class AddPublicEventViewModel : BaseViewModel
                 "Wydarzenie dodane",
                 "OK");
 
-            await Shell.Current.GoToAsync(".."); // powrót
+            await GoBackAsync();
         }
         catch (Exception ex)
         {
@@ -81,8 +81,9 @@ public class AddPublicEventViewModel : BaseViewModel
 
     }
 
-    private async Task CancelAsync()
+    private static async Task GoBackAsync()
     {
+       
         await Shell.Current.GoToAsync("..");
     }
 

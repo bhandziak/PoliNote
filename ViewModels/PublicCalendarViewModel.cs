@@ -44,7 +44,7 @@ public class PublicCalendarViewModel : BaseViewModel
 
         AddPublicEventCommand = new Command(async () =>
         {
-            await Shell.Current.GoToAsync("//add-public-event");
+            await Shell.Current.GoToAsync("add-public-event");
         });
     }
 
