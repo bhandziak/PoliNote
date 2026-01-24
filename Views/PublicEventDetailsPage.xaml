@@ -14,7 +14,7 @@
 
             <HorizontalStackLayout Spacing="8">
                 <Label Text="📅" />
-                <Label Text="{Binding Event.StartDate, StringFormat='{0:dddd, dd MMMM yyyy HH:mm}'}" />
+                <Label Text="{Binding Event.StartDate, StringFormat='{0:dddd, yyyy MMMM dd HH:mm}'}" />
             </HorizontalStackLayout>
 
             <HorizontalStackLayout Spacing="8">

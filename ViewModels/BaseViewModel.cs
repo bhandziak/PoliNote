@@ -5,17 +5,23 @@ namespace PoliNote.ViewModels;
 
 public class BaseViewModel : INotifyPropertyChanged
 {
-    public event PropertyChangedEventHandler PropertyChanged;
+    
+    bool _isBusy;
 
-    protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+    public bool IsBusy
     {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        get => _isBusy;
+        //get => false;
+        set => SetProperty(ref _isBusy, value);
     }
+    
+
+    public event PropertyChangedEventHandler PropertyChanged;
 
     protected bool SetProperty<T>(
         ref T backingStore,
         T value,
-        [CallerMemberName] string propertyName = null)
+        [CallerMemberName] string propertyName = "")
     {
         if (EqualityComparer<T>.Default.Equals(backingStore, value))
             return false;
@@ -23,5 +29,11 @@ public class BaseViewModel : INotifyPropertyChanged
         backingStore = value;
         OnPropertyChanged(propertyName);
         return true;
+    }
+
+    protected void OnPropertyChanged(
+        [CallerMemberName] string propertyName = "")
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }

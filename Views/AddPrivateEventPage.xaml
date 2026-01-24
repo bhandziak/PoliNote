@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="PoliNote.Views.AddPrivateEventPage"
+    Title="Dodaj wydarzenie">
+
+    <!-- GŁÓWNY LAYOUT -->
+    <Grid RowDefinitions="*,Auto" Padding="16">
+
+        <!-- SCROLLOWALNA TREŚĆ -->
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout Spacing="12">
+
+                <Label
+                    Text="Nowe wydarzenie prywatne"
+                    FontSize="22"
+                    FontAttributes="Bold" />
+
+                <Entry
+                    Placeholder="Tytuł wydarzenia"
+                    Text="{Binding Title}" />
+
+                <Editor
+                    Placeholder="Opis wydarzenia"
+                    HeightRequest="120"
+                    Text="{Binding Description}" />
+
+                <Entry
+                    Placeholder="Lokalizacja"
+                    Text="{Binding Location}" />
+
+                <Label Text="Data" />
+                <DatePicker Date="{Binding Date}" />
+
+                <Label Text="Godzina rozpoczęcia" />
+                <TimePicker Time="{Binding StartTime}" />
+
+                <Label Text="Godzina zakończenia" />
+                <TimePicker Time="{Binding EndTime}" />
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- PRZYCISKI – POZA SCROLLVIEW -->
+        <VerticalStackLayout
+            Grid.Row="1"
+            Spacing="10">
+
+            <Button
+                Text="Zatwierdź"
+                Command="{Binding SaveCommand}"
+                BackgroundColor="#2563EB"
+                TextColor="White"
+                CornerRadius="12" />
+
+            <Button
+                Text="Anuluj"
+                Command="{Binding CancelCommand}"
+                BackgroundColor="#E5E7EB"
+                TextColor="Black"
+                CornerRadius="12" />
+
+        </VerticalStackLayout>
+
+    </Grid>
+</ContentPage>

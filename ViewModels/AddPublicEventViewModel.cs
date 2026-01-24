@@ -24,11 +24,10 @@ public class AddPublicEventViewModel : BaseViewModel
 
     public AddPublicEventViewModel()
     {
+        IsBusy = false;
+
         SaveCommand = new Command(async () => await SaveAsync());
-        CancelCommand = new Command(async () =>
-        {
-            await Shell.Current.GoToAsync("..");
-        });
+        CancelCommand = new Command(async () => await Shell.Current.GoToAsync(".."));
     }
 
     private async Task SaveAsync()

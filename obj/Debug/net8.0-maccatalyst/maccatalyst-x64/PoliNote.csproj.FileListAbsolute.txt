@@ -302,3 +302,8 @@ C:\Users\konra\source\repos\PoliNote_client(frontend)\obj\Debug\net8.0-maccataly
 C:\Users\konra\source\repos\PoliNote_client(frontend)\obj\Debug\net8.0-maccatalyst\maccatalyst-x64\PoliNote.pdb
 C:\Users\konra\source\repos\PoliNote_client(frontend)\obj\Debug\net8.0-maccatalyst\maccatalyst-x64\PoliNote.genruntimeconfig.cache
 C:\Users\konra\source\repos\PoliNote_client(frontend)\obj\Debug\net8.0-maccatalyst\maccatalyst-x64\ref\PoliNote.dll
+C:\Users\konra\source\repos\PoliNote_client(frontend)\obj\Debug\net8.0-maccatalyst\maccatalyst-x64\resizetizer\r\Resources\private_calendar.png
+C:\Users\konra\source\repos\PoliNote_client(frontend)\obj\Debug\net8.0-maccatalyst\maccatalyst-x64\resizetizer\r\Resources\settings.png
+C:\Users\konra\source\repos\PoliNote_client(frontend)\obj\Debug\net8.0-maccatalyst\maccatalyst-x64\resizetizer\r\Resources\subjects.png
+C:\Users\konra\source\repos\PoliNote_client(frontend)\obj\Debug\net8.0-maccatalyst\maccatalyst-x64\resizetizer\r\Resources\admin.png
+C:\Users\konra\source\repos\PoliNote_client(frontend)\obj\Debug\net8.0-maccatalyst\maccatalyst-x64\resizetizer\r\Resources\public_calendar.png

@@ -26,6 +26,14 @@
         Route="public-event-details"
         ContentTemplate="{DataTemplate views:PublicEventDetailsPage}" />
 
+    <ShellContent
+        Route="add-private-event"
+        ContentTemplate="{DataTemplate views:AddPrivateEventPage}" />
+
+    <ShellContent
+        Route="private-event-details"
+        ContentTemplate="{DataTemplate views:PrivateEventDetailsPage}" />
+
 
     <!-- DOLNY PASEK -->
     <TabBar>

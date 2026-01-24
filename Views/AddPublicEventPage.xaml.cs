@@ -10,8 +10,4 @@ public partial class AddPublicEventPage : ContentPage
         BindingContext = new AddPublicEventViewModel();
     }
 
-    private async void OnCancelClicked(object sender, EventArgs e)
-    {
-        await Shell.Current.GoToAsync("..");
-    }
 }
