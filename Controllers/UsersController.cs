@@ -97,4 +97,26 @@ public class UsersController : ControllerBase
 
         return Ok(new { message = $"Role updated to {dto.NewRole} for user {foundUser.Username}" });
     }
+
+    // DELETE api/admin/users/{userId}
+    [HttpDelete("{userId:guid}")]
+    [Authorize(Roles = "Admin")]
+    public async Task<IActionResult> DeleteUser(Guid userId)
+    {
+        var currentAdminId = _authService.GetCurrentUserId();
+        if (currentAdminId == null) return Unauthorized();
+
+        if (currentAdminId == userId)
+        {
+            return BadRequest("You cannot delete your own admin account.");
+        }
+
+        var foundUser = await _userRepository.GetUserByIdAsync(userId);
+        if (foundUser == null)
+            return NotFound($"User with ID {userId} not found.");
+
+        await _userRepository.DeleteAsync(foundUser);
+
+        return Ok(new { message = $"User {foundUser.Username} has been successfully deleted." });
+    }
 }
