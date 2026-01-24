@@ -1,3 +1,5 @@
+using PoliNote.ViewModels;
+
 namespace PoliNote.Views;
 
 public partial class PrivateCalendarPage : ContentPage

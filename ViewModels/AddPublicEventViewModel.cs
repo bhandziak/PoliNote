@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using PoliNote.Models;
+using PoliNote.DTOs.PublicCalendar;
 using PoliNote.Services;
 
 namespace PoliNote.ViewModels;
@@ -50,14 +50,14 @@ public class AddPublicEventViewModel : BaseViewModel
             return;
         }
 
-        var request = new CreatePublicEventRequest
+        var request = new PublicEventRequestDto
         {
-            Title = Title,
-            Description = Description,
-            Date = Date.Date,
-            StartTime = StartTime.ToString(@"hh\:mm"),
-            EndTime = EndTime.ToString(@"hh\:mm"),
-            Location = Location
+            Title = Title?.Trim() ?? string.Empty,
+            Description = Description?.Trim() ?? string.Empty,
+            Date = Date.Date,              // tylko data
+            StartTime = StartTime,          // TimeSpan
+            EndTime = EndTime,              // TimeSpan
+            Location = Location?.Trim() ?? string.Empty
         };
 
         try

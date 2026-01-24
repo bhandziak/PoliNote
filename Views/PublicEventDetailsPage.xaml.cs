@@ -8,7 +8,7 @@ public partial class PublicEventDetailsPage : ContentPage
 {
     private readonly PublicEventDetailsViewModel _vm;
 
-    public int EventId
+    public Guid EventId
     {
         set => _ = _vm.LoadEventAsync(value);
     }

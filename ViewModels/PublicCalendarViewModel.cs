@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using System.Collections.ObjectModel;
-using PoliNote.Models;
+using PoliNote.DTOs.PublicCalendar;
 using PoliNote.Services;
 
 namespace PoliNote.ViewModels;
@@ -16,7 +16,7 @@ public class PublicCalendarViewModel : BaseViewModel
 
     public Command AddPublicEventCommand { get; }
 
-    public ObservableCollection<PublicEvent> Events { get; } = new();
+    public ObservableCollection<PublicEventDto> Events { get; } = new();
 
     private DateTime _selectedDate = DateTime.Today;
     public DateTime SelectedDate
@@ -67,7 +67,7 @@ public class PublicCalendarViewModel : BaseViewModel
         {
             await Shell.Current.DisplayAlert(
                 "Błąd",
-                $"Nie udało się pobrać wydarzeń:\n{ex.Message}",
+                $"Nie udało się pobrać wydarzeń:\n{ex}",
                 "OK");
         }
         finally

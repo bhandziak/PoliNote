@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
-using PoliNote.Models;
+using PoliNote.DTOs.PrivateCalendar;
 using PoliNote.Services;
 using PoliNote.ViewModels;
 
@@ -43,7 +43,7 @@ public class AddPrivateEventViewModel : BaseViewModel
 
         var timeString = $"{StartTime.Hours:D2}:{StartTime.Minutes:D2}";
 
-        var request = new CreatePrivateEventRequest
+        var request = new PrivateEventRequestDto
         {
             Title = Title.Trim(),
             Description = Description?.Trim(),

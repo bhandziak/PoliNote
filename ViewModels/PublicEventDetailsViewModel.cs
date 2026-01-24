@@ -1,4 +1,4 @@
-﻿using PoliNote.Models;
+﻿using PoliNote.DTOs.PublicCalendar;
 using PoliNote.Services;
 using System;
 using System.Collections.Generic;
@@ -13,14 +13,14 @@ public class PublicEventDetailsViewModel : BaseViewModel
 {
     private readonly PublicCalendarService _calendarService;
 
-    public PublicEvent Event { get; private set; }
+    public PublicEventDto Event { get; private set; }
 
     public PublicEventDetailsViewModel(PublicCalendarService calendarService)
     {
         _calendarService = calendarService;
     }
 
-    public async Task LoadEventAsync(int eventId)
+    public async Task LoadEventAsync(Guid eventId)
     {
         Event = await _calendarService.GetPublicEventByIdAsync(eventId);
         OnPropertyChanged(nameof(Event));

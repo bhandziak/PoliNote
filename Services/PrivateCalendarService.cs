@@ -1,4 +1,4 @@
-﻿using PoliNote.Models;
+﻿using PoliNote.DTOs.PrivateCalendar;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,26 +6,29 @@ using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
 
+using PoliNote.DTOs.Notes;
+
 namespace PoliNote.Services;
 
 public class PrivateCalendarService
 {
     private readonly HttpClient _client = ApiClient.Client;
 
-    public async Task<List<PrivateEvent>> GetByDateAsync(DateTime date)
+    public async Task<List<PrivateEventDto>> GetByDateAsync(DateTime date)
     {
         var url = $"/api/calendar/private?date={date:yyyy-MM-dd}";
-        return await _client.GetFromJsonAsync<List<PrivateEvent>>(url)
+        return await _client.GetFromJsonAsync<List<PrivateEventDto>>(url)
                ?? new();
     }
 
-    public async Task<PrivateEvent> GetByIdAsync(int id)
+    public async Task<PrivateEventDetailsDto> GetByIdAsync(Guid id)
     {
-        return await _client.GetFromJsonAsync<PrivateEvent>(
-            $"/api/calendar/private/{id}");
+        return await _client.GetFromJsonAsync<PrivateEventDetailsDto>(
+            $"/api/calendar/private/{id}"
+        );
     }
 
-    public async Task CreateAsync(CreatePrivateEventRequest request)
+    public async Task CreateAsync(PrivateEventRequestDto request)
     {
         var response = await _client.PostAsJsonAsync(
             "/api/calendar/private",
@@ -42,14 +45,25 @@ public class PrivateCalendarService
         }
     }
 
-    public async Task UpdateNoteAsync(int id, string note)
+    public async Task<NoteDto?> GetNoteAsync(Guid eventId)
     {
-        await _client.PatchAsJsonAsync(
-            $"/api/calendar/private/{id}",
-            new { note });
+        return await _client.GetFromJsonAsync<NoteDto>(
+            $"/api/notes/{eventId}"
+        );
     }
 
-    public async Task DeleteAsync(int id)
+    public async Task UpdateNoteAsync(Guid eventId, NoteRequestDto request)
+    {
+        var response = await _client.PatchAsJsonAsync(
+            $"/api/calendar/private/{eventId}/note",
+            request
+        );
+
+        response.EnsureSuccessStatusCode();
+    }
+
+
+    public async Task DeleteAsync(Guid id)
     {
         await _client.DeleteAsync($"/api/calendar/private/{id}");
     }

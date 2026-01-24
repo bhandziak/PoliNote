@@ -57,6 +57,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <AndroidResource Remove="ModelsOld\**" />
+	  <Compile Remove="ModelsOld\**" />
+	  <EmbeddedResource Remove="ModelsOld\**" />
+	  <MauiCss Remove="ModelsOld\**" />
+	  <MauiXaml Remove="ModelsOld\**" />
+	  <None Remove="ModelsOld\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <None Remove="Resources\AppIcon\admin.svg" />
 	  <None Remove="Resources\AppIcon\private_calendar.svg" />
 	  <None Remove="Resources\AppIcon\public_calendar.svg" />
