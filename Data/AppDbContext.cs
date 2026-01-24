@@ -107,32 +107,40 @@ public class AppDbContext : DbContext
             new User
             {
                 Username = "admin",
+                Email = "admin@example.com",
                 FirstName = "Jan",
                 LastName = "Kowalski",
                 PasswordHash = "$2a$12$tDPBut7pAwtiZMA.Wq1IqOhpq0jGxGcTrbdIlXIrjhv7uJX4bcHka",
-                Role = UserRole.Admin
+                Role = UserRole.Admin,
+                IsActivated = true
             },
             new User
             {
                 Username = "testuser",
+                Email = "testuser@example.com",
                 PasswordHash = "$2a$12$tDPBut7pAwtiZMA.Wq1IqOhpq0jGxGcTrbdIlXIrjhv7uJX4bcHka",
-                Role = UserRole.Student
+                Role = UserRole.Student,
+                IsActivated =true
             },
             new User
             {
                 Username = "informator1",
+                Email = "informator1@example.com",
                 FirstName = "Marek",
                 LastName = "Nowak",
                 PasswordHash = "$2a$12$tDPBut7pAwtiZMA.Wq1IqOhpq0jGxGcTrbdIlXIrjhv7uJX4bcHka",
-                Role = UserRole.Informant
+                Role = UserRole.Informant,
+                IsActivated = true
             },
             new User
             {
                 Username = "informator2",
+                Email = "informator2@example.com",
                 FirstName = "Anna",
                 LastName = "Wiśniewska",
                 PasswordHash = "$2a$12$tDPBut7pAwtiZMA.Wq1IqOhpq0jGxGcTrbdIlXIrjhv7uJX4bcHka",
-                Role = UserRole.Informant
+                Role = UserRole.Informant,
+                IsActivated = false
             }
         );
     }

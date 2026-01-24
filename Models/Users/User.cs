@@ -8,10 +8,13 @@ public class User
 {
     public Guid Id { get; set; } = Guid.NewGuid();
     public string Username { get; set; } = null!;
+    public string Email { get; set; } = string.Empty;
     public string? FirstName { get; set; }
     public string? LastName { get; set; }
-    public string PasswordHash { get; set; } = null!;
+    public string PasswordHash { get; set; } = string.Empty;
     public UserRole Role { get; set; }
+    public bool IsActivated { get; set; }
+    public string ActivationToken { get; set; } = string.Empty;
 
     // relations
     public ICollection<PublicEvent> PublicEvents { get; set; } = new List<PublicEvent>();

@@ -1,11 +1,14 @@
 using FluentValidation;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using PoliNote.Data;
 using PoliNote.DTOs.PrivateCalendar;
 using PoliNote.DTOs.PublicCalendar;
 using PoliNote.Middleware;
+using PoliNote.Models.Configuration;
 using PoliNote.Models.Subjects;
+using PoliNote.Models.Users;
 using PoliNote.Repositories.Calendar;
 using PoliNote.Repositories.Notes;
 using PoliNote.Repositories.Subjects;
@@ -70,6 +73,12 @@ namespace PoliNote
                     builder.Configuration.GetConnectionString("DefaultConnection")
                 )
             );
+
+            // email conf
+            builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
+            builder.Services.AddScoped<EmailSender>();
+            // password hasher
+            builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
 
             // repositories
             builder.Services.AddScoped<UserRepository>();

@@ -2,12 +2,15 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
 using PoliNote.DTOs.Auth;
 using PoliNote.DTOs.Users;
 using PoliNote.Models;
+using PoliNote.Models.Users;
 using PoliNote.Repositories.Users;
+using PoliNote.Services;
 using PoliNote.Services.auth;
 
 namespace PoliNote.Controllers
@@ -18,11 +21,15 @@ namespace PoliNote.Controllers
     {
         private readonly UserRepository _userRepository;
         private readonly AuthService _authService;
-
-        public AuthController(UserRepository userRepository, AuthService authService)
+        private readonly IDataValidator<ActivateRequestDto> _activationValidator;
+        public AuthController(
+            UserRepository userRepository,
+            AuthService authService,
+            IDataValidator<ActivateRequestDto> activationValidator)
         {
             _userRepository = userRepository;
             _authService = authService;
+            _activationValidator = activationValidator;
         }
 
         // POST api/auth/login
@@ -32,13 +39,15 @@ namespace PoliNote.Controllers
             // find user
             var user = await _userRepository.GetUserByUsernameAsync(request.Username);
 
-            string requestPasswordHash = request.Password;
-
             if (user == null
                 || !BCrypt.Net.BCrypt.Verify(request.Password, user.PasswordHash))
             {
                 return Unauthorized("Invalid login or password");
             }
+
+            // pass only activated users
+            if(!user.IsActivated)
+                return Unauthorized("User is not activated");
 
             // generate principal
             var principal = _authService.CreatePrincipal(user);
@@ -52,8 +61,10 @@ namespace PoliNote.Controllers
 
             var userResponse = new UserDto
             {
+                Id = user.Id,
                 Username = user.Username,
                 FirstName = user.FirstName,
+                Email = user.Email,
                 LastName = user.LastName,
                 Role = user.Role
             };
@@ -76,6 +87,26 @@ namespace PoliNote.Controllers
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
 
             return Ok(new { message = "Logged out successfully" });
+        }
+
+        // POST api/auth/activate
+        [HttpPost("activate")]
+        public async Task<IActionResult> Activate([FromBody] ActivateRequestDto request)
+        {
+            var user = await _userRepository.GetByActivationTokenAsync(request.Token);
+
+            if (user == null)
+                return BadRequest("Invalid or expired token.");
+
+            _activationValidator.ValidateOrThrow(request);
+
+            user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(request.Password);
+            user.IsActivated = true;
+            user.ActivationToken = string.Empty;
+
+            await _userRepository.UpdateAsync(user);
+
+            return Ok(new { Message = "Your password has been set. You can log in." });
         }
     }
 }
