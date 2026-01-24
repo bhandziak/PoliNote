@@ -74,6 +74,9 @@ namespace PoliNote
                 )
             );
 
+            // Razor
+            builder.Services.AddRazorPages();
+
             // email conf
             builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
             builder.Services.AddScoped<EmailSender>();
@@ -130,6 +133,8 @@ namespace PoliNote
             });
 
             app.MapControllers();
+
+            app.MapRazorPages();
 
             app.Run();
         }

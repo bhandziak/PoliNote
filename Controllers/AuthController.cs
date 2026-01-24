@@ -93,6 +93,9 @@ namespace PoliNote.Controllers
         [HttpPost("activate")]
         public async Task<IActionResult> Activate([FromBody] ActivateRequestDto request)
         {
+            if(request.Token == String.Empty)
+                return BadRequest("Invalid or expired token.");
+
             var user = await _userRepository.GetByActivationTokenAsync(request.Token);
 
             if (user == null)
