@@ -6,28 +6,32 @@ using PoliNote.DTOs.Users;
 using PoliNote.Models.Users;
 using PoliNote.Repositories.Users;
 using PoliNote.Services;
+using PoliNote.Services.auth;
 using PoliNote.Services.Auth;
 
 namespace PoliNote.Controllers;
 
 [ApiController]
-[Route("api/admin")]
+[Route("api/admin/users")]
 [Authorize(Roles = "Admin")]
 public class UsersController : ControllerBase
 {
     private readonly UserRepository _userRepository;
     private readonly EmailSender _emailSender;
+    private readonly AuthService _authService;
 
     public UsersController(
         UserRepository userRepository,
-        EmailSender emailSender)
+        EmailSender emailSender,
+        AuthService authService)
     {
         _userRepository = userRepository;
         _emailSender = emailSender;
+        _authService = authService;
     }
 
-    // GET api/users
-    [HttpGet("users")]
+    // GET api/admin/users
+    [HttpGet]
     [Authorize(Roles = "Admin")]
     public async Task<ActionResult<IEnumerable<User>>> GetAllUsers()
     {
@@ -35,8 +39,8 @@ public class UsersController : ControllerBase
         return Ok(users);
     }
 
-    // POST api/users
-    [HttpPost("users")]
+    // POST api/admin/users
+    [HttpPost]
     [Authorize(Roles = "Admin")]
     public async Task<IActionResult> CreateUser([FromBody] CreateUserDto dto)
     {
@@ -66,5 +70,31 @@ public class UsersController : ControllerBase
             $"Welcome! Click here to set a password: {activationLink}");
 
         return Ok(new { Message = "User created and email sent." });
+    }
+
+
+    // PATCH api/admin/users/{userId}/role
+    [HttpPatch("{userId:guid}/role")]
+    [Authorize(Roles = "Admin")]
+    public async Task<IActionResult> UpdateUserRole(Guid userId, [FromBody] ChangeRoleDto dto)
+    {
+        var recipientUserId = _authService.GetCurrentUserId();
+        if (recipientUserId == null) return Unauthorized();
+
+        if(recipientUserId == userId)
+        {
+            return BadRequest("You can't change your role");
+        }
+
+        var foundUser = await _userRepository.GetUserByIdAsync(userId);
+
+        if (foundUser == null)
+            return NotFound($"User with ID {userId} not found.");
+
+        foundUser.Role = dto.NewRole;
+
+        await _userRepository.UpdateAsync(foundUser);
+
+        return Ok(new { message = $"Role updated to {dto.NewRole} for user {foundUser.Username}" });
     }
 }
