@@ -18,7 +18,7 @@ public class PublicCalendarService
 
     public async Task<List<PublicEvent>> GetPublicEventsByDateAsync(DateTime date)
     {
-        var dateString = date.ToString("dd.MM.yyyy", CultureInfo.InvariantCulture);
+        var dateString = date.ToString("YYYY-MM-DD", CultureInfo.InvariantCulture);
 
         var url = $"api/calendar/public?date={dateString}";
 
@@ -29,6 +29,9 @@ public class PublicCalendarService
 
     public async Task CreatePublicEventAsync(CreatePublicEventRequest request)
     {
+        var json = JsonSerializer.Serialize(request);
+        System.Diagnostics.Debug.WriteLine(json);
+
         var response = await _client.PostAsJsonAsync(
             "api/calendar/public",
             request);

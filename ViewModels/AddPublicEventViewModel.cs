@@ -16,16 +16,19 @@ public class AddPublicEventViewModel : BaseViewModel
     public string Title { get; set; }
     public string Description { get; set; }
     public string Location { get; set; }
-
     public DateTime Date { get; set; } = DateTime.Today;
     public TimeSpan StartTime { get; set; } = new(14, 0, 0);
     public TimeSpan EndTime { get; set; } = new(16, 0, 0);
-
     public Command SaveCommand { get; }
+    public Command CancelCommand { get; }
 
     public AddPublicEventViewModel()
     {
         SaveCommand = new Command(async () => await SaveAsync());
+        CancelCommand = new Command(async () =>
+        {
+            await Shell.Current.GoToAsync("..");
+        });
     }
 
     private async Task SaveAsync()
@@ -39,13 +42,23 @@ public class AddPublicEventViewModel : BaseViewModel
             return;
         }
 
+        if (string.IsNullOrWhiteSpace(Location))
+        {
+            await Shell.Current.DisplayAlert(
+                "Błąd",
+                "Lokalizacja jest wymagana",
+                "OK");
+            return;
+        }
+
         var request = new CreatePublicEventRequest
         {
             Title = Title,
             Description = Description,
-            Location = Location,
-            StartDate = Date.Date + StartTime,
-            EndDate = Date.Date + EndTime
+            Date = Date.Date,
+            StartTime = StartTime.ToString(@"hh\:mm"),
+            EndTime = EndTime.ToString(@"hh\:mm"),
+            Location = Location
         };
 
         try
@@ -66,5 +79,12 @@ public class AddPublicEventViewModel : BaseViewModel
                 ex.Message,
                 "OK");
         }
+
     }
+
+    private async Task CancelAsync()
+    {
+        await Shell.Current.GoToAsync("..");
+    }
+
 }
