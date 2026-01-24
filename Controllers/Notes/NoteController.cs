@@ -42,7 +42,7 @@ namespace PoliNote.Controllers.Notes
         public async Task<ActionResult<NoteDto>> GetNote(Guid subjectGroupId, [FromQuery] DateTime? date)
         {
             var userId = _authService.GetCurrentUserId();
-            if (userId == null) return Unauthorized();
+            if (userId == null) return Unauthorized("User is not logged in");
 
             _dateValidator.ValidateOrThrow(date);
 
@@ -72,7 +72,7 @@ namespace PoliNote.Controllers.Notes
             [FromBody] NoteRequestDto dto)
         {
             var userId = _authService.GetCurrentUserId();
-            if (userId == null) return Unauthorized();
+            if (userId == null) return Unauthorized("User is not logged in");
 
             _dateValidator.ValidateOrThrow(date);
 
@@ -85,7 +85,7 @@ namespace PoliNote.Controllers.Notes
             var existingNote = await _noteRepo.GetNoteAsync(userId.Value, subjectGroupId, targetDate);
             if (existingNote != null)
             {
-                return Conflict(new { message = "A note for this lesson already exists. Use PATCH to edit it." });
+                return Conflict("A note for this lesson already exists. Use PATCH to edit it.");
             }
 
             var note = new Note
@@ -138,7 +138,7 @@ namespace PoliNote.Controllers.Notes
 
             await _noteRepo.DeleteAsync(note);
 
-            return NoContent();
+            return Ok(new { message = "Successfully deleted note" });
         }
     }
 }

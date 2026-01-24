@@ -35,7 +35,7 @@ namespace PoliNote.Controllers.Subjects
         public async Task<ActionResult<List<SubjectGroupDto>>> GetAll()
         {
             var userId = _authService.GetCurrentUserId();
-            if (userId == null) return Unauthorized();
+            if (userId == null) return Unauthorized("User is not logged in");
 
             var groups = await _groupRepo.GetGroupsWithEnrollmentStatusAsync(userId.Value);
 
@@ -48,13 +48,13 @@ namespace PoliNote.Controllers.Subjects
         public async Task<ActionResult<SubjectGroupDetailsDto>> GetById(Guid subjectGroupId)
         {
             var userId = _authService.GetCurrentUserId();
-            if (userId == null) return Unauthorized();
+            if (userId == null) return Unauthorized("User is not logged in");
 
             var groupDetails = await _groupRepo.GetGroupDetailsAsync(subjectGroupId, userId.Value);
 
             if (groupDetails == null)
             {
-                return NotFound(new { message = "Subject group not found." });
+                return NotFound("Subject group not found.");
             }
 
             return Ok(groupDetails);
@@ -75,7 +75,7 @@ namespace PoliNote.Controllers.Subjects
             }
             catch (KeyNotFoundException ex)
             {
-                return NotFound(new { message = ex.Message });
+                return NotFound(ex.Message);
             }
         }
 
@@ -94,7 +94,7 @@ namespace PoliNote.Controllers.Subjects
             }
             catch (KeyNotFoundException ex)
             {
-                return NotFound(new { message = ex.Message });
+                return NotFound(ex.Message);
             }
         }
 
@@ -106,11 +106,11 @@ namespace PoliNote.Controllers.Subjects
             try
             {
                 await _groupRepo.DeleteAsync(subjectGroupId);
-                return NoContent();
+                return Ok(new { message = "Successfully deleted subject group." });
             }
             catch (KeyNotFoundException ex)
             {
-                return NotFound(new { message = ex.Message });
+                return NotFound(ex.Message);
             }
         }
     }

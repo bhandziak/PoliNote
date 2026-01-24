@@ -43,10 +43,10 @@ namespace PoliNote.Controllers.Subjects
         public async Task<IActionResult> GetById(Guid subjectId)
         {
             var userId = _authService.GetCurrentUserId();
-                if (userId == null) return Unauthorized();
+                if (userId == null) return Unauthorized("User is not logged in");
 
             var subject = await _subjectRepo.GetByIdWithGroupsAsync(subjectId, userId.Value);
-            if (subject == null) return NotFound();
+            if (subject == null) return NotFound("Subject not found.");
             return Ok(subject);
         }
 
@@ -79,7 +79,7 @@ namespace PoliNote.Controllers.Subjects
             var subject = await _subjectRepo.GetByIdAsync(subjectId);
             if (subject == null)
             {
-                return NotFound(new { message = $"Subject with ID {subjectId} not found." });
+                return NotFound($"Subject with ID {subjectId} not found.");
             }
 
             _validator.ValidateOrThrow(request);
@@ -103,11 +103,11 @@ namespace PoliNote.Controllers.Subjects
             {
                 await _subjectRepo.DeleteAsync(subjectId);
 
-                return NoContent();
+                return Ok(new { message = "Successfully deleted subject" });
             }
             catch (KeyNotFoundException ex)
             {
-                return NotFound(new { message = ex.Message });
+                return NotFound(ex.Message);
             }
         }
     }

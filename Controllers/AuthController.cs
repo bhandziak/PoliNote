@@ -111,7 +111,7 @@ namespace PoliNote.Controllers
 
             await _userRepository.UpdateAsync(user);
 
-            return Ok(new { Message = "Your password has been set. You can log in." });
+            return Ok(new { message = "Your password has been set. You can log in." });
         }
     }
 }

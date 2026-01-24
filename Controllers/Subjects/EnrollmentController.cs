@@ -30,7 +30,7 @@ namespace PoliNote.Controllers.Subjects
         public async Task<IActionResult> Enroll(Guid subjectGroupId)
         {
             var userId = _authService.GetCurrentUserId();
-            if (userId == null) return Unauthorized();
+            if (userId == null) return Unauthorized("User is not logged in");
 
             try
             {
@@ -39,11 +39,11 @@ namespace PoliNote.Controllers.Subjects
             }
             catch (KeyNotFoundException ex)
             {
-                return NotFound(new { message = ex.Message });
+                return NotFound(ex.Message);
             }
             catch (InvalidOperationException ex)
             {
-                return BadRequest(new { message = ex.Message });
+                return BadRequest(ex.Message);
             }
         }
 
@@ -53,7 +53,7 @@ namespace PoliNote.Controllers.Subjects
         public async Task<IActionResult> Unenroll(Guid subjectGroupId)
         {
             var userId = _authService.GetCurrentUserId();
-            if (userId == null) return Unauthorized();
+            if (userId == null) return Unauthorized("User is not logged in");
 
             try
             {
@@ -62,7 +62,7 @@ namespace PoliNote.Controllers.Subjects
             }
             catch (KeyNotFoundException ex)
             {
-                return NotFound(new { message = ex.Message });
+                return NotFound(ex.Message);
             }
         }
 
@@ -72,7 +72,7 @@ namespace PoliNote.Controllers.Subjects
         public async Task<IActionResult> SetAbsences(Guid subjectGroupId, [FromBody] AbsenceSetRequestDto dto)
         {
             var userId = _authService.GetCurrentUserId();
-            if (userId == null) return Unauthorized();
+            if (userId == null) return Unauthorized("User is not logged in");
 
             if (dto.NumberOfAbsences < 0)
                 return BadRequest("Number of absences cannot be negative.");
@@ -84,7 +84,7 @@ namespace PoliNote.Controllers.Subjects
             }
             catch (KeyNotFoundException ex)
             {
-                return NotFound(new { message = ex.Message });
+                return NotFound(ex.Message);
             }
         }
     }

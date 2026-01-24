@@ -69,7 +69,7 @@ public class UsersController : ControllerBase
         await _emailSender.SendEmailAsync(user.Email, "Activate account",
             $"Welcome! Click here to set a password: {activationLink}");
 
-        return Ok(new { Message = "User created and email sent." });
+        return Ok(new { message = "User created and email sent." });
     }
 
 
@@ -79,7 +79,7 @@ public class UsersController : ControllerBase
     public async Task<IActionResult> UpdateUserRole(Guid userId, [FromBody] ChangeRoleDto dto)
     {
         var recipientUserId = _authService.GetCurrentUserId();
-        if (recipientUserId == null) return Unauthorized();
+        if (recipientUserId == null) return Unauthorized("User is not logged in");
 
         if(recipientUserId == userId)
         {
@@ -142,6 +142,6 @@ public class UsersController : ControllerBase
         await _emailSender.SendEmailAsync(user.Email, "Reset Password",
             $"An administrator has reset your password. Click here to set a new one: {resetLink}");
 
-        return Ok(new { Message = "Password reset initiated and email sent." });
+        return Ok(new { message = "Password reset initiated and email sent." });
     }
 }

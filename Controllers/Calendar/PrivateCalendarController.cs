@@ -67,7 +67,7 @@ namespace PoliNote.Controllers.Calendar
         {
             var privateEvent = await _privateCalendarRepo.GetByIdAsync(privateEventId);
 
-            if (privateEvent == null) return NotFound();
+            if (privateEvent == null) return NotFound("Private event not found");
 
             if (!_isOwnerService.IsOwner(privateEvent.CreatedByUserId))
                 return Forbid();
@@ -126,10 +126,10 @@ namespace PoliNote.Controllers.Calendar
         public async Task<IActionResult> Update(Guid privateEventId, [FromBody] PrivateEventRequestDto request)
         {
             var existingEvent = await _privateCalendarRepo.GetByIdAsync(privateEventId);
-            if (existingEvent == null) return NotFound();
+            if (existingEvent == null) return NotFound("Private event not found");
 
             if (!_isOwnerService.IsOwner(existingEvent.CreatedByUserId))
-                return Forbid();
+                return Forbid("Only owner can edit event.");
 
             _eventValidator.ValidateOrThrow(request);
             if (!Enum.TryParse<PrivateEventType>(request.EventType, true, out var eventTypeEnum))
@@ -157,15 +157,15 @@ namespace PoliNote.Controllers.Calendar
         public async Task<IActionResult> Delete(Guid privateEventId)
         {
             var existingEvent = await _privateCalendarRepo.GetByIdAsync(privateEventId);
-            if (existingEvent == null) return NotFound();
+            if (existingEvent == null) return NotFound("Private event not found");
 
             if (!_isOwnerService.IsOwner(existingEvent.CreatedByUserId))
-                return Forbid();
+                return Forbid("Only owner can delete event.");
 
             // delete
             await _privateCalendarRepo.DeleteAsync(privateEventId);
 
-            return Ok();
+            return Ok(new { message = "Successfully deleted private event" });
         }
     }
 }

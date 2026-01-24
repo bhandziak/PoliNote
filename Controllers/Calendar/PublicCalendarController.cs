@@ -66,7 +66,7 @@ namespace PoliNote.Controllers.Calendar
         {
             var publicEvent = await _publicCalendarRepo.GetByIdAsync(publicEventId);
 
-            if(publicEvent == null) return NotFound();
+            if(publicEvent == null) return NotFound("Public event not found");
 
             string creatorUsername = publicEvent.CreatedByUser?.Username ?? "Unknown";
             string creatorNameAndSurname = $"{publicEvent.CreatedByUser?.FirstName} {publicEvent.CreatedByUser?.LastName}".Trim()
@@ -125,10 +125,10 @@ namespace PoliNote.Controllers.Calendar
         public async Task<IActionResult> Update(Guid publicEventId, [FromBody] PublicEventRequestDto request)
         {
             var existingEvent = await _publicCalendarRepo.GetByIdAsync(publicEventId);
-            if (existingEvent == null) return NotFound();
+            if (existingEvent == null) return NotFound("Public event not found");
 
             if (!_isOwnerService.IsOwnerOrAdmin(existingEvent.CreatedByUserId))
-                return Forbid();
+                return Forbid("Only admin or owner can edit event.");
 
             _eventValidator.ValidateOrThrow(request);
 
@@ -152,15 +152,15 @@ namespace PoliNote.Controllers.Calendar
         public async Task<IActionResult> Delete(Guid publicEventId)
         {
             var existingEvent = await _publicCalendarRepo.GetByIdAsync(publicEventId);
-            if (existingEvent == null) return NotFound();
+            if (existingEvent == null) return NotFound("Public event not found");
 
             if (!_isOwnerService.IsOwnerOrAdmin(existingEvent.CreatedByUserId))
-                return Forbid();
+                return Forbid("Only admin or owner can delete event.");
 
             // delete
             await _publicCalendarRepo.DeleteAsync(publicEventId);
 
-            return Ok();
+            return Ok(new { message = "Successfully deleted public event" });
         }
     }
 }
