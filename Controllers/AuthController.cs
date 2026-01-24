@@ -39,15 +39,17 @@ namespace PoliNote.Controllers
             // find user
             var user = await _userRepository.GetUserByUsernameAsync(request.Username);
 
-            if (user == null
-                || !BCrypt.Net.BCrypt.Verify(request.Password, user.PasswordHash))
+            if(user == null)
+                return Unauthorized("Invalid login or password");
+
+            // pass only activated users
+            if (!user.IsActivated)
+                return Unauthorized("User is not activated");
+
+            if (!BCrypt.Net.BCrypt.Verify(request.Password, user.PasswordHash))
             {
                 return Unauthorized("Invalid login or password");
             }
-
-            // pass only activated users
-            if(!user.IsActivated)
-                return Unauthorized("User is not activated");
 
             // generate principal
             var principal = _authService.CreatePrincipal(user);

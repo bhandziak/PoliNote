@@ -119,4 +119,29 @@ public class UsersController : ControllerBase
 
         return Ok(new { message = $"User {foundUser.Username} has been successfully deleted." });
     }
+
+    // PATCH api/admin/users/{userId}/password
+    [HttpPost("{userId:guid}/password")]
+    [Authorize(Roles = "Admin")]
+    public async Task<IActionResult> ResetUserPassword(Guid userId)
+    {
+        var user = await _userRepository.GetUserByIdAsync(userId);
+
+        if (user == null)
+            return NotFound($"User with ID {userId} not found.");
+
+        // reset password
+        user.IsActivated = false;
+        user.PasswordHash = string.Empty;
+        user.ActivationToken = Guid.NewGuid().ToString(); // new token
+
+        await _userRepository.UpdateAsync(user);
+
+        var resetLink = $"http://localhost:5275/activate?token={user.ActivationToken}";
+
+        await _emailSender.SendEmailAsync(user.Email, "Reset Password",
+            $"An administrator has reset your password. Click here to set a new one: {resetLink}");
+
+        return Ok(new { Message = "Password reset initiated and email sent." });
+    }
 }
