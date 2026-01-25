@@ -38,7 +38,14 @@ public class AdminService
             dto
         );
 
-        response.EnsureSuccessStatusCode();
+        if (!response.IsSuccessStatusCode)
+        {
+            var errorContent = await response.Content.ReadAsStringAsync();
+
+            throw new Exception(
+                $"HTTP {(int)response.StatusCode} ({response.StatusCode})\n{errorContent}"
+            );
+        }
     }
 
     /// <summary>

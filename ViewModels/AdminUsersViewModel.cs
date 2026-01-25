@@ -35,6 +35,8 @@ public class AdminUsersViewModel : BaseViewModel
 
     public AdminUsersViewModel()
     {
+        OpenAddUserCommand = new Command(async () => await Shell.Current.GoToAsync("admin-add-user"));
+
         LoadCommand = new Command(async () => await LoadAsync());
 
         SetFilterCommand = new Command<string>(role =>
@@ -55,7 +57,7 @@ public class AdminUsersViewModel : BaseViewModel
             await LoadAsync();
         });
 
-        OpenAddUserCommand = new Command(async () => await Shell.Current.GoToAsync("admin-add-user"));
+        
     }
 
     private async Task LoadAsync()

@@ -44,7 +44,14 @@ public class SubjectService
     public async Task<Guid> CreateSubjectAsync(SubjectRequestDto dto)
     {
         var response = await _client.PostAsJsonAsync("/api/subjects", dto);
-        response.EnsureSuccessStatusCode();
+
+        if (!response.IsSuccessStatusCode)
+        {
+            var error = await response.Content.ReadAsStringAsync();
+            throw new Exception(
+                $"CreateSubject failed ({(int)response.StatusCode}): {error}"
+            );
+        }
 
         return await response.Content.ReadFromJsonAsync<Guid>();
     }
