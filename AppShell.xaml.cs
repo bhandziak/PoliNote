@@ -9,6 +9,8 @@ namespace PoliNote
             InitializeComponent();
             Routing.RegisterRoute("add-private-event", typeof(AddPrivateEventPage));
             Routing.RegisterRoute("add-public-event", typeof(AddPublicEventPage));
+
+            Routing.RegisterRoute("private-event-details", typeof(PrivateEventDetailsPage));
         }
     }
 }

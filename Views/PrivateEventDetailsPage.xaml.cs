@@ -1,9 +1,27 @@
+using PoliNote.ViewModels;
+
 namespace PoliNote.Views;
 
+
+[QueryProperty(nameof(EventId), "id")]
 public partial class PrivateEventDetailsPage : ContentPage
 {
-	public PrivateEventDetailsPage()
-	{
-		InitializeComponent();
-	}
+    private readonly PrivateEventDetailsViewModel _vm;
+
+    public string EventId
+    {
+        set
+        {
+            if (Guid.TryParse(value, out var guid))
+            {
+                _vm.LoadAsync(guid);
+            }
+        }
+    }
+
+    public PrivateEventDetailsPage()
+    {
+        InitializeComponent();
+        BindingContext = _vm = new PrivateEventDetailsViewModel();
+    }
 }

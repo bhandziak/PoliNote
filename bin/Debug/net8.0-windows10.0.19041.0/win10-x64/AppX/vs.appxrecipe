@@ -29,7 +29,7 @@
     <AppXManifest Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2026-01-24T23:30:18.443</Modified>
+      <Modified>2026-01-25T01:01:30.627</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
@@ -43,11 +43,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\PoliNote.dll">
       <PackagePath>PoliNote.dll</PackagePath>
-      <Modified>2026-01-24T23:30:17.163</Modified>
+      <Modified>2026-01-25T01:01:29.248</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\apphost.exe">
       <PackagePath>PoliNote.exe</PackagePath>
-      <Modified>2026-01-24T23:30:17.242</Modified>
+      <Modified>2026-01-25T01:01:29.345</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\konra\source\repos\PoliNote_client%28frontend%29\Resources\Raw\AboutAssets.txt">
       <PackagePath>AboutAssets.txt</PackagePath>

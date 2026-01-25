@@ -4,20 +4,38 @@
              x:Class="PoliNote.Views.PrivateEventDetailsPage"
              Title="PrivateEventDetailsPage">
     <ScrollView>
-        <VerticalStackLayout Padding="20">
+        <VerticalStackLayout Padding="20" Spacing="14">
 
-            <Label Text="{Binding Event.Title}" FontSize="22" FontAttributes="Bold"/>
+            <Label Text="{Binding Event.Title}"
+                   FontSize="24"
+                   FontAttributes="Bold" />
+
             <Label Text="{Binding Event.Description}" />
 
-            <Editor Placeholder="Twoja notatka"
-            Text="{Binding Event.Note}" />
+            <Label Text="{Binding Event.Date, StringFormat='{0:dd MMMM yyyy}'}" />
+            <Label Text="{Binding Event.Time}" />
+            <Label Text="{Binding Event.Location}" />
 
-            <Button Text="Zapisz notatkę"
-            Command="{Binding SaveNoteCommand}" />
+            <Label Text="Notatka"
+                   FontAttributes="Bold"
+                   Margin="0,20,0,0" />
 
-            <Button Text="Usuń wydarzenie"
-            Command="{Binding DeleteCommand}"
-            TextColor="Red" />
+            <Editor
+                Text="{Binding NoteContent}"
+                HeightRequest="120" />
+
+            <Button
+                Text="Zapisz notatkę"
+                Command="{Binding SaveNoteCommand}" />
+
+            <Button
+                Text="Usuń wydarzenie"
+                BackgroundColor="Tomato"
+                Command="{Binding DeleteCommand}" />
+
+            <Button
+                Text="Zamknij"
+                Command="{Binding CloseCommand}" />
 
         </VerticalStackLayout>
     </ScrollView>
