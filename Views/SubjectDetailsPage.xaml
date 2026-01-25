@@ -1,0 +1,58 @@
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="PoliNote.Views.SubjectDetailsPage"
+    Title="Szczegóły przedmiotu">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="16" Spacing="12">
+
+            <!-- SUBJECT INFO -->
+            <Label Text="{Binding Subject.Name}"
+                   FontSize="22"
+                   FontAttributes="Bold"/>
+
+            <Label Text="{Binding Subject.LecturerName}" />
+            <Label Text="ECTS: {Binding Subject.Ects}" />
+
+            <!-- GROUPS -->
+            <Label Text="Grupy"
+                   FontSize="18"
+                   Margin="0,16,0,0"/>
+
+            <CollectionView ItemsSource="{Binding Groups}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="12" Margin="0,4">
+
+                            <VerticalStackLayout Spacing="6">
+                                <Label Text="{Binding GroupName}"
+                                       FontAttributes="Bold"/>
+
+                                <Label Text="{Binding TeacherName}" />
+                                <Label Text="{Binding StartTime}" />
+                                <Label Text="Nieobecności: {Binding Absences}" />
+
+                                <!-- ACTIONS -->
+                                <Button
+                                    Text="Zapisz się"
+                                    IsVisible="{Binding IsEnrolled, Converter={StaticResource InverseBoolConverter}}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.EnrollCommand}"
+                                    CommandParameter="{Binding .}" />
+
+                                <Button
+                                    Text="Wypisz się"
+                                    BackgroundColor="LightGray"
+                                    IsVisible="{Binding IsEnrolled}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.UnEnrollCommand}"
+                                    CommandParameter="{Binding .}" />
+                            </VerticalStackLayout>
+
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

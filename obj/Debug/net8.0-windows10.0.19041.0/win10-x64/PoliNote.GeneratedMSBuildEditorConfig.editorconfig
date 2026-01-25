@@ -76,6 +76,12 @@ build_metadata.AdditionalFiles.ManifestResourceName = PoliNote.Views.LoginPage.x
 build_metadata.AdditionalFiles.TargetPath = Views\LoginPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\LoginPage.xaml
 
+[C:/Users/konra/source/repos/PoliNote_client(frontend)/Views/NotePage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PoliNote.Views.NotePage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\NotePage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\NotePage.xaml
+
 [C:/Users/konra/source/repos/PoliNote_client(frontend)/Views/PrivateCalendarPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = PoliNote.Views.PrivateCalendarPage.xaml
@@ -105,6 +111,12 @@ build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = PoliNote.Views.SettingsPage.xaml
 build_metadata.AdditionalFiles.TargetPath = Views\SettingsPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\SettingsPage.xaml
+
+[C:/Users/konra/source/repos/PoliNote_client(frontend)/Views/SubjectDetailsPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PoliNote.Views.SubjectDetailsPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\SubjectDetailsPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\SubjectDetailsPage.xaml
 
 [C:/Users/konra/source/repos/PoliNote_client(frontend)/Views/SubjectsPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml

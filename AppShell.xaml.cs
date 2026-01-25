@@ -11,6 +11,10 @@ namespace PoliNote
             Routing.RegisterRoute("add-public-event", typeof(AddPublicEventPage));
 
             Routing.RegisterRoute("private-event-details", typeof(PrivateEventDetailsPage));
+            Routing.RegisterRoute("add-note", typeof(NotePage));
+
+            Routing.RegisterRoute("subjects", typeof(SubjectsPage));
+            Routing.RegisterRoute("subject-details", typeof(SubjectDetailsPage));
         }
     }
 }

@@ -1,41 +1,58 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PoliNote.Views.PrivateEventDetailsPage"
-             Title="PrivateEventDetailsPage">
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="PoliNote.Views.PrivateEventDetailsPage"
+    Title="Szczegóły wydarzenia">
+
     <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="14">
+        <VerticalStackLayout Padding="20" Spacing="16">
 
-            <Label Text="{Binding Event.Title}"
-                   FontSize="24"
-                   FontAttributes="Bold" />
+            <Label
+                Text="{Binding Event.Title}"
+                FontSize="22"
+                FontAttributes="Bold" />
 
-            <Label Text="{Binding Event.Description}" />
+            <HorizontalStackLayout Spacing="8">
+                <Label Text="📅" />
+                <Label Text="{Binding Event.Date, StringFormat='{0:dd MMMM yyyy}'}" />
+            </HorizontalStackLayout>
 
-            <Label Text="{Binding Event.Date, StringFormat='{0:dd MMMM yyyy}'}" />
-            <Label Text="{Binding Event.Time}" />
-            <Label Text="{Binding Event.Location}" />
+            <HorizontalStackLayout Spacing="8">
+                <Label Text="⏰" />
+                <Label Text="{Binding Event.Time}" />
+            </HorizontalStackLayout>
 
-            <Label Text="Notatka"
-                   FontAttributes="Bold"
-                   Margin="0,20,0,0" />
+            <HorizontalStackLayout Spacing="8">
+                <Label Text="📍" />
+                <Label Text="{Binding Event.Location}" />
+            </HorizontalStackLayout>
 
-            <Editor
-                Text="{Binding NoteContent}"
-                HeightRequest="120" />
+            <Frame BackgroundColor="#F2F2F2" CornerRadius="12">
+                <Label
+                    Text="{Binding Event.Description}"
+                    FontSize="14" />
+            </Frame>
+
+            <!-- PRZYCISKI -->
+            <Button
+                Text="Dodaj notatkę / Edytuj notatkę"
+                Command="{Binding AddNoteCommand}"
+                BackgroundColor="#2563EB"
+                TextColor="White"
+                CornerRadius="12" />
 
             <Button
-                Text="Zapisz notatkę"
-                Command="{Binding SaveNoteCommand}" />
+                Text="Edytuj wydarzenie"
+                BackgroundColor="#E5E7EB"
+                TextColor="Black"
+                CornerRadius="12" />
 
             <Button
-                Text="Usuń wydarzenie"
-                BackgroundColor="Tomato"
-                Command="{Binding DeleteCommand}" />
-
-            <Button
-                Text="Zamknij"
-                Command="{Binding CloseCommand}" />
+                Text="Usuń"
+                Command="{Binding DeleteCommand}"
+                BackgroundColor="#FEE2E2"
+                TextColor="#B91C1C"
+                CornerRadius="12" />
 
         </VerticalStackLayout>
     </ScrollView>

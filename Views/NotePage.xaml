@@ -1,0 +1,37 @@
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="PoliNote.Views.NotePage"
+    Title="Nowa notatka">
+
+    <Grid RowDefinitions="*,Auto" Padding="20">
+
+        <Editor
+            Grid.Row="0"
+            Text="{Binding Content}"
+            Placeholder="Zacznij pisać tutaj swoje przemyślenia..."
+            AutoSize="TextChanges"
+            HeightRequest="300" />
+
+        <VerticalStackLayout
+            Grid.Row="1"
+            Spacing="12">
+
+            <Button
+                Text="Zatwierdź i zapisz"
+                Command="{Binding SaveCommand}"
+                BackgroundColor="#2563EB"
+                TextColor="White"
+                CornerRadius="12" />
+
+            <Button
+                Text="Anuluj"
+                Command="{Binding CancelCommand}"
+                BackgroundColor="#E5E7EB"
+                TextColor="Black"
+                CornerRadius="12" />
+
+        </VerticalStackLayout>
+
+    </Grid>
+</ContentPage>
