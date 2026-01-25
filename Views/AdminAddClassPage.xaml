@@ -1,0 +1,37 @@
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="PoliNote.Views.AdminAddClassPage"
+    Title="Dodaj zajęcia">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="16" Spacing="12">
+
+            <!-- SUBJECT -->
+            <Label Text="Przedmiot" FontAttributes="Bold" />
+
+            <Entry Placeholder="Nazwa przedmiotu" Text="{Binding SubjectName}" />
+            <Entry Placeholder="ECTS" Keyboard="Numeric" Text="{Binding Ects}" />
+            <Entry Placeholder="Prowadzący" Text="{Binding LecturerName}" />
+            <Entry Placeholder="Link do sylabusa" Text="{Binding SyllabusUrl}" />
+
+            <!-- GROUP -->
+            <Label Text="Grupa zajęciowa" FontAttributes="Bold" Margin="0,16,0,0" />
+
+            <Entry Placeholder="Nazwa grupy (np. Lab 1)" Text="{Binding GroupName}" />
+            <Entry Placeholder="Dzień tygodnia" Text="{Binding DayOfWeek}" />
+            <Entry Placeholder="Godzina rozpoczęcia (np. 10:15)" Text="{Binding StartTime}" />
+
+            <Button
+                Text="Dodaj zajęcia"
+                Command="{Binding SaveCommand}"
+                BackgroundColor="#2563EB"
+                TextColor="White" />
+
+            <Button
+                Text="Anuluj"
+                Command="{Binding CancelCommand}" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

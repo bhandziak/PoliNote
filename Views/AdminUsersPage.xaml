@@ -1,0 +1,55 @@
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="PoliNote.Views.AdminUsersPage"
+    Title="Zarządzanie użytkownikami">
+
+    <VerticalStackLayout Padding="16" Spacing="12">
+
+        <!-- Wyszukiwarka -->
+        <Entry
+            Placeholder="Szukaj studenta lub wykładowcy..."
+            Text="{Binding SearchText}" />
+
+        <!-- Filtry -->
+        <HorizontalStackLayout Spacing="8">
+            <Button Text="Wszyscy" Command="{Binding SetFilterCommand}" CommandParameter="All"/>
+            <Button Text="Student" Command="{Binding SetFilterCommand}" CommandParameter="Student"/>
+            <Button Text="Wykładowca" Command="{Binding SetFilterCommand}" CommandParameter="Informant"/>
+            <Button Text="Admin" Command="{Binding SetFilterCommand}" CommandParameter="Admin"/>
+        </HorizontalStackLayout>
+
+        <!-- Lista użytkowników -->
+        <CollectionView ItemsSource="{Binding Users}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Padding="12" Margin="0,4">
+                        <VerticalStackLayout>
+                            <Label Text="{Binding Username}" FontAttributes="Bold"/>
+                            <Label Text="{Binding Email}" FontSize="12"/>
+                            <Label Text="{Binding Role}" FontSize="12" TextColor="Gray"/>
+
+                            <HorizontalStackLayout Spacing="8" Margin="0,8,0,0">
+                                <Button
+                                    Text="Rola"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.OpenChangeRoleCommand}"
+                                    CommandParameter="{Binding .}" />
+
+                                <Button
+                                    Text="Usuń"
+                                    TextColor="Red"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.DeleteUserCommand}"
+                                    CommandParameter="{Binding .}" />
+
+                                <Button
+                                    Text="Dodaj użytkownika"
+                                    Command="{Binding OpenAddUserCommand}" />
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </VerticalStackLayout>
+</ContentPage>

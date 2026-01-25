@@ -15,6 +15,11 @@ namespace PoliNote
 
             Routing.RegisterRoute("subjects", typeof(SubjectsPage));
             Routing.RegisterRoute("subject-details", typeof(SubjectDetailsPage));
+
+            Routing.RegisterRoute("admin-users", typeof(AdminUsersPage));
+            Routing.RegisterRoute("admin-add-class", typeof(AdminAddClassPage));
+            Routing.RegisterRoute("admin-add-user", typeof(AdminAddUserPage));
+            Routing.RegisterRoute("admin-change-role", typeof(AdminChangeRolePage));
         }
     }
 }

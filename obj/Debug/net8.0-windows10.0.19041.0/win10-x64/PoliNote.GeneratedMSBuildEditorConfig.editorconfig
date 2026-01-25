@@ -64,11 +64,35 @@ build_metadata.AdditionalFiles.ManifestResourceName = PoliNote.Views.AddPublicEv
 build_metadata.AdditionalFiles.TargetPath = Views\AddPublicEventPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\AddPublicEventPage.xaml
 
+[C:/Users/konra/source/repos/PoliNote_client(frontend)/Views/AdminAddClassPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PoliNote.Views.AdminAddClassPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\AdminAddClassPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\AdminAddClassPage.xaml
+
+[C:/Users/konra/source/repos/PoliNote_client(frontend)/Views/AdminAddUserPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PoliNote.Views.AdminAddUserPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\AdminAddUserPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\AdminAddUserPage.xaml
+
+[C:/Users/konra/source/repos/PoliNote_client(frontend)/Views/AdminChangeRolePage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PoliNote.Views.AdminChangeRolePage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\AdminChangeRolePage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\AdminChangeRolePage.xaml
+
 [C:/Users/konra/source/repos/PoliNote_client(frontend)/Views/AdminPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = PoliNote.Views.AdminPage.xaml
 build_metadata.AdditionalFiles.TargetPath = Views\AdminPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\AdminPage.xaml
+
+[C:/Users/konra/source/repos/PoliNote_client(frontend)/Views/AdminUsersPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PoliNote.Views.AdminUsersPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\AdminUsersPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\AdminUsersPage.xaml
 
 [C:/Users/konra/source/repos/PoliNote_client(frontend)/Views/LoginPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml

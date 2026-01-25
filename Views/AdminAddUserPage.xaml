@@ -1,0 +1,35 @@
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="PoliNote.Views.AdminAddUserPage"
+    Title="Dodaj użytkownika">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="16" Spacing="12">
+
+            <Entry Placeholder="Username" Text="{Binding Username}" />
+            <Entry Placeholder="Email" Keyboard="Email" Text="{Binding Email}" />
+            <Entry Placeholder="Imię" Text="{Binding FirstName}" />
+            <Entry Placeholder="Nazwisko" Text="{Binding LastName}" />
+            <Entry Placeholder="Hasło" IsPassword="True" Text="{Binding Password}" />
+
+            <Label Text="Rola" FontAttributes="Bold" />
+
+            <Picker
+                Title="Wybierz rolę"
+                ItemsSource="{Binding Roles}"
+                SelectedItem="{Binding SelectedRole}" />
+
+            <Button
+                Text="Utwórz użytkownika"
+                Command="{Binding SaveCommand}"
+                BackgroundColor="#2563EB"
+                TextColor="White" />
+
+            <Button
+                Text="Anuluj"
+                Command="{Binding CancelCommand}" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

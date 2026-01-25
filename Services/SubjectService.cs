@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using PoliNote.DTOs.Subjects.Requests;
 using PoliNote.DTOs.Subjects.Responses;
 using System.Net.Http.Json;
 
@@ -39,4 +40,21 @@ public class SubjectService
         => await _client.GetFromJsonAsync<SubjectGroupDetailsDto>(
             $"/api/subjects/groups/{groupId}")
            ?? throw new Exception("Nie udało się pobrać grupy");
+
+    public async Task<Guid> CreateSubjectAsync(SubjectRequestDto dto)
+    {
+        var response = await _client.PostAsJsonAsync("/api/subjects", dto);
+        response.EnsureSuccessStatusCode();
+
+        return await response.Content.ReadFromJsonAsync<Guid>();
+    }
+
+    public async Task CreateSubjectGroupAsync(Guid subjectId, SubjectGroupRequestDto dto)
+    {
+        var response = await _client.PostAsJsonAsync(
+            $"/api/subjects/{subjectId}/groups",
+            dto);
+
+        response.EnsureSuccessStatusCode();
+    }
 }
