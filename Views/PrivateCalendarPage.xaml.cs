@@ -14,11 +14,8 @@ public partial class PrivateCalendarPage : ContentPage
     protected override void OnAppearing()
     {
         base.OnAppearing();
+        (BindingContext as PrivateCalendarViewModel)?.LoadCommand.Execute(null);
 
-        if (BindingContext is PrivateCalendarViewModel vm)
-        {
-            vm.LoadCommand.Execute(null);
-        }
     }
 
     private async void OnEventSelected(object sender, SelectionChangedEventArgs e)

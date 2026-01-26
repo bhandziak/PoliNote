@@ -84,6 +84,7 @@
                                     <Label
                                         Text="{Binding Title}"
                                         FontAttributes="Bold"
+                                        TextColor="Gray"
                                         FontSize="14" />
 
                                     <Label

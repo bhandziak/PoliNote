@@ -14,23 +14,24 @@
 
             <HorizontalStackLayout Spacing="8">
                 <Label Text="📅" />
-                <Label Text="{Binding Event.Date, StringFormat='{0:dd MMMM yyyy}'}" />
+                <Label Text="{Binding Event.Date, StringFormat='{0:dd MMMM yyyy}'}" TextColor="WhiteSmoke" />
             </HorizontalStackLayout>
 
             <HorizontalStackLayout Spacing="8">
                 <Label Text="⏰" />
-                <Label Text="{Binding Event.Time}" />
+                <Label Text="{Binding Event.Time}" TextColor="WhiteSmoke"/>
             </HorizontalStackLayout>
 
             <HorizontalStackLayout Spacing="8">
                 <Label Text="📍" />
-                <Label Text="{Binding Event.Location}" />
+                <Label Text="{Binding Event.Location}" TextColor="WhiteSmoke"/>
             </HorizontalStackLayout>
 
             <Frame BackgroundColor="#F2F2F2" CornerRadius="12">
                 <Label
                     Text="{Binding Event.Description}"
-                    FontSize="14" />
+                    FontSize="14" 
+                    TextColor="Black"/>
             </Frame>
 
             <!-- PRZYCISKI -->

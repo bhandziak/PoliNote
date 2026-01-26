@@ -16,7 +16,18 @@ namespace PoliNote.ViewModels
 
         public ObservableCollection<PrivateEventDto> Events { get; } = new();
 
-        public DateTime SelectedDate { get; set; } = DateTime.Today;
+        private DateTime _selectedDate = DateTime.Today;
+        public DateTime SelectedDate
+        {
+            get => _selectedDate;
+            set
+            {
+                if (SetProperty(ref _selectedDate, value))
+                {
+                    LoadCommand.Execute(null);
+                }
+            }
+        }
 
         public Command LoadCommand { get; }
         public Command AddCommand { get; }

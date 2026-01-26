@@ -53,7 +53,10 @@ public class SubjectService
             );
         }
 
-        return await response.Content.ReadFromJsonAsync<Guid>();
+        var result = await response.Content.ReadFromJsonAsync<CreateSubjectResponseDto>()
+             ?? throw new Exception("Brak odpowiedzi z API");
+
+        return result.Id;
     }
 
     public async Task CreateSubjectGroupAsync(Guid subjectId, SubjectGroupRequestDto dto)
@@ -62,6 +65,12 @@ public class SubjectService
             $"/api/subjects/{subjectId}/groups",
             dto);
 
-        response.EnsureSuccessStatusCode();
+        if (!response.IsSuccessStatusCode)
+        {
+            var error = await response.Content.ReadAsStringAsync();
+            throw new Exception(
+                $"CreateSubject failed ({(int)response.StatusCode}): {error}"
+            );
+        }
     }
 }
