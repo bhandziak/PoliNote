@@ -51,7 +51,9 @@
             <!-- LISTA WYDARZEŃ -->
             <CollectionView
                 ItemsSource="{Binding Events}"
-                SelectionMode="Single">
+                SelectionMode="Single"
+                SelectionChanged="OnEventSelected">
+                
 
                 <CollectionView.ItemTemplate>
                     <DataTemplate>

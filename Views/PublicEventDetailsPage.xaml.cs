@@ -8,15 +8,22 @@ public partial class PublicEventDetailsPage : ContentPage
 {
     private readonly PublicEventDetailsViewModel _vm;
 
-    public Guid EventId
+    public string EventId
     {
-        set => _ = _vm.LoadEventAsync(value);
+        set
+        {
+            if (Guid.TryParse(value, out var guid))
+            {
+                _ = _vm.LoadEventAsync(guid);
+            }
+        }
     }
 
-    public PublicEventDetailsPage(PublicEventDetailsViewModel vm)
+    public PublicEventDetailsPage()
     {
         InitializeComponent();
-        BindingContext = _vm = vm;
+        _vm = new PublicEventDetailsViewModel(new Services.PublicCalendarService());
+        BindingContext = _vm;
     }
 
 }

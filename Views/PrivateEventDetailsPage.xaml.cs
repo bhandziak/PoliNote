@@ -8,6 +8,12 @@ public partial class PrivateEventDetailsPage : ContentPage
 {
     private readonly PrivateEventDetailsViewModel _vm;
 
+    public PrivateEventDetailsPage()
+    {
+        InitializeComponent();
+        BindingContext = _vm = new PrivateEventDetailsViewModel();
+    }
+
     public string EventId
     {
         set
@@ -19,9 +25,4 @@ public partial class PrivateEventDetailsPage : ContentPage
         }
     }
 
-    public PrivateEventDetailsPage()
-    {
-        InitializeComponent();
-        BindingContext = _vm = new PrivateEventDetailsViewModel();
-    }
 }

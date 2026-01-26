@@ -21,11 +21,50 @@ public class PrivateCalendarService
                ?? new();
     }
 
-    public async Task<PrivateEventDetailsDto> GetByIdAsync(Guid id)
+    public async Task<PrivateEventDetailsDto?> GetByIdAsync(Guid id)
     {
-        return await _client.GetFromJsonAsync<PrivateEventDetailsDto>(
-            $"/api/calendar/private/{id}"
-        );
+        try
+        {
+            var result = await _client.GetFromJsonAsync<PrivateEventDetailsDto>(
+                $"/api/calendar/private/{id}"
+            );
+
+            if (result == null)
+            {
+                await Shell.Current.DisplayAlert(
+                    "Błąd",
+                    "Serwer zwrócił pustą odpowiedź.",
+                    "OK"
+                );
+                return null;
+            }
+
+            await Shell.Current.DisplayAlert(
+                "Sukces",
+                "Szczegóły wydarzenia zostały pobrane.",
+                "OK"
+            );
+
+            return result;
+        }
+        catch (HttpRequestException ex)
+        {
+            await Shell.Current.DisplayAlert(
+                "Błąd sieci",
+                $"Nie udało się pobrać wydarzenia.\n\n{ex.Message}",
+                "OK"
+            );
+            return null;
+        }
+        catch (Exception ex)
+        {
+            await Shell.Current.DisplayAlert(
+                "Błąd",
+                $"Wystąpił nieoczekiwany błąd:\n\n{ex.Message}",
+                "OK"
+            );
+            return null;
+        }
     }
 
     public async Task CreateAsync(PrivateEventRequestDto request)

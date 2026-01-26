@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 namespace PoliNote.ViewModels
 {
     [QueryProperty(nameof(EventId), "eventId")]
+    [QueryProperty(nameof(_date), "date")]
     public class NoteViewModel : BaseViewModel
     {
         private readonly NoteService _service = new();
@@ -18,15 +19,17 @@ namespace PoliNote.ViewModels
         public Guid? NoteId { get; private set; }
 
         private Guid _eventId;
+        private DateTime _date;
 
         public string Content { get; set; } = "";
 
         public Command SaveCommand { get; }
         public Command CancelCommand { get; }
 
-        public void Load(Guid eventId)
+        public void Load(Guid eventId, DateTime date)
         {
             _eventId = eventId;
+            _date = date;
         }
 
         public NoteViewModel()
@@ -56,7 +59,7 @@ namespace PoliNote.ViewModels
             }
             else
             {
-                await _service.CreateForEventAsync(_eventId, new NoteRequestDto
+                await _service.CreateForEventAsync(_eventId, _date, new NoteRequestDto
                 {
                     Content = Content
                 });

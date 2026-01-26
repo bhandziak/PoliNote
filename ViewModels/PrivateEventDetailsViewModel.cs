@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace PoliNote.ViewModels
 {
-    //[QueryProperty(nameof(EventId), "id")]
+    [QueryProperty(nameof(EventId), "id")]
     public class PrivateEventDetailsViewModel : BaseViewModel
     {
         private readonly PrivateCalendarService _service = new();
@@ -22,7 +22,12 @@ namespace PoliNote.ViewModels
         //public Guid EventId { get; set; }
         private Guid _eventId;
 
-        public PrivateEventDetailsDto Event { get; private set; }
+        private PrivateEventDetailsDto? _event;
+        public PrivateEventDetailsDto? Event
+        {
+            get => _event;
+            set => SetProperty(ref _event, value);
+        }
         //public string NoteContent { get; set; } = "";
 
         private Guid _noteId;

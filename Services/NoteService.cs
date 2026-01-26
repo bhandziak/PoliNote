@@ -33,14 +33,21 @@ namespace PoliNote.Services
         /// <summary>
         /// Utworzenie notatki dla wydarzenia prywatnego
         /// </summary>
-        public async Task CreateForEventAsync(Guid eventId, NoteRequestDto request)
+        public async Task CreateForEventAsync(Guid eventId, DateTime date, NoteRequestDto request)
         {
             var response = await _client.PostAsJsonAsync(
-                $"/api/calendar/private/{eventId}/note",
+                $"/api/calendar/private/{eventId}/note?date={date:yyyy-MM-dd}",
                 request
             );
 
-            response.EnsureSuccessStatusCode();
+            if (!response.IsSuccessStatusCode)
+            {
+                var errorBody = await response.Content.ReadAsStringAsync();
+
+                throw new Exception(
+                    $"HTTP {(int)response.StatusCode} ({response.StatusCode})\n{errorBody}"
+                );
+            }
         }
 
         /// <summary>

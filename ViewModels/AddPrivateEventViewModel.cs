@@ -20,6 +20,9 @@ public class AddPrivateEventViewModel : BaseViewModel
     public TimeSpan StartTime { get; set; } = new(8, 0, 0);
     public TimeSpan EndTime { get; set; } = new(10, 0, 0);
 
+    private Guid? _eventId;
+    public bool IsEditMode => _eventId.HasValue;
+
     public Command SaveCommand { get; }
     public Command CancelCommand { get; }
 
